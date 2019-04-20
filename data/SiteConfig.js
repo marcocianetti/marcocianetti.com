@@ -2,7 +2,7 @@ const config = {
   siteTitle: 'Marco Cianetti',
   siteTitleShort: 'Marco Cianetti',
   siteTitleAlt: 'Marco Cianetti',
-  siteLogo: '/logos/logo.jpg',
+  siteLogo: '/logos/logo-square-1024.jpg',
   siteUrl: 'https://marcocianetti.com',
   repo: 'https://github.com/marcocianetti/marcocianetti.com',
   pathPrefix: '',
