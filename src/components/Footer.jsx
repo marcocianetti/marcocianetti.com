@@ -6,7 +6,7 @@ class Footer extends Component {
       <footer className="footer container">
         <small>
           Realizzato da <strong>Marco Cianetti</strong> /{' '}
-          <a href="https://github.com/marcocianetti/marcocianetti.com" target="_blank">
+          <a href="https://github.com/marcocianetti/marcocianetti.com" target="_blank" rel="noopener noreferrer">
             Source
           </a>
         </small>

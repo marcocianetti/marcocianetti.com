@@ -24,6 +24,6 @@ Naviga su `localhost:8000`.
 - Code theme (starring [New Moon](https://taniarascia.github.io/new-moon))
 - Sass (starring [Primitive](https://taniarascia.github.io/primitive))
 
-## License
+## Licenza
 
 Questo progetto è open source e disponibile con licenza [MIT License](LICENSE).

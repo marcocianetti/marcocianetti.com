@@ -51,14 +51,14 @@ class Navigation extends Component {
                   </Link>
                 ))}
                 <div className="cta">
-                  <button className="dark-switcher" onClick={theme.toggleDark}>
+                  <button className="dark-switcher" aria-label="theme mode switch" onClick={theme.toggleDark}>
                     {theme.dark ? (
                       <span>
-                        <img src={sun} className="theme-icon" />
+                        <img src={sun} className="theme-icon" alt="light theme icon" />
                       </span>
                     ) : (
                       <span>
-                        <img src={moon} className="theme-icon" />
+                        <img src={moon} className="theme-icon" alt="dark theme icon" />
                       </span>
                     )}
                   </button>

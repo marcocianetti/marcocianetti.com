@@ -17,6 +17,7 @@ class MainLayout extends Component {
     return (
       <>
         <Helmet
+          htmlAttributes={{ lang: 'it' }}
           bodyAttributes={{
             class: `theme ${dark && !notFound ? 'dark' : '' || notFound ? 'not-found' : ''}`,
           }}
