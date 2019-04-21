@@ -1,4 +1,4 @@
-# marcocianetti.com [![Netlify Status](https://api.netlify.com/api/v1/badges/0a51d0e9-f611-4dd8-887f-fc1889e68540/deploy-status)](https://app.netlify.com/sites/tania/deploys) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+# marcocianetti.com [![Netlify Status](https://api.netlify.com/api/v1/badges/632cae47-9e17-4299-8a5e-8bd63f0b277c/deploy-status)](https://app.netlify.com/sites/marcocianetti/deploys)
 
 Sito personale sviluppato con Gatsby, React, and Node.js.
 
