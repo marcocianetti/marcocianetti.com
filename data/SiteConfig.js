@@ -16,7 +16,7 @@ const config = {
   postDefaultCategoryID: 'Tech',
   userName: 'Marco',
   userEmail: 'cianetti.m@gmail.com',
-  userTwitter: 'marcocianetti',
+  userTwitter: 'marcocianetti_',
   userLocation: 'Roma, IT',
   userAvatar: '/logos/avatar.png',
   userDescription:
