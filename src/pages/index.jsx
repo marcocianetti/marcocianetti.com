@@ -8,7 +8,7 @@ class Index extends Component {
   render() {
     return (
       <Layout>
-        <Helmet title={`${config.siteTitle} - Web Developer`} />
+        <Helmet title={`${config.siteTitle} | Web Developer specializzato in JavaScript`} />
         <SEO />
         <div className="container">
           <div className="lead">
@@ -16,7 +16,7 @@ class Index extends Component {
               Ciao, sono Marco Cianetti<br />Web Developer specializzato in JavaScript
             </h1>
             <p>Sviluppo principalmente siti web in <a href="https://reactjs.org/" target="_blank" rel="noopener noreferrer">ReactJS</a>, realizzo script in JavaScript e automazioni di vario genere.</p>
-            <p>Grazie a <a href="https://247x.io" target="_blank" rel="noopener noreferrer">247X</a> ho sposato la <strong>metodologia lean</strong> e messo <strong>l'analisi dei dati</strong> di fronte a tutto.</p>
+            <p>Grazie a <a href="https://247x.io" target="_blank" rel="noopener noreferrer">247X - Il tuo Team di Crescita Dedicato</a> ho sposato la <strong>metodologia lean</strong> e messo <strong>l'analisi dei dati</strong> di fronte a tutto.</p>
           </div>
         </div>
 
