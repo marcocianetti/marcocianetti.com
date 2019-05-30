@@ -62,3 +62,6 @@ public/
 bundle-stats.json
 
 .idea
+
+# Netflify
+.netlify

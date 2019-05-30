@@ -64,13 +64,16 @@
     "tutorials",
     "tech",
     "articles",
-    "blog"
+    "blog",
+    "web developer",
+    "javascript"
   ],
   "license": "MIT",
   "main": "n/a",
   "scripts": {
     "develop": "gatsby develop",
     "dev": "yarn run develop",
+    "start": "yarn run dev",
     "serve": "gatsby serve",
     "build": "gatsby build",
     "build:pp": "gatsby build --prefix-paths",

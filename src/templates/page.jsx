@@ -18,7 +18,7 @@ class PageTemplate extends Component {
     return (
       <Layout>
         <Helmet>
-          <title>{`${config.siteTitle} - ${page.title}`}</title>
+          <title>{`${page.title} | ${config.siteTitle}`}</title>
         </Helmet>
         <SEO postPath={slug} postNode={postNode} postSEO />
         <div className="container">
@@ -34,7 +34,7 @@ class PageTemplate extends Component {
   }
 }
 
-export default PageTemplate
+export default PageTemplate;
 
 export const pageQuery = graphql`
   query PageBySlug($slug: String!) {
