@@ -9,7 +9,7 @@ const config = {
   dateFromFormat: 'YYYY-MM-DD',
   dateFormat: 'MMMM Do, YYYY',
   siteDescription:
-    'Marco Cianetti è un web developer, specializzato in JavaScript.',
+    'Web developer, specializzato in JavaScript.',
   siteRss: '/rss.xml',
   googleAnalyticsID: 'UA-138287810-1',
   googleTagManagerID: 'GTM-NZW3R4T',
@@ -20,16 +20,15 @@ const config = {
   userTwitter: 'marcocianetti_',
   userLocation: 'Roma, IT',
   userAvatar: '/logos/avatar.png',
-  userDescription:
-    'Web developer, specializzato in JavaScript',
+  userDescription: 'Web developer, specializzato in JavaScript',
   menuLinks: [
     {
-      name: 'Me',
-      link: '/about/',
+      name: 'Chi sono',
+      link: '/chi-sono',
     },
     {
       name: 'Contatti',
-      link: '/contacts/',
+      link: '/contatti',
     },
   ],
   themeColor: '#3F80FF', // Used for setting manifest and progress theme colors.
