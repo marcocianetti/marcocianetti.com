@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 import { Link } from 'gatsby'
 import sun from '../images/sun.svg'
 import moon from '../images/moon.svg'
+import logo from '../images/favicon.png'
 import ThemeContext from '../context/ThemeContext'
 import config from '../../data/SiteConfig';
 
-class Navigation extends Component {
+class NavBar extends Component {
   constructor(props) {
     super(props);
 
@@ -14,7 +15,7 @@ class Navigation extends Component {
     };
   }
 
-  navOnScroll = () => {
+  handleScroll = () => {
     if (window.scrollY > 20) {
       this.setState({ scrolled: true })
     } else {
@@ -23,16 +24,16 @@ class Navigation extends Component {
   };
 
   componentDidMount() {
-    window.addEventListener('scroll', this.navOnScroll)
+    window.addEventListener('scroll', this.handleScroll)
   }
 
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.navOnScroll)
+    window.removeEventListener('scroll', this.handleScroll)
   }
 
   render() {
     const { scrolled } = this.state;
-    const { menuLinks } = this.props;
+    const { links } = this.props;
 
     return (
       <ThemeContext.Consumer>
@@ -41,12 +42,13 @@ class Navigation extends Component {
             <div className="nav-container">
               <div className="brand">
                 <Link to="/">
+                  <img src={logo} className="favicon" alt="Logo Marco Cianetti" />
                   <span className="text">{config.siteTitle}</span>
                 </Link>
               </div>
               <div className="links">
-                {menuLinks.map(link => (
-                  <Link key={link.name} to={link.link}>
+                {links.map(link => (
+                  <Link key={link.name} to={link.link} activeClassName="active">
                     {link.name}
                   </Link>
                 ))}
@@ -72,4 +74,4 @@ class Navigation extends Component {
   }
 }
 
-export default Navigation
+export default NavBar;
