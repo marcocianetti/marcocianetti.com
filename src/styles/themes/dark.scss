@@ -55,7 +55,7 @@ $dark-border: darken($background, 3%);
     }
 
     .brand a {
-      color: lighten($foreground, 5%);
+      color: #c1c6d0;
 
       &:hover {
         color: #eee;
@@ -67,6 +67,10 @@ $dark-border: darken($background, 3%);
 
       &:hover {
         color: $foreground;
+      }
+
+      &.active {
+        color: #eee;
       }
     }
   }

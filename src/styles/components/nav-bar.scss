@@ -12,7 +12,7 @@
     background: #222;
 
     .brand a {
-      color: rgba(255, 255, 255, 0.9);
+      color: rgba(255, 255, 255, 0.6);
     }
 
     .links a {
@@ -80,7 +80,8 @@
       text-align: center;
 
       &:hover,
-      &:active {
+      &:active,
+      &.active {
         color: #111;
       }
     }

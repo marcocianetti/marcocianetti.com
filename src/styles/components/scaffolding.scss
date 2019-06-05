@@ -184,6 +184,7 @@ a {
   color: $link-color;
   text-decoration: none;
   font-weight: 600;
+  transition: color $transition-duration ease-in-out;
 
   &:hover,
   &:active,
