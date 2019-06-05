@@ -18,10 +18,10 @@ const config = {
   userName: 'Marco',
   userEmail: 'cianetti.m@gmail.com',
   userTwitter: 'marcocianetti_',
-  userLocation: 'Roma, IT',
+  userLocation: 'Rome, IT',
   userAvatar: '/logos/avatar.png',
   userDescription: 'Web developer, specializzato in JavaScript',
-  menuLinks: [
+  navBarLinks: [
     {
       name: 'Chi sono',
       link: '/chi-sono',

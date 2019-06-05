@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ThemeContext from '../context/ThemeContext'
 import Helmet from 'react-helmet'
-import Navigation from '../components/Navigation'
+import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
 import config from '../../data/SiteConfig'
 import favicon from '../images/favicon.png'
@@ -25,7 +25,7 @@ class MainLayout extends Component {
           <meta name="description" content={config.siteDescription} />
           <link rel="shortcut icon" type="image/png" href={favicon} />
         </Helmet>
-        <Navigation menuLinks={config.menuLinks} />
+        <NavBar links={config.navBarLinks} />
         <main id="main-content">{children}</main>
         <Footer />
       </>
