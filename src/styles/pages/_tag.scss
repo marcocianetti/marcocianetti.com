@@ -1,0 +1,43 @@
+.tags-page__tags-list {
+  span {
+    display: inline-block;
+    padding: 0.3rem 0.5rem;
+    background: $light;
+    border: 2px dashed transparent;
+    border-radius: $border-radius;
+    color: lighten($font-color, 10%);
+    font-size: 0.8rem;
+    font-weight: 400;
+    margin: 0 0.5rem 0.5rem 0;
+
+    strong {
+      color: $secondary-color;
+      font-weight: 700;
+      margin-left: 0.25rem;
+    }
+
+    &:hover,
+    &:focus {
+      background: darken($light, 5%);
+      color: $font-color;
+    }
+
+    &:active {
+      border-color: $secondary-color;
+    }
+  }
+}
+
+@include min('small') {
+  .tags-page__tags-list {
+    span {
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 0.3rem 0.8rem;
+
+      strong {
+        margin-left: 0.5rem;
+      }
+    }
+  }
+}

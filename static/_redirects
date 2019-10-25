@@ -1,12 +1,11 @@
 # Redirects from what the browser requests to what we serve
 # https://www.netlify.com/docs/redirects/
-/tutorials/              /blog/
-/projects/               /blog/
-/portfolio/              /blog/
-/thoughts/               /blog/
-/search/                 /
+
+# Redirect default Netlify subdomain to primary domain
+https://marcocianetti.netlify.com/* https://marcocianetti.com/:splat 301!
 
 /contacts                /contatti
 /contacts/               /contatti
-/about                   /chi-sono
-/about/                  /chi-sono
+/about                   /web-developer-roma
+/about/                  /web-developer-roma
+/chi-sono                /web-developer-roma

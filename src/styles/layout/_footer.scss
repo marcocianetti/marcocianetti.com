@@ -1,0 +1,23 @@
+.footer {
+  height: $footer-height--mobile;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: $light-grey;
+}
+
+.footer__links-container {
+
+}
+
+.footer__link {
+  &:not(:last-of-type) {
+    margin-right: 1rem;
+  }
+}
+
+@include min('small') {
+  .footer {
+    height: $footer-height;
+  }
+}
