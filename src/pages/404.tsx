@@ -28,7 +28,7 @@ export default class NotFoundPage extends React.Component {
           <meta name="description" content={Config.SiteDescription}/>
           <link rel="shortcut icon" type="image/png" href={logo}/>
         </Helmet>
-        
+
         <div className="not-found-page">
           <header>
             <div className="not-found-page__header__container container">
