@@ -1,0 +1,24 @@
+.index-page__title {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+@include min('small') {
+  .index-page__title {
+    font-size: 4rem;
+  }
+}
+
+.index-page__section {
+  margin-top: 2rem;
+
+  h2 {
+    border-bottom: 0;
+  }
+}
+
+@include min('small') {
+  .index-page__section {
+    margin-top: 4rem;
+  }
+}

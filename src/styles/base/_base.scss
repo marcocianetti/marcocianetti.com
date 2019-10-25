@@ -1,0 +1,208 @@
+// HTML base
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font: $font-style $font-variant $font-weight #{$font-size}/#{$line-height} $font-family;
+  font-size: 84% !important;
+}
+
+// Body base
+
+body {
+  color: $font-color;
+  font-size: 1rem;
+}
+
+@include min('small') {
+  body {
+    font-size: $body-font-size;
+  }
+}
+
+p,
+ol,
+ul,
+dl,
+table {
+  margin: 0 0 1.5rem 0;
+  font-size: 1.1rem;
+}
+
+@include min('small') {
+  p,
+  ol,
+  ul,
+  dl,
+  table {
+    margin: 0 0 2rem 0;
+    font-size: 1.25rem;
+  }
+}
+
+ul li p {
+  margin: 0;
+}
+
+// Remove extra margin for nested lists
+ul li ul {
+  margin-bottom: 0;
+}
+
+ol li ol {
+  margin-bottom: 0;
+}
+
+ul {
+  padding: 0;
+
+  li {
+    &:before {
+      content: '\2022 ';
+      position: absolute;
+      left: 0;
+      color: lighten($font-color, 30%);
+      font-size: 22px;
+      line-height: 1.1;
+    }
+
+    position: relative;
+    list-style-type: none;
+    margin-bottom: 0.3rem;
+    padding-left: 1.5rem;
+    margin-left: .5rem;
+  }
+}
+
+@include min('small') {
+  ul {
+    li {
+      padding-left: 1.5rem;
+      margin-left: 1.5rem;
+    }
+  }
+}
+
+// Link styling
+a {
+  color: $link-color;
+  text-decoration: none;
+  font-weight: 600;
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: $link-hover-color;
+  }
+}
+
+// Highlight
+mark {
+  background: $highlight;
+  padding: 0 0.2rem;
+}
+
+strong,
+b {
+  font-weight: 600;
+}
+
+// Keyboard input
+kbd {
+  background-color: #f7f7f7;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 0 0 2px #fff inset;
+  color: #333;
+  display: inline-block;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+  margin: 0 0.1em;
+  padding: 0.1em 0.6em;
+  text-shadow: 0 1px 0 #fff;
+}
+
+// Line break
+hr {
+  height: 0;
+  border: 0;
+  border-top: $borders;
+}
+
+// Definition list
+dt {
+  font-weight: 600;
+}
+
+dd {
+  margin-bottom: 0.5rem;
+}
+
+blockquote {
+  padding-left: 20px;
+  margin-left: 0;
+  border-left: .25em solid #1b61ff63;
+  color: #6a737d;
+}
+
+// Utils class
+
+.post, .page {
+  a:not(.button):not(.anchor):not(.gatsby-resp-image-link) {
+
+    &:hover,
+    &:active,
+    &:focus {
+      border-radius: $border-radius;
+      color: $link-hover-color;
+      background: $button-background-hover;
+    }
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: $content-max-width;
+  padding: 0 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@include min('small') {
+  .container {
+    padding: 0 2rem;
+  }
+}
+
+.flex {
+  display: flex;
+}
+
+.flex--row {
+  flex-direction: row;
+}
+
+.flex--column {
+  flex-direction: column;
+}
+
+.gatsby-highlight {
+  pre {
+    overflow-x: scroll;
+
+    & code {
+      white-space: pre;
+    }
+  }
+}
+
+::selection {
+  background: rgba(255, 245, 20, 0.8);
+  color: #111;
+}

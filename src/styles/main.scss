@@ -1,24 +1,43 @@
-/*! Primitive
-  by Tania Rascia */
+// Abstracts
+@import
+  'abstracts/variables',
+  'abstracts/functions',
+  'abstracts/mixins',
+  'abstracts/placeholders';
 
-// Configuration
-@import 'base/variables';
-@import 'base/mixins';
+// Vendors
 
-// Reset
-@import 'base/reset';
+// Base
+@import
+  'base/reset',
+  'base/typography',
+  'base/base';
+
+// Layout
+@import
+  'layout/master',
+  'layout/header',
+  'layout/footer',
+  'layout/nav-bar',
+  'layout/forms',
+  'layout/post';
 
 // Components
-@import 'components/scaffolding';
-@import 'components/helpers';
-@import 'components/buttons';
-@import 'components/forms';
-@import 'components/tables';
-@import 'components/nav-bar';
-@import 'components/layout';
-@import 'components/new-moon';
+@import
+  'components/author-info',
+  'components/post-list',
+  'components/tag-list';
+
+// Pages
+@import
+  'pages/index',
+  'pages/404',
+  'pages/tag',
+  'pages/categorie',
+  'pages/articles';
 
 // Themes
-
-@import 'themes/dark';
-@import 'themes/404';
+@import
+  'themes/theme',
+  'themes/light',
+  'themes/dark';

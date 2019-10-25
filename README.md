@@ -10,19 +10,10 @@ Run su server locale:
 git clone https://github.com/marcocianetti/marcocianetti.com
 cd marcocianetti.com
 yarn
-yarn run dev
+yarn start
 ```
 
 Naviga su `localhost:8000`.
-
-## Features
-
-- Post e pagine in Markdown
-- Tag e categorie
-- Night mode
-- DOS mode (404)
-- Code theme (starring [New Moon](https://taniarascia.github.io/new-moon))
-- Sass (starring [Primitive](https://taniarascia.github.io/primitive))
 
 ## Licenza
 
