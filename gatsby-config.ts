@@ -5,8 +5,7 @@
  */
 
 import urljoin from 'url-join';
-
-import Config from './src/Config/Config';
+import Config from './src/config/Config';
 
 module.exports = {
   /* Your site Config here */
