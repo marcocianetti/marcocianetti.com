@@ -1,0 +1,13 @@
+.master-layout__main {
+  min-height: calc(100vh - #{$nav-bar-height--mobile + $footer-height--mobile});
+  margin-top: $nav-bar-height--mobile;
+  padding: 48px 0;
+}
+
+@include min('small') {
+  .master-layout__main {
+    min-height: calc(100vh - #{$nav-bar-height + $footer-height});
+    margin-top: $nav-bar-height;
+    padding: 64px 0;
+  }
+}
