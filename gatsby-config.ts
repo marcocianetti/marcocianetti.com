@@ -144,23 +144,5 @@ module.exports = {
       },
     },
 
-    // Posts
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'posts',
-        path: `${__dirname}/content/posts/`,
-      },
-    },
-
-    // Thumbnails
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'thumbnails',
-        path: `${__dirname}/content/thumbnails/`,
-      },
-    },
-
   ],
 };
