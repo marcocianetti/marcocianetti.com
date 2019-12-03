@@ -1,0 +1,105 @@
+.author-card__avatar-container {
+  width: 200px;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  overflow: hidden;
+}
+
+.author-card__avatar-background-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+}
+
+@include min('x-small') {
+  .author-card__avatar-background-container {
+    height: 0;
+    padding-bottom: 100%;
+  }
+}
+
+.author-card__avatar-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background-image: url('../images/super-mario/background.jpg');
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+
+  animation-name: move-background;
+  animation-duration: 30s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+
+  transform: translate3d(0, 0, 0);
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.15);
+    content: '';
+    z-index: 1;
+  }
+}
+
+@include min('x-small') {
+  .author-card__avatar-background {
+    background-size: 200% 100%;
+  }
+}
+
+.author-card__avatar {
+  height: 75%;
+  object-fit: contain;
+  object-position: center;
+  border: 2px solid;
+  border-top-color: rgb(200, 200, 200);
+  border-left-color: rgb(200, 200, 200);
+  border-right-color: rgb(37, 19, 18);
+  border-bottom-color: rgb(37, 19, 18);
+  z-index: 2;
+}
+
+.author-card__avatar-text {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  width: 100%;
+  transform: translateX(-50%);
+  margin: 0;
+  font-family: 'PressStart', monospace;
+  color: #fff;
+  font-size: 0.6rem;
+  line-height: 0.9rem;
+  text-align: center;
+
+  animation: blink 1s steps(2, start) infinite;
+}
+
+@include min('small') {
+  .author-card__avatar-text {
+    top: 8px;
+  }
+}
+
+.author-card__buttons-container {
+    padding: 8px;
+    background-color: $grey;
+}
+
+@keyframes move-background {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: -400px 0;
+    }
+  }

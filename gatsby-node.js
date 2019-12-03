@@ -46,6 +46,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 exports.__esModule = true;
 var path = __importStar(require("path"));
 var lodash_kebabcase_1 = __importDefault(require("lodash.kebabcase"));
+var RouteUtils_1 = __importDefault(require("./src/utils/RouteUtils"));
 var DateUtils_1 = __importDefault(require("./src/utils/DateUtils"));
 var postNodes = [];
 function addSiblingNodes(createNodeField) {
@@ -157,23 +158,40 @@ function onCreatePage(_a) {
 function createPages(_a) {
     var graphql = _a.graphql, actions = _a.actions;
     return __awaiter(this, void 0, void 0, function () {
-        var createPage, pageTemplate, res, e_1;
+        var createPage, pageTemplate, postTemplate, tagTemplate, categoryTemplate, res, tags_1, categories_1, e_1;
         return __generator(this, function (_b) {
             switch (_b.label) {
                 case 0:
                     createPage = actions.createPage;
                     pageTemplate = path.resolve('src/templates/Page.tsx');
+                    postTemplate = path.resolve('src/templates/Post.tsx');
+                    tagTemplate = path.resolve('src/templates/Tag.tsx');
+                    categoryTemplate = path.resolve('src/templates/Category.tsx');
                     _b.label = 1;
                 case 1:
                     _b.trys.push([1, 3, , 4]);
-                    return [4 /*yield*/, graphql("\n          {\n            allMarkdownRemark {\n              edges {\n                node {\n                  frontmatter {\n                    template\n                  }\n                  fields {\n                    slug\n                  }\n                }\n              }\n            }\n          }\n        ")];
+                    return [4 /*yield*/, graphql("\n          {\n            allMarkdownRemark {\n              edges {\n                node {\n                  frontmatter {\n                    template\n                    tags\n                    categories\n                  }\n                  fields {\n                    slug\n                  }\n                }\n              }\n            }\n          }\n        ")];
                 case 2:
                     res = _b.sent();
                     if (res.errors) {
                         console.error('Pages GraphQL error: ', res.errors);
                         return [2 /*return*/];
                     }
+                    tags_1 = new Set();
+                    categories_1 = new Set();
                     res.data.allMarkdownRemark.edges.forEach(function (edge) {
+                        // Add tags
+                        if (edge.node.frontmatter.tags) {
+                            edge.node.frontmatter.tags.forEach(function (tag) {
+                                tags_1.add(tag);
+                            });
+                        }
+                        // Add categories
+                        if (edge.node.frontmatter.categories) {
+                            edge.node.frontmatter.categories.forEach(function (category) {
+                                categories_1.add(category);
+                            });
+                        }
                         // Create a page, using the right template
                         switch (edge.node.frontmatter.template) {
                             case 'page':
@@ -185,7 +203,36 @@ function createPages(_a) {
                                     }
                                 });
                                 break;
+                            case 'post':
+                                createPage({
+                                    path: edge.node.fields.slug,
+                                    component: postTemplate,
+                                    context: {
+                                        slug: edge.node.fields.slug
+                                    }
+                                });
+                                break;
                         }
+                    });
+                    // Create tag pages
+                    Array.from(tags_1).forEach(function (tag) {
+                        createPage({
+                            path: RouteUtils_1["default"].generatePathToTag(tag),
+                            component: tagTemplate,
+                            context: {
+                                tag: tag
+                            }
+                        });
+                    });
+                    // Create category pages
+                    Array.from(categories_1).forEach(function (category) {
+                        createPage({
+                            path: RouteUtils_1["default"].generatePathToCategory(category),
+                            component: categoryTemplate,
+                            context: {
+                                category: category
+                            }
+                        });
                     });
                     return [3 /*break*/, 4];
                 case 3:

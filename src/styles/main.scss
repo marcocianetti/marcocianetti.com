@@ -24,9 +24,12 @@
 
 // Components
 @import
-  'components/author-info',
+  'components/post-author-section',
   'components/post-list',
-  'components/tag-list';
+  'components/tag-list',
+  'components/author-card',
+  'components/nintendo-gamepad',
+  'components/reading-bar';
 
 // Pages
 @import

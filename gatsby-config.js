@@ -8,7 +8,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 exports.__esModule = true;
 var url_join_1 = __importDefault(require("url-join"));
-var Config_1 = __importDefault(require("./src/Config/Config"));
+var Config_1 = __importDefault(require("./src/config/Config"));
 module.exports = {
     /* Your site Config here */
     pathPrefix: Config_1["default"].PathPrefix === '' ? '/' : Config_1["default"].PathPrefix,
@@ -36,7 +36,9 @@ module.exports = {
                     {
                         resolve: 'gatsby-remark-images',
                         options: {
-                            maxWidth: 850
+                            maxWidth: 800,
+                            quality: 100,
+                            showCaptions: true
                         }
                     },
                     {
@@ -48,7 +50,7 @@ module.exports = {
                         }
                     },
                     'gatsby-remark-copy-linked-files',
-                    'gatsby-remark-prismjs',
+                    'gatsby-remark-prismjs'
                 ]
             }
         },
@@ -115,7 +117,7 @@ module.exports = {
                         src: '/logo/logo-1024.png',
                         sizes: '1024x1024',
                         type: 'image/png'
-                    },
+                    }
                 ]
             }
         },
@@ -127,6 +129,14 @@ module.exports = {
                 path: __dirname + "/content/pages/"
             }
         },
+        // Images
+        {
+            resolve: 'gatsby-source-filesystem',
+            options: {
+                name: 'images',
+                path: __dirname + "/content/images/"
+            }
+        },
         // Posts
         {
             resolve: 'gatsby-source-filesystem',
@@ -134,14 +144,6 @@ module.exports = {
                 name: 'posts',
                 path: __dirname + "/content/posts/"
             }
-        },
-        // Thumbnails
-        {
-            resolve: 'gatsby-source-filesystem',
-            options: {
-                name: 'thumbnails',
-                path: __dirname + "/content/thumbnails/"
-            }
-        },
+        }
     ]
 };

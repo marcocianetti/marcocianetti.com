@@ -7,11 +7,17 @@ import IconUtils from '../utils/IconUtils';
 import logo from '../images/logo-256.png';
 import '../styles/main.scss';
 
+type Props = {
+  navBarClassName?: string;
+  mainClassName?: string;
+  footerClassName?: string;
+};
+
 IconUtils.initLibrary();
 
-export default class Master extends React.Component {
+export default class Master extends React.Component<Props> {
   render() {
-    const { children } = this.props;
+    const { navBarClassName, mainClassName, footerClassName, children } = this.props;
 
     return (
       <>
@@ -19,9 +25,14 @@ export default class Master extends React.Component {
           <meta name="description" content={Config.SiteDescription}/>
           <link rel="shortcut icon" type="image/png" href={logo}/>
         </Helmet>
-        <NavBar links={Config.NavBarLinks} />
-        <main className="master-layout__main">{children}</main>
-        <Footer />
+
+        <NavBar links={Config.NavBarLinks} className={navBarClassName} />
+        
+        <main className={mainClassName ? `master-layout__main ${mainClassName}` : `master-layout__main`}>
+          {children}
+        </main>
+        
+        <Footer className={footerClassName} />
       </>
     )
   }

@@ -1,6 +1,68 @@
+.index-page__container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 4rem;
+}
+
+.index-page__heading {
+  display: flex;
+  flex-direction: column;
+}
+
+@include min('x-small') {
+  .index-page__heading {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid lighten($border-color, 12%);
+  }
+}
+
+@include between('x-small', 'small') {
+  .index-page__text-container {
+    width: calc(100% - 2rem - 165px);
+    margin-right: 2rem;
+  }
+}
+
+@include min('small') {
+  .index-page__text-container {
+    width: calc(100% - 2rem - 200px);
+    margin-right: 2rem;
+  }
+}
+
+.index-page__author-card {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 2rem auto;
+}
+
+@include between('x-small', 'small') {
+  .index-page__author-card {
+    width: 165px;
+    margin: 0;
+  }
+}
+
+@include min('small') {
+  .index-page__author-card {
+    width: 200px;
+    margin: 0;
+  }
+}
+
 .index-page__title {
   font-size: 2.5rem;
   font-weight: 700;
+}
+
+@include between('x-small', 'small') {
+  .index-page__title {
+    margin-bottom: 2rem;
+  }
 }
 
 @include min('small') {
@@ -9,16 +71,14 @@
   }
 }
 
-.index-page__section {
-  margin-top: 2rem;
-
-  h2 {
-    border-bottom: 0;
+@include min('x-small') {
+  h2.index-page__subtitle {
+    margin: 0;
+    padding: 0;
+    border-bottom: none;
   }
 }
 
-@include min('small') {
-  .index-page__section {
-    margin-top: 4rem;
-  }
+.index-page__section-title {
+  margin-bottom: 2rem;
 }

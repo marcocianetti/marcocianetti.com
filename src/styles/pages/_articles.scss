@@ -42,12 +42,11 @@
 
 .blog-page__search__container {
   display: flex;
-  align-items: center;
   margin-bottom: 2rem;
 }
 
 .blog-page__search__input {
-  margin: 0;
+  margin: 0 1rem 0 0;
   line-height: unset;
 
   &:focus {
@@ -56,10 +55,16 @@
 }
 
 .blog-page__search__count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 80px;
   text-align: center;
   color: $primary-color;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
   font-size: 1.4rem;
+  line-height: 1.4rem;
   font-weight: 600;
 }
 

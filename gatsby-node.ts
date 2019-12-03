@@ -132,6 +132,9 @@ function onCreatePage({ page, actions }: any) {
 async function createPages({ graphql, actions }: any) {
   const { createPage } = actions;
   const pageTemplate = path.resolve('src/templates/Page.tsx');
+  const postTemplate = path.resolve('src/templates/Post.tsx');
+  const tagTemplate = path.resolve('src/templates/Tag.tsx');
+  const categoryTemplate = path.resolve('src/templates/Category.tsx');
 
   try {
     const res = await graphql(`
@@ -141,6 +144,8 @@ async function createPages({ graphql, actions }: any) {
                 node {
                   frontmatter {
                     template
+                    tags
+                    categories
                   }
                   fields {
                     slug
@@ -156,7 +161,24 @@ async function createPages({ graphql, actions }: any) {
       return;
     }
 
+    const tags = new Set<string>();
+    const categories = new Set<string>();
+
     res.data.allMarkdownRemark.edges.forEach((edge: Page) => {
+
+      // Add tags
+      if (edge.node.frontmatter!.tags) {
+        edge.node.frontmatter!.tags.forEach(tag => {
+          tags.add(tag);
+        });
+      }
+
+      // Add categories
+      if (edge.node.frontmatter.categories) {
+        edge.node.frontmatter.categories.forEach(category => {
+          categories.add(category);
+        });
+      }
 
       // Create a page, using the right template
       switch (edge.node.frontmatter.template) {
@@ -169,8 +191,39 @@ async function createPages({ graphql, actions }: any) {
             },
           });
           break;
+        case 'post':
+          createPage({
+            path: edge.node.fields.slug,
+            component: postTemplate,
+            context: {
+              slug: edge.node.fields.slug,
+            },
+          });
+          break;
       }
 
+    });
+
+    // Create tag pages
+    Array.from(tags).forEach(tag => {
+      createPage({
+        path: RouteUtils.generatePathToTag(tag),
+        component: tagTemplate,
+        context: {
+          tag,
+        },
+      });
+    });
+
+    // Create category pages
+    Array.from(categories).forEach(category => {
+      createPage({
+        path: RouteUtils.generatePathToCategory(category),
+        component: categoryTemplate,
+        context: {
+          category,
+        },
+      });
     });
 
   } catch (e) {

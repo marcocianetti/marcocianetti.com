@@ -1,0 +1,272 @@
+.nintendo-gamepad {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background-color: #ccc;
+}
+
+@include min('small') {
+  .nintendo-gamepad {
+    padding: 16px 8px;
+  }
+}
+
+.nintendo-gamepad button {
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.nintendo-gamepad__section {
+  position: relative;
+}
+
+.nintendo-gamepad__section--center {
+  height: fit-content;
+  max-width: 125px;
+  flex: 1;
+  align-self: flex-end;
+}
+
+.nintendo-gamepad__buttons {
+  position: relative;
+  width: 76px;
+  height: 76px;
+  padding: 4px;
+  background-color: #999;
+  border-radius: 50%;
+  box-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.2);
+}
+
+@include min('small') {
+  .nintendo-gamepad__buttons {
+    width: 54px;
+    height: 54px;
+  }
+}
+
+.nintendo-gamepad__button {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  box-shadow: 1px 0px 1px rgba(0, 0, 0, 0.2);
+
+  &:active {
+    box-shadow: 0.5px 0px 1px rgba(0, 0, 0, 0.2);
+  }
+}
+
+@include min('small') {
+  .nintendo-gamepad__button {
+    height: 14px;
+    width: 14px;
+  }
+}
+
+.nintendo-gamepad__button--top {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@include min('small') {
+  .nintendo-gamepad__button--top {
+    top: 6px;
+  }
+}
+
+.nintendo-gamepad__button--right {
+  position: absolute;
+  top: 50%;
+  right: 6px;
+  transform: translateY(-50%);
+}
+
+@include min('small') {
+  .nintendo-gamepad__button--right {
+    right: 4px;
+  }
+}
+
+.nintendo-gamepad__button--bottom {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@include min('small') {
+  .nintendo-gamepad__button--bottom {
+    bottom: 6px;
+  }
+}
+
+.nintendo-gamepad__button--left {
+  position: absolute;
+  top: 50%;
+  left: 6px;
+  transform: translateY(-50%);
+}
+
+@include min('small') {
+  .nintendo-gamepad__button--left {
+    left: 4px;
+  }
+}
+
+.nintendo-gamepad__direction-buttons {
+  height: 64px;
+  width: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border-radius: 50%;
+  box-shadow: inset 0.5px 0.5px 1px rgba(0, 0, 0, 0.2);
+}
+
+@include min('small') {
+  .nintendo-gamepad__direction-buttons {
+    height: 48px;
+    width: 48px;
+  }
+}
+
+.nintendo-gamepad__direction-buttons__side {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.nintendo-gamepad__direction-buttons__center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.nintendo-gamepad__direction-button {
+  height: 16px;
+  width: 16px;
+  background-color: #545454;
+}
+
+@include min('small') {
+  .nintendo-gamepad__direction-button {
+    height: 12px;
+    width: 12px;
+  }
+}
+
+.nintendo-gamepad__direction-button--up {
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  box-shadow: 1px 0px 1px rgba(0, 0, 0, 0.2);
+
+  &:active {
+    box-shadow: 0.5px 0px 1px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.nintendo-gamepad__direction-button--down {
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  
+  &:active {
+    box-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.nintendo-gamepad__direction-button--left {
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+
+  &:active {
+    box-shadow: 0 0.5px 1px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.nintendo-gamepad__direction-button--right {
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+
+  &:active {
+    box-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.nintendo-gamepad__direction-button--center {
+  height: 16px;
+  width: 16px;
+  background-color: #545454;
+  background: radial-gradient(circle, rgba(75,75,75,1) 0%, rgba(84,84,84,1) 45%, rgba(84,84,84,1) 100%);
+}
+
+@include min('small') {
+  .nintendo-gamepad__direction-button--center {
+    height: 12px;
+    width: 12px;
+  }
+}
+
+.nintendo-gamepad__special-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+.nintendo-gamepad__special-button {
+  display: flex;
+  flex-direction: column;
+
+  &:not(:last-of-type) {
+    margin-right: 8px;
+  }
+}
+
+.nintendo-gamepad__special-button__button {
+  height: 7px;
+  width: 28px;
+  border-radius: 7px;
+  background-color: #545454;
+  transform: rotate(-35deg);
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
+
+  &:active {
+    box-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.2);
+  }
+}
+
+@include min('small') {
+  .nintendo-gamepad__special-button__button {
+    height: 5px;
+    width: 18px;
+    border-radius: 5px;
+  }
+}
+
+.nintendo-gamepad__special-button__text {
+  margin-top: 12px;
+  font-style: italic;
+  font-size: 0.6rem;
+  line-height: 0.6rem;
+  text-align: center;
+  text-transform: uppercase;
+  color: #545454;
+}
+
+@include min('small') {
+  .nintendo-gamepad__special-button__text {
+    margin-top: 10px;
+    font-size: 0.4rem;
+    line-height: 0.4rem;
+  }
+}

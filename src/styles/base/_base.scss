@@ -5,6 +5,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   font: $font-style $font-variant $font-weight #{$font-size}/#{$line-height} $font-family;
   font-size: 84% !important;
+  background-color: $background-color;
 }
 
 // Body base
@@ -51,36 +52,6 @@ ul li ul {
 
 ol li ol {
   margin-bottom: 0;
-}
-
-ul {
-  padding: 0;
-
-  li {
-    &:before {
-      content: '\2022 ';
-      position: absolute;
-      left: 0;
-      color: lighten($font-color, 30%);
-      font-size: 22px;
-      line-height: 1.1;
-    }
-
-    position: relative;
-    list-style-type: none;
-    margin-bottom: 0.3rem;
-    padding-left: 1.5rem;
-    margin-left: .5rem;
-  }
-}
-
-@include min('small') {
-  ul {
-    li {
-      padding-left: 1.5rem;
-      margin-left: 1.5rem;
-    }
-  }
 }
 
 // Link styling
@@ -140,10 +111,41 @@ dd {
 }
 
 blockquote {
-  padding-left: 20px;
-  margin-left: 0;
-  border-left: .25em solid #1b61ff63;
-  color: #6a737d;
+  padding: 1rem;
+  margin: 0;
+  border-left: 0.25em solid $primary-color;
+  background-color: transparentize($primary-color, 0.9);
+  font-style: italic;
+  color: $font-color;
+
+  & > p:last-child {
+    margin: 0;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 1.5rem;
+  }
+}
+
+@include min('small') {
+  blockquote {
+    &:not(:last-child) {
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+figure.gatsby-resp-image-figure {
+  img {
+    background-color: $background-color;
+  }
+}
+
+figcaption {
+  margin-top: 1rem;
+  text-align: center;
+  font-style: italic;
+  font-size: 0.9rem;
 }
 
 // Utils class
@@ -199,6 +201,29 @@ blockquote {
     & code {
       white-space: pre;
     }
+  }
+}
+
+.button {
+  min-height: 32px;
+  padding: 8px;
+  border-radius: $border-radius;
+  text-align: center;
+  font-weight: bold;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.button--primary {
+  background-color: $primary-color;
+  color: $white;
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: $white;
   }
 }
 
