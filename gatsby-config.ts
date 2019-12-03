@@ -18,12 +18,14 @@ module.exports = {
       site_url: urljoin(Config.SiteUrl, Config.PathPrefix),
       title: Config.SiteTitle,
       description: Config.SiteDescription,
-      image_url: `${urljoin(Config.SiteUrl, Config.PathPrefix)}/logos/logo-48.png`,
-    },
+      image_url: `${urljoin(
+        Config.SiteUrl,
+        Config.PathPrefix
+      )}/logos/logo-48.png`
+    }
   },
 
   plugins: [
-
     // Typescript
     'gatsby-plugin-typescript',
 
@@ -41,21 +43,23 @@ module.exports = {
           {
             resolve: 'gatsby-remark-images',
             options: {
-              maxWidth: 850,
-            },
+              maxWidth: 800,
+              quality: 100,
+              showCaptions: true,
+            }
           },
           {
             resolve: `gatsby-remark-autolink-headers`,
             options: {
               offsetY: `100`,
               maintainCase: false,
-              removeAccents: true,
-            },
+              removeAccents: true
+            }
           },
           'gatsby-remark-copy-linked-files',
-          'gatsby-remark-prismjs',
-        ],
-      },
+          'gatsby-remark-prismjs'
+        ]
+      }
     },
 
     // Google Tag Manager
@@ -76,8 +80,8 @@ module.exports = {
         // Whether to put the GTM script into the <head> (as suggested by Google)
         // or append it to the <body> (making it non-blocking).
         // Defaults to false meaning GTM will be added in the <head> (again, as suggested by Google).
-        addTagInBody: false,
-      },
+        addTagInBody: false
+      }
     },
 
     // Netlify
@@ -87,16 +91,16 @@ module.exports = {
         headers: {
           '/*.js': ['cache-control: public, max-age=31536000, immutable'],
           '/*.css': ['cache-control: public, max-age=31536000, immutable'],
-          '/sw.js': ['cache-control: public, max-age=0, must-revalidate'],
-        },
-      },
+          '/sw.js': ['cache-control: public, max-age=0, must-revalidate']
+        }
+      }
     },
 
     {
       resolve: 'gatsby-plugin-nprogress',
       options: {
-        color: Config.ThemeColor,
-      },
+        color: Config.ThemeColor
+      }
     },
 
     // Images
@@ -124,15 +128,15 @@ module.exports = {
           {
             src: '/logo/logo-48.png',
             sizes: '48x48',
-            type: 'image/png',
+            type: 'image/png'
           },
           {
             src: '/logo/logo-1024.png',
             sizes: '1024x1024',
-            type: 'image/png',
-          },
-        ],
-      },
+            type: 'image/png'
+          }
+        ]
+      }
     },
 
     // Pages
@@ -140,9 +144,26 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'pages',
-        path: `${__dirname}/content/pages/`,
-      },
+        path: `${__dirname}/content/pages/`
+      }
     },
 
-  ],
+    // Images
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'images',
+        path: `${__dirname}/content/images/`
+      }
+    },
+
+    // Posts
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'posts',
+        path: `${__dirname}/content/posts/`
+      }
+    }
+  ]
 };

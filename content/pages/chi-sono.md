@@ -12,7 +12,7 @@ date: 2019-04-20
 
 - Inguaribile **nerd**.
 
-Ho trovato la mia perfetta collocazione a <a href="https://247x.io" target="_blank" rel="noopener noreferrer">247X - Il tuo Team di Crescita Dedicato</a>, dove metto al servizio le mie skill dal giorno della sua fondazione.
+Ho trovato la mia perfetta collocazione a <a href="https://247x.io" target="_blank">247X - Il tuo Team di Crescita Dedicato</a>, dove metto al servizio le mie skill dal giorno della sua fondazione.
 
 ## La mia storia
 
@@ -34,7 +34,7 @@ Per la mia tesi Triennale ho deciso di approfondire uno degli argomenti che mi a
 
 La tesi, che mi ha permesso di laurearmi con lode, riguardava un classificatore che sapeva distinguere **recensioni Amazon vere da quelle false**.
 
-> Se vuoi farti un'idea questo è il link alle slide che ho utilizzato per la mia discussione privata: <a href="https://www.slideshare.net/slideshow/embed_code/key/1IKx4gCkr3i8Ke" target="_blank" rel="noopener noreferrer">Slide discussione privata tesi</a>.
+> Se vuoi farti un'idea questo è il link alle slide che ho utilizzato per la mia discussione privata: <a href="https://www.slideshare.net/slideshow/embed_code/key/1IKx4gCkr3i8Ke" target="_blank" rel="noopener noreferrer">Slide discussione tesi triennale</a>.
 
 Dopo la laurea decisi di completare gli studi e iscrivermi alla laurea Magistrale.
 
@@ -51,10 +51,11 @@ L'algoritmo inizialmente sfruttava proprio gli algoritmi genetici, salvo poi _ev
 Contemporaneamente ai miei studi per la laurea Magistrale ho iniziato il mio lavoro come sviluppatore di **siti web in ReactJS** prima, e **applicazioni Android** poi.
 
 Ho partecipato alla realizzazione di applicazioni come:
+
 - **Quokka**: il geo-social network per universitari;
 - **TellMe**: il social network per ricevere opinioni in maniera anonima;
 - **Razmataz**: il social network che permette ai ragazzi di sapere dove sono i loro amici;
-- **Set Point**: l'applicazione che fornisce ai giocatori di tennis un modo semplice di organizzare 
+- **Set Point**: l'applicazione che fornisce ai giocatori di tennis un modo semplice di organizzare
 partite con giocatori dello stesso livello di abilità.
 
 Lo sviluppo di vari social network e applicazioni in generale mi ha portato
@@ -71,6 +72,6 @@ Vuoi parlare di Sviluppo Web / JavaScript / Intelligenza Artificiale?
 
 Scrivimi, ecco i miei contatti:
 
-- LinkedIn: <a href="https://linkedin.com/in/marcocianetti" target="_blank" rel="noopener noreferrer">marcocianetti</a>
-- Facebook: <a href="https://facebook.com/marco.cianetti" target="_blank" rel="noopener noreferrer">marco.cianetti</a>
+- LinkedIn: <a href="https://linkedin.com/in/marcocianetti" target="_blank">marcocianetti</a>
+- Facebook: <a href="https://facebook.com/marco.cianetti" target="_blank">marco.cianetti</a>
 - Email: [cianetti.m@gmail.com](mailto:cianetti.m@gmail.com)
