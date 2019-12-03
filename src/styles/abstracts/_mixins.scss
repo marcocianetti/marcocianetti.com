@@ -1,15 +1,15 @@
 /// Responsive breakpoint manager
 /// @access public
 /// @param {String} $breakpoint - Breakpoint
-/// @requires $breakpoints
+/// @requires $min-breakpoints
 @mixin min($breakpoint) {
-  $raw-query: map-get($breakpoints, $breakpoint);
+  $raw-query: map-get($min-breakpoints, $breakpoint);
 
   @if $raw-query {
     $query: if(
-                    type-of($raw-query) == 'string',
-                    unquote($raw-query),
-                    inspect($raw-query)
+      type-of($raw-query) == 'string',
+      unquote($raw-query),
+      inspect($raw-query)
     );
 
     @media #{$query} {
@@ -17,6 +17,20 @@
     }
   } @else {
     @error 'No value found for `#{$breakpoint}`. '
+         + 'Please make sure it is defined in `$breakpoints` map.';
+  }
+}
+
+@mixin between($b1, $b2) {
+  $rq1: map-get($breakpoints, $b1);
+  $rq2: map-get($breakpoints, $b2);
+
+  @if $rq1 and $rq2 {
+    @media (min-width: $rq1) and (max-width: ($rq2 - 1)) {
+      @content;
+    }
+  } @else {
+    @error 'No value found for `#{$b1}` or `#{$b2}`. '
          + 'Please make sure it is defined in `$breakpoints` map.';
   }
 }

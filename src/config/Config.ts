@@ -2,7 +2,7 @@ const Config = {
   SiteTitle: 'Marco Cianetti',
   SiteShortTitle: 'Marco Cianetti',
   SiteAltTitle: 'Marco Cianetti',
-  SiteDescription: 'Web developer di Roma, specializzato in JavaScript.',
+  SiteDescription: 'Marco Cianetti è un web developer di Roma, specializzato in JavaScript e appassionato di Intelligenza Artificiale. Ricopre la posizione di Full-Stack Developer @247X - Il tuo Team di Crescita Dedicato.',
   SiteLogo: '/logo/logo-1024.jpg',
   SiteUrl: 'https://marcocianetti.com',
   SiteLanguage: 'it',
@@ -23,6 +23,10 @@ const Config = {
     {
       name: 'Chi sono',
       url: '/web-developer-roma',
+    },
+    {
+      name: 'Articoli',
+      url: '/articoli',
     },
     {
       name: 'Contatti',

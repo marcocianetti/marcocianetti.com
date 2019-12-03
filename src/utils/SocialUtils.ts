@@ -12,6 +12,10 @@ export default class SocialUtils {
     return `https://www.linkedin.com/shareArticle${parameters}`;
   }
 
+  static getLinkedInProfileUrl(): string {
+    return `https://linkedin.com/in/${Config.LinkedInUser}`;
+  }
+
   static getTwitterShareLink(p: PageNode): string {
     return (`http://twitter.com/share?text=${encodeURIComponent(p.frontmatter!.title!)}&url=${Config.SiteUrl + p.fields.slug}/&via=${Config.TwitterUser}`);
   }
@@ -21,7 +25,7 @@ export default class SocialUtils {
   }
 
   static getGithubEditLink(p: PageNode): string {
-    return urljoin(Config.GitHubRepository, '/blob/master/content/posts', `${p.fields.slug}.md`);
+    return urljoin(Config.GitHubRepository, '/blob/develop/content/posts', `${p.fields.slug}.md`);
   }
 
 }

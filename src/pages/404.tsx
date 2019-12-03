@@ -1,8 +1,8 @@
 import * as React from 'react';
 import Helmet from 'react-helmet';
-import mushroom from '../images/404/mushroom.jpg';
-import Config from '../config/Config';
+import mushroom from '../images/super-mario/mushroom.jpg';
 import logo from '../images/logo-256.png';
+import Config from '../config/Config';
 import '../styles/main.scss';
 
 export default class NotFoundPage extends React.Component {

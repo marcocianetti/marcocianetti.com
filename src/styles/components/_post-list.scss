@@ -3,16 +3,6 @@ $post-list__item__thumbnail-size: 50px;
 $post-list__item__thumbnail-size-dense: 30px;
 $post-list__item__badge-size: 100px;
 
-.post-list {
-
-}
-
-@include min('small') {
-  .post-list {
-    margin: 3rem 0;
-  }
-}
-
 .post-list__item {
   display: block;
   margin: 0 -1rem;

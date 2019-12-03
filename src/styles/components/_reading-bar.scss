@@ -1,0 +1,7 @@
+.reading-bar {
+  position: fixed;
+  bottom: 0;
+  height: $reading-bar-height;
+  background-color: $primary-color;
+  z-index: 10;
+}

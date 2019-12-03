@@ -10,6 +10,8 @@ type NavBarLink = {
 
 type Props = {
   links: NavBarLink[];
+  
+  className?: string;
 };
 
 type State = {
@@ -41,14 +43,23 @@ export default class NavBar extends React.Component<Props, State> {
 
   render() {
     const { hasScrolled } = this.state;
-    const { links } = this.props;
+    const { links, className } = this.props;
+
+    let cN = `nav-bar`;
+    if (hasScrolled) {
+      cN += ` nav-bar--is-scrolled`;
+    }
+
+    if (className) {
+      cN += ` ${className}`;
+    }
 
     return (
-      <nav className={hasScrolled ? `nav-bar nav-bar--is-scrolled` : "nav-bar"}>
+      <nav className={cN}>
         <div className="nav-bar__container">
 
           <div className="nav-bar__brand">
-            <Link to="/" className="nav-bar__brand__link">
+            <Link title="Home page" to="/" className="nav-bar__brand__link">
               <img src={logo} alt="Logo di Marco Cianetti" className="nav-bar__brand__logo" />
               <span className="nav-bar__brand__text">{Config.SiteTitle}</span>
             </Link>
@@ -56,7 +67,7 @@ export default class NavBar extends React.Component<Props, State> {
 
           <div className="nav-bar__links-container">
             {links.map(l => (
-              <Link key={l.name} to={l.url} activeClassName="active" className="nav-bar__links-container__link">
+              <Link key={l.name} title={`Pagina ${l.name}`} to={l.url} activeClassName="active" className="nav-bar__links-container__link">
                 {l.name}
               </Link>
             ))}

@@ -6,6 +6,13 @@ $medium: 1200px;
 $large: 1300px;
 
 $breakpoints: (
+        'x-small': $x-small,
+        'small': $small,
+        'medium': $medium,
+        'large': $large,
+);
+
+$min-breakpoints: (
         'x-small': (min-width: $x-small),
         'small': (min-width: $small),
         'medium': (min-width: $medium),
@@ -16,13 +23,18 @@ $content-max-width: 800px;
 
 /* Colors */
 
+$green: #00d287;
+$yellow: #fff514;
+$purple: #6b1bff;
+$black: #0c0c0c;
+$white: #fff;
+$grey: #ccc;
+
+$background-color: $white;
 $background: #f0f0f0;
 $primary-color: #1b62ff;
 $primary-hover: lighten($primary-color, 40%);
 $secondary-color: #ff411b;
-$green: #00d287;
-$yellow: #FFF514;
-$purple: #6b1bff;
 $light-grey: #fafbfc;
 $aqua: #1bffb7;
 $accent-color: #cdcdcd;
@@ -101,8 +113,8 @@ $button-text-transform: none;
 
 // Accent buttons
 $accent-button-background: $secondary-color;
-$accent-button-color: #ffffff;
-$accent-button-color-hover: #ffffff;
+$accent-button-color: #fff;
+$accent-button-color-hover: #fff;
 
 /* Forms */
 
@@ -110,7 +122,7 @@ $forms: (
         '[type=color], [type=date], [type=email], [type=number], [type=search], [type=tel], [type=text], [type=url], select, textarea'
 );
 $buttons: ('.button, a.button, button, [type=submit], [type=button]');
-$input-background: #ffffff;
+$input-background: #fff;
 $placeholder: darken($accent-color, 20%);
 $form-border: 1px solid $border-color;
 $form-border-hover: 1px solid darken($border-color, 10%);
@@ -135,6 +147,10 @@ $nav-bar-height: 90px;
 $nav-bar-height--mobile: 55px;
 $nav-bar-height--is-scrolled: 60px;
 $nav-bar-height--mobile--is-scrolled: 50px;
+
+/* Reading Bar */
+
+$reading-bar-height: 6px;
 
 /* Footer */
 
