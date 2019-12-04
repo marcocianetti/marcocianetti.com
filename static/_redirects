@@ -4,8 +4,12 @@
 # Redirect default Netlify subdomain to primary domain
 https://marcocianetti.netlify.com/* https://marcocianetti.com/:splat 301!
 
+/index.html              /
+/index.php               /
+
 /contacts                /contatti
 /contacts/               /contatti
+
 /about                   /web-developer-roma
 /about/                  /web-developer-roma
 /chi-sono                /web-developer-roma
