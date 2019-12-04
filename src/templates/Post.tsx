@@ -49,7 +49,7 @@ export default class Post extends React.Component<Props> {
         <div className="container">
           <article>
             <header className={hasThumbnail ? 'post-template__header' : 'post-template__header post-template__header--no-thumbnail'}>
-              {hasThumbnail && <Img fixed={node.frontmatter.thumbnail!.childImageSharp!.fixed!} className="post-template__header__thumbnail" />}
+              {hasThumbnail && <Img fixed={node.frontmatter.thumbnail!.childImageSharp!.fixed!} alt={node.frontmatter.title} title={node.frontmatter.title} className="post-template__header__thumbnail" />}
 
               <div className="flex flex--column">
                 <h1>{node.frontmatter.title}</h1>
