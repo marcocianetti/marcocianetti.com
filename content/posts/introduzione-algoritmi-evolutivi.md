@@ -10,8 +10,6 @@ tags:
   - intelligenza-artificiale
 ---
 
-# Introduzione agli Algoritmi Evolutivi
-
 Durante gli anni trascorsi all’università mi sono appassionato alle tematiche relative all’Intelligenza Artificiale e una più di tutte mi ha colpito in maggior modo.
 
 Sto parlando degli algoritmi evolutivi che, a differenza delle altre tipiche tecniche di apprendimento automatico, sono in grado di imparare **senza l'ausilio di un dataset** o, più in generale, senza conoscere le regole sottostanti al problema da risolvere.
