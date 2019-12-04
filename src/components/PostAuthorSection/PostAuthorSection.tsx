@@ -7,7 +7,12 @@ export default class PostAuthorSection extends Component {
       <aside className="post-author-section">
         <div className="post-author-section__container container">
           <div className="post-author-section__card">
-            <img className="post-author-section__avatar" src={marco} alt="Marco Cianetti nell'ufficio di 247X" />  
+            <img 
+              src={marco} 
+              alt="Marco Cianetti nell'ufficio di 247X" 
+              title="Marco Cianetti nell'ufficio di 247X"
+              className="post-author-section__avatar"
+            />
             
             <div className="post-author-section__text-container">
               <p className="post-author-section__text">

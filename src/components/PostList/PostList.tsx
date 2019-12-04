@@ -33,7 +33,7 @@ export default class PostList extends Component<Props> {
               className={this.props.dense ? 'post-list__item post-list__item--dense' : 'post-list__item'}
             >
               <div className="post-list__item__container">
-                {thumbnail ? <Img fixed={thumbnail} className="post-list__item__thumbnail" /> : null}
+                {thumbnail ? <Img fixed={thumbnail} alt={post.node.frontmatter.title} title={post.node.frontmatter.title} className="post-list__item__thumbnail" /> : null}
 
                 <div>
                   <h2 className="post-list__item__name">{post.node.frontmatter.title}</h2>
