@@ -83,7 +83,7 @@ e poi viene selezionata solo una percentuale di essi con punteggio più alto.
 
 Dati due individui **il crossover genera 2 nuovi individui** che avranno i geni dei due genitori, combinati in qualche modo.
 
-Il crossover ha varie implementazioni ma ti descriverò quella più comnune.
+Il crossover ha varie implementazioni ma ti descriverò quella più comune.
 
 Il processo è molto semplice:
 

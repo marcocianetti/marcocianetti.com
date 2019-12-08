@@ -102,6 +102,7 @@ export const PostQuery = graphql`
         template
         categories
         tags
+        date
         thumbnail {
               childImageSharp {
                   fixed(width: 800) {
@@ -116,7 +117,6 @@ export const PostQuery = graphql`
       }
       fields {
         slug
-        date
       }
     }
   }
