@@ -27,7 +27,9 @@ export default class Category extends React.Component<Props> {
 
     return (
       <Master>
-        <Helmet title={PageUtils.generateTitle(`Articoli nella categoria "${category}"`)} />
+        <Helmet title={PageUtils.generateTitle(`Articoli nella categoria "${category}"`)}>
+          <meta name="description" content={`Articoli nella categoria "${category}"`}/>
+        </Helmet>
         <div className="container">
           <h1>
             Categoria <u>{category}</u>

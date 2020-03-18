@@ -35,13 +35,15 @@
 }
 
 .index-page__author-card {
-  width: 100%;
-  max-width: 600px;
+  display: none;
   margin: 0 auto 2rem auto;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
 }
 
 @include between('x-small', 'small') {
   .index-page__author-card {
+    display: block;
     width: 165px;
     margin: 0;
   }
@@ -49,6 +51,7 @@
 
 @include min('small') {
   .index-page__author-card {
+    display: block;
     width: 200px;
     margin: 0;
   }
@@ -76,6 +79,12 @@
     margin: 0;
     padding: 0;
     border-bottom: none;
+  }
+}
+
+.index-page__section {
+  &:not(:last-of-type) {
+    margin-bottom: 4rem;
   }
 }
 

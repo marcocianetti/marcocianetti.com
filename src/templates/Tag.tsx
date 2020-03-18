@@ -27,9 +27,11 @@ export default class Tag extends React.Component<Props> {
 
     return (
       <Master>
-        <Helmet title={PageUtils.generateTitle(`Articoli taggati come "${tag}"`)} />
+        <Helmet title={PageUtils.generateTitle(`Articoli taggati "${tag}"`)}>
+          <meta name="description" content={`Articoli taggati "${tag}"`}/>
+        </Helmet>
         <div className="container">
-          <h1>Articoli taggati come <u>{tag}</u></h1>
+          <h1>Articoli taggati <u>{tag}</u></h1>
           <PostList posts={posts} />
         </div>
       </Master>

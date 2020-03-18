@@ -27,8 +27,9 @@ export default class TagsPage extends React.Component<Props> {
 
     return (
       <Master>
-        <SeoHelmet />
         <Helmet title={PageUtils.generateTitle('Tag')} />
+        <SeoHelmet description="Lista dei tag dei miei articoli. Seleziona il tag che più ti interessa e leggi gli articoli ad esso correlati." />
+
         <div className="container">
           <h1>Tag</h1>
 

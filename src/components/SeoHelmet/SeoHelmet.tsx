@@ -5,6 +5,7 @@ import { PageNode } from '../../models/Page';
 import Config from '../../config/Config';
 
 type Props = {
+  description?: string;
   page?: {
     node: PageNode;
     path: string;
@@ -66,9 +67,9 @@ type Schema = {
 export default class SeoHelmet extends React.Component<Props> {
 
   render() {
-    const { page } = this.props;
+    const { page, description } = this.props;
     let title = Config.SiteTitle;
-    let description = Config.SiteDescription;
+    let descr = description || Config.SiteDescription;
     let image = Config.SiteLogo;
     let url = urljoin(Config.SiteUrl, Config.PathPrefix);
 
@@ -81,9 +82,9 @@ export default class SeoHelmet extends React.Component<Props> {
 
       // Description
       if (pageMeta.description) {
-        description = pageMeta.description;
+        descr = pageMeta.description;
       } else if (page.node.excerpt) {
-        description = page.node.excerpt;
+        descr = page.node.excerpt;
       }
 
       // Image
@@ -160,7 +161,7 @@ export default class SeoHelmet extends React.Component<Props> {
           '@type': 'ImageObject',
           url: image,
         },
-        description,
+        description: descr,
       };
 
       if (pageMeta.date) {
@@ -176,21 +177,21 @@ export default class SeoHelmet extends React.Component<Props> {
 
     return (
       <Helmet>
-        <meta name="description" content={description} />
+        <meta name="description" content={descr} />
         <meta name="image" content={image} />
 
         <script type="application/ld+json">{JSON.stringify(schemas)}</script>
 
         <meta property="og:url" content={url} />
         <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
+        <meta property="og:description" content={descr} />
         <meta property="og:image" content={image} />
         {page && page.type === 'post' && <meta property="og:type" content="article" />}
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:creator" content={Config.TwitterUser} />
         <meta name="twitter:title" content={title} />
-        <meta name="twitter:description" content={description} />
+        <meta name="twitter:description" content={descr} />
         <meta name="twitter:image" content={image} />
       </Helmet>
     );

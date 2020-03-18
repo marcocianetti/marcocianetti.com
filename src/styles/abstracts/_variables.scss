@@ -1,11 +1,13 @@
 /* Breakpoints */
 
+$xx-small: 320px;
 $x-small: 620px;
 $small: 800px;
 $medium: 1200px;
 $large: 1300px;
 
 $breakpoints: (
+        'xx-small': $xx-small,
         'x-small': $x-small,
         'small': $small,
         'medium': $medium,
@@ -13,6 +15,7 @@ $breakpoints: (
 );
 
 $min-breakpoints: (
+        'xx-small': (min-width: $xx-small),
         'x-small': (min-width: $x-small),
         'small': (min-width: $small),
         'medium': (min-width: $medium),
