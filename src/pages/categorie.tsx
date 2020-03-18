@@ -27,8 +27,9 @@ export default class CategoriesPage extends React.Component<Props> {
 
     return (
       <Master>
-        <SeoHelmet />
         <Helmet title={PageUtils.generateTitle('Categorie')} />
+        <SeoHelmet description="Lista delle cateogorie trattate nei miei articoli. Seleziona la categoria che più ti interessa e leggi gli articoli ad essa correlati." />
+
         <div className="container">
           <h1>Categorie</h1>
 

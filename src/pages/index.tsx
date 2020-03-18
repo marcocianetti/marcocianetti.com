@@ -3,9 +3,11 @@ import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 import Master from '../layouts/Master';
 import PostList from '../components/PostList';
-import AuthorCard from '../components/AuthorCard';
+import ProjectList from '../components/ProjectList';
 import Page from '../models/Page';
 import Config from '../config/Config';
+import projects from '../data/projects';
+import marco from '../images/marco-cianetti-512px.jpg';
 
 type Data = {
   latestPosts: {
@@ -40,7 +42,7 @@ export default class IndexPage extends React.Component<Props> {
               <h2 className="index-page__subtitle">Web Developer di Roma specializzato in JavaScript</h2>
             </div>
 
-            <AuthorCard className='index-page__author-card' />
+            <img src={marco} className='index-page__author-card' />
           </div>
 
           <p>
@@ -80,6 +82,11 @@ export default class IndexPage extends React.Component<Props> {
         <section className='index-page__section container'>
           <h2 className="index-page__section-title">Ultimi articoli</h2>
           <PostList posts={this.props.data.latestPosts.edges} dense />
+        </section>
+
+        <section className='index-page__section container'>
+          <h2 className="index-page__section-title">Progetti Open Source</h2>
+          <ProjectList projects={projects} />
         </section>
       </Master>
     );

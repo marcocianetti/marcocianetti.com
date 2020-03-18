@@ -86,8 +86,10 @@ export default class ArticlesPage extends React.Component<Props, State> {
 
     return (
       <Master>
-        <Helmet title={PageUtils.generateTitle('Articoli')}/>
-        <SeoHelmet/>
+        <Helmet title={PageUtils.generateTitle('Articoli')} />
+        <SeoHelmet
+          description="Tra i miei articoli puoi trovare guide sullo sviluppo web, guide sull'intelligenza artificiale e i miei progetti Open Source"
+        />
 
         <div className="container">
           <div>

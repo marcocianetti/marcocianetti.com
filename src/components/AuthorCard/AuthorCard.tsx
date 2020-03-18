@@ -1,5 +1,5 @@
 import * as React from 'react';
-import marco from '../../images/marco-cianetti.jpg';
+import marco from '../../images/marco-cianetti-256px.jpg';
 
 type Props = {
   className?: string;
@@ -18,8 +18,8 @@ export default function AuthorCard(props: Props) {
         <div className='author-card__avatar-background'>
           <img
             src={marco}
-            alt="Marco Cianetti nell'ufficio di 247X"
-            title="Marco Cianetti nell'ufficio di 247X"
+            alt="Marco Cianetti"
+            title="Marco Cianetti"
             className='author-card__avatar'
           />
         </div>
