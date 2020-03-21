@@ -1,6 +1,7 @@
 ---
 date: 2019-12-01
 title: "Introduzione agli Algoritmi Evolutivi"
+description: "Gli Algoritmi Evolutivi sono tecniche di Intelligenza Artificiale che sfruttano le nozioni della teoria dell'evoluzione per risolvere problemi di ottimizzazione"
 template: post
 thumbnail: '../images/introduzione-algoritmi-evolutivi/thumbnail.jpg'
 slug: introduzione-algoritmi-evolutivi

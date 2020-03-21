@@ -99,6 +99,7 @@ export const PostQuery = graphql`
       excerpt
       frontmatter {
         title
+        description
         template
         categories
         tags
