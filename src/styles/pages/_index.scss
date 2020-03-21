@@ -39,6 +39,8 @@
   margin: 0 auto 2rem auto;
   border-radius: $border-radius;
   box-shadow: $box-shadow;
+  pointer-events: none;
+  user-select: none;
 }
 
 @include between('x-small', 'small') {
