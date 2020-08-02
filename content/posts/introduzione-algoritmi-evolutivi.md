@@ -9,6 +9,7 @@ categories:
   - Intelligenza Artificiale
 tags:
   - intelligenza-artificiale
+  - algoritmi-evolutivi
 ---
 
 Durante gli anni trascorsi all’università mi sono appassionato alle tematiche relative all’Intelligenza Artificiale e una più di tutte mi ha colpito in maggior modo.
