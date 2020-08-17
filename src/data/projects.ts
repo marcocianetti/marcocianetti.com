@@ -1,6 +1,12 @@
-import Project from '../../src/models/Project';
+import Project from 'models/Project';
 
 const projects: Project[] = [
+    {
+        icon: '🙋🏻‍♂️',
+        name: 'AlaJS',
+        description: 'Libreria JavaScript per l\'attribuzione automatica dei contenuti',
+        url: 'https://github.com/marcocianetti/alajs',
+    },
     {
         icon: '🤖',
         name: 'marcocianetti.github.io',
