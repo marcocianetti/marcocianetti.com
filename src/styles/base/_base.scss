@@ -195,7 +195,14 @@ figcaption {
 }
 
 .gatsby-highlight {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background-color: #333;
+  color: #fff;
+  border-radius: $border-radius;
+
   pre {
+    margin: 0;
     overflow-x: scroll;
 
     & code {
