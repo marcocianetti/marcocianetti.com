@@ -2,16 +2,19 @@ import * as React from 'react';
 import Helmet from 'react-helmet';
 import urljoin from 'url-join';
 import { PageNode } from '../../models/Page';
+import PageUtils from '../../utils/PageUtils';
 import Config from '../../config/Config';
+import logo from '../../images/logo-256.png';
 
 type Props = {
+  title?: string;
   description?: string;
-  page?: {
-    node: PageNode;
-    path: string;
-    type: 'page' | 'post';
-  };
+  path?: string;
+  page?: PageNode;
+  pageType?: 'page' | 'post';
 };
+
+export type MetaTags = Props;
 
 type Schema = {
   '@context'?: string;
@@ -67,24 +70,26 @@ type Schema = {
 export default class SeoHelmet extends React.Component<Props> {
 
   render() {
-    const { page, description } = this.props;
-    let title = Config.SiteTitle;
-    let descr = description || Config.SiteDescription;
+    const { page, pageType } = this.props;
+    let title = this.props.title || Config.SiteTitle;
+    let description = this.props.description || Config.SiteDescription;
     let image = Config.SiteLogo;
     let url = urljoin(Config.SiteUrl, Config.PathPrefix);
+    let path = this.props.path;
+    const urlParts = [Config.SiteUrl];
 
     // Page or blog post from Markdown
     if (page) {
-      const pageMeta = page.node.frontmatter!;
+      const pageMeta = page.frontmatter!;
 
       // Title
-      title = pageMeta.title!;
+      title = PageUtils.generateTitle(pageMeta.title!);
 
       // Description
       if (pageMeta.description) {
-        descr = pageMeta.description;
-      } else if (page.node.excerpt) {
-        descr = page.node.excerpt;
+        description = pageMeta.description;
+      } else if (page.excerpt) {
+        description = page.excerpt;
       }
 
       // Image
@@ -92,8 +97,18 @@ export default class SeoHelmet extends React.Component<Props> {
         image = pageMeta.thumbnail.childImageSharp.fixed.src;
       }
 
-      url = urljoin(Config.SiteUrl, Config.PathPrefix, page.path);
+      // Path
+      path = page.fields.slug;
+      if (path && !path.startsWith(Config.PathPrefix)) {
+        urlParts.push(Config.PathPrefix);
+      }
     }
+
+    if (path) {
+      urlParts.push(path);
+    }
+
+    url = urljoin(urlParts);
 
     image = urljoin(Config.SiteUrl, image);
     const siteUrl = urljoin(Config.SiteUrl, Config.PathPrefix);
@@ -123,8 +138,8 @@ export default class SeoHelmet extends React.Component<Props> {
     ];
 
     // Add blog post snippets
-    if (page && page.type === 'post') {
-      const pageMeta = page.node.frontmatter!;
+    if (page && pageType === 'post') {
+      const pageMeta = page.frontmatter!;
 
       const postSchema: Schema = {
         '@context': 'http://schema.org',
@@ -161,7 +176,7 @@ export default class SeoHelmet extends React.Component<Props> {
           '@type': 'ImageObject',
           url: image,
         },
-        description: descr,
+        description,
       };
 
       if (pageMeta.date) {
@@ -176,23 +191,27 @@ export default class SeoHelmet extends React.Component<Props> {
     }
 
     return (
-      <Helmet>
-        <meta name="description" content={descr} />
+      <Helmet title={title} htmlAttributes={{ lang: Config.SiteLanguage }}>
+        <link rel="shortcut icon" type="image/png" href={logo}/>
+
+        <meta name="description" content={description} />
         <meta name="image" content={image} />
 
         <script type="application/ld+json">{JSON.stringify(schemas)}</script>
 
         <meta property="og:url" content={url} />
         <meta property="og:title" content={title} />
-        <meta property="og:description" content={descr} />
+        <meta property="og:description" content={description} />
         <meta property="og:image" content={image} />
-        {page && page.type === 'post' && <meta property="og:type" content="article" />}
+        {pageType === 'post' && <meta property="og:type" content="article" />}
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:creator" content={Config.TwitterUser} />
         <meta name="twitter:title" content={title} />
-        <meta name="twitter:description" content={descr} />
+        <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={image} />
+
+        <link rel="canonical" href={url} />
       </Helmet>
     );
   }

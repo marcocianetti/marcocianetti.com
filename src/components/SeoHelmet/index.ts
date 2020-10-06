@@ -1,1 +1,1 @@
-export { default } from './SeoHelmet';
+export { default, MetaTags } from './SeoHelmet';

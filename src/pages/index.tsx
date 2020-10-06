@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 import Master from '../layouts/Master';
 import PostList from '../components/PostList';
@@ -16,6 +15,7 @@ type Data = {
 };
 
 type Props = {
+  path: string;
   data: Data;
 };
 
@@ -26,11 +26,11 @@ export default class IndexPage extends React.Component<Props> {
 
   render() {
     return (
-      <Master>
-        <Helmet
-          title={`${Config.SiteTitle} | Web Developer specializzato in Javascript`}
-        />
-
+      <Master
+        metaTags={{
+          title: `${Config.SiteTitle} | Web Developer specializzato in Javascript`,
+        }}
+      >
         <div className='index-page__container container'>
           <div className='index-page__heading'>
             <div className='index-page__text-container'>
