@@ -1,11 +1,14 @@
 import * as React from 'react';
-import Helmet from 'react-helmet';
+import SeoHelmet from '../components/SeoHelmet';
+import PageUtils from '../utils/PageUtils';
 import mushroom from '../images/super-mario/mushroom.jpg';
-import logo from '../images/logo-256.png';
-import Config from '../config/Config';
 import '../styles/main.scss';
 
-export default class NotFoundPage extends React.Component {
+type Props = {
+  path: string;
+};
+
+export default class NotFoundPage extends React.Component<Props> {
 
   componentDidMount() {
     window.addEventListener('keyup', this.handleOnKeyUp);
@@ -24,10 +27,11 @@ export default class NotFoundPage extends React.Component {
   render() {
     return (
       <>
-        <Helmet htmlAttributes={{ lang: Config.SiteLanguage }}>
-          <meta name="description" content={Config.SiteDescription}/>
-          <link rel="shortcut icon" type="image/png" href={logo}/>
-        </Helmet>
+        <SeoHelmet
+          title={PageUtils.generateTitle('Pagina non trovata')}
+          description="La pagina che cerchi non è a questo URL"
+          path={this.props.path}
+        />
 
         <div className="not-found-page">
           <header>

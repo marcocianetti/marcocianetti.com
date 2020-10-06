@@ -1,10 +1,7 @@
 import * as React from 'react';
-import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 import Master from '../layouts/Master';
-import SeoHelmet from '../components/SeoHelmet';
 import { PageNode } from '../models/Page';
-import PageUtils from '../utils/PageUtils';
 
 type Props = {
   pageContext: {
@@ -17,15 +14,15 @@ type Props = {
 
 export default class Page extends React.Component<Props> {
   render() {
-    const { slug } = this.props.pageContext;
     const node = this.props.data.markdownRemark;
 
     return (
-      <Master>
-        <Helmet>
-          <title>{PageUtils.generateTitle(node.frontmatter!.title!)}</title>
-        </Helmet>
-        <SeoHelmet page={{ path: slug, node: node, type: 'page' }} />
+      <Master
+        metaTags={{
+          page: node,
+          pageType: 'page',
+        }}
+      >
 
         <div className="container">
           <article>

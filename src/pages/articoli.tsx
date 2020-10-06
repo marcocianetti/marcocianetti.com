@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
-import Helmet from 'react-helmet';
 import Master from '../layouts/Master';
-import SeoHelmet from '../components/SeoHelmet';
 import PostList from '../components/PostList';
 import Page from '../models/Page';
 import PageUtils from '../utils/PageUtils';
@@ -21,6 +19,7 @@ type Data = {
 };
 
 type Props = {
+  path: string;
   data: Data;
 };
 
@@ -85,12 +84,13 @@ export default class ArticlesPage extends React.Component<Props, State> {
     const categories = this.props.data.categories.group;
 
     return (
-      <Master>
-        <Helmet title={PageUtils.generateTitle('Articoli')} />
-        <SeoHelmet
-          description="Tra i miei articoli puoi trovare guide sullo sviluppo web, guide sull'intelligenza artificiale e i miei progetti Open Source"
-        />
-
+      <Master
+        metaTags={{
+          title: PageUtils.generateTitle('Articoli'),
+          description: 'Tra i miei articoli puoi trovare guide sullo sviluppo web, guide sull\'intelligenza artificiale e i miei progetti Open Source',
+          path: this.props.path,
+        }}
+      >
         <div className="container">
           <div>
             <h1>Articoli</h1>

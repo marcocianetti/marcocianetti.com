@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { graphql, Link } from 'gatsby';
-import Helmet from 'react-helmet';
 import Master from '../layouts/Master';
-import SeoHelmet from '../components/SeoHelmet';
 import PageUtils from '../utils/PageUtils';
 import RouteUtils from '../utils/RouteUtils';
 
@@ -18,6 +16,7 @@ type Data = {
 };
 
 type Props = {
+  path: string;
   data: Data;
 };
 
@@ -26,10 +25,13 @@ export default class CategoriesPage extends React.Component<Props> {
     const { data } = this.props;
 
     return (
-      <Master>
-        <Helmet title={PageUtils.generateTitle('Categorie')} />
-        <SeoHelmet description="Lista delle cateogorie trattate nei miei articoli. Seleziona la categoria che più ti interessa e leggi gli articoli ad essa correlati." />
-
+      <Master
+        metaTags={{
+          title: PageUtils.generateTitle('Categorie'),
+          description: 'Lista delle cateogorie trattate nei miei articoli. Seleziona la categoria che più ti interessa e leggi gli articoli ad essa correlati.',
+          path: this.props.path,
+        }}
+      >
         <div className="container">
           <h1>Categorie</h1>
 
