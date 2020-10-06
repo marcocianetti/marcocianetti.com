@@ -1,5 +1,4 @@
 import React from 'react'
-import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
 import Master from '../layouts/Master';
 import PostList from '../components/PostList';
@@ -26,10 +25,12 @@ export default class Tag extends React.Component<Props> {
     const posts = this.props.data.posts.edges;
 
     return (
-      <Master>
-        <Helmet title={PageUtils.generateTitle(`Articoli taggati "${tag}"`)}>
-          <meta name="description" content={`Articoli taggati "${tag}"`}/>
-        </Helmet>
+      <Master
+        metaTags={{
+          title: PageUtils.generateTitle(`Articoli taggati "${tag}"`),
+          description: `Articoli taggati "${tag}"`,
+        }}
+      >
         <div className="container">
           <h1>Articoli taggati <u>{tag}</u></h1>
           <PostList posts={posts} />

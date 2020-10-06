@@ -1,16 +1,13 @@
 import * as React from 'react';
-import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Master from '../layouts/Master';
-import SeoHelmet from '../components/SeoHelmet';
 import PostAuthorSection from '../components/PostAuthorSection';
 import TagList from '../components/TagList';
 import ReadingBar from '../components/ReadingBar';
 import PostGitHubSection from '../components/PostGitHubSection';
 import { PageNode } from '../models/Page';
-import PageUtils from '../utils/PageUtils';
 import DateUtils from '../utils/DateUtils';
 import SocialUtils from '../utils/SocialUtils';
 
@@ -27,7 +24,6 @@ type Props = {
 
 export default class Post extends React.Component<Props> {
   render() {
-    const { slug } = this.props.pageContext;
     const node = this.props.data.post;
     const hasThumbnail = node.frontmatter.thumbnail !== undefined;
     const iconStyle = {
@@ -37,13 +33,13 @@ export default class Post extends React.Component<Props> {
     };
 
     return (
-      <Master footerClassName="post-template__footer">
-        <Helmet>
-          <title>{PageUtils.generateTitle(node.frontmatter!.title!)}</title>
-        </Helmet>
-
-        <SeoHelmet page={{ path: slug, node: node, type: 'page' }} />
-
+      <Master 
+        metaTags={{
+          page: node,
+          pageType: 'post'
+        }}
+        footerClassName="post-template__footer"
+      >
         <ReadingBar />
 
         <div className="container">

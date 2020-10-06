@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { graphql, Link } from 'gatsby';
-import Helmet from 'react-helmet';
 import Master from '../layouts/Master';
-import SeoHelmet from '../components/SeoHelmet';
 import PageUtils from '../utils/PageUtils';
 import RouteUtils from '../utils/RouteUtils';
 
@@ -18,6 +16,7 @@ type Data = {
 };
 
 type Props = {
+  path: string;
   data: Data;
 };
 
@@ -26,10 +25,13 @@ export default class TagsPage extends React.Component<Props> {
     const { data } = this.props;
 
     return (
-      <Master>
-        <Helmet title={PageUtils.generateTitle('Tag')} />
-        <SeoHelmet description="Lista dei tag dei miei articoli. Seleziona il tag che più ti interessa e leggi gli articoli ad esso correlati." />
-
+      <Master
+        metaTags={{
+          title: PageUtils.generateTitle('Tag'),
+          description: 'Lista dei tag dei miei articoli. Seleziona il tag che più ti interessa e leggi gli articoli ad esso correlati.',
+          path: this.props.path,
+        }}
+      >
         <div className="container">
           <h1>Tag</h1>
 
