@@ -27,7 +27,11 @@ const Colors = {
 
 export default class ThemeUtils {
 
-  static getTheme(): Theme {
+  static getTheme(): Theme | undefined {
+    if (typeof window === 'undefined') {
+      return undefined;
+    }
+
     const persistedColorPreference = window.localStorage.getItem(LOCAL_STORAGE_THEME_KEY);
     const hasPersistedPreference = typeof persistedColorPreference === 'string';
 

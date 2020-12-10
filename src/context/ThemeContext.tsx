@@ -18,7 +18,7 @@ export const ThemeContext = React.createContext<ThemeContextProps>({
 
 export const ThemeProvider = ({ children }: Props) => {
 
-  const [theme, setLocalTheme] = React.useState<Theme | undefined>(ThemeUtils.getTheme());
+  const [theme, setLocalTheme] = React.useState<Theme | undefined>(ThemeUtils.getTheme);
 
   React.useEffect(() => {
     const root = window.document.documentElement;

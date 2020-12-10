@@ -10,6 +10,22 @@ const ThemeToggle = ({ className }: Props) => {
 
   const { theme, setTheme } = React.useContext(ThemeContext);
 
+  console.log(theme);
+
+  let cN = 'theme-toggle';
+  if (!theme) {
+    cN += ' theme-toggle--empty';
+  }
+  if (className) {
+    cN += ` ${className}`;
+  }
+
+  if (!theme) {
+    return (
+      <label className={cN} />
+    );
+  }
+
   const handleOnClick = () => {
     if (theme === Theme.Dark) {
       setTheme(Theme.Light);
@@ -17,11 +33,6 @@ const ThemeToggle = ({ className }: Props) => {
       setTheme(Theme.Dark);
     }
   };
-
-  let cN = 'theme-toggle';
-  if (className) {
-    cN += ` ${className}`;
-  }
 
   return (
     <label onClick={handleOnClick} className={cN}>
