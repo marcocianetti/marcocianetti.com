@@ -51,7 +51,7 @@ $post-template__header__thumbnail-size: 100px;
   display: flex;
   flex-direction: column;
   font-size: 1.2rem;
-  color: $light-font-color;
+  color: var(--light-text-color);
   margin-bottom: 1rem;
 
   & > *:not(:last-child) {
@@ -66,7 +66,7 @@ $post-template__header__thumbnail-size: 100px;
     & >*:not(:last-child) {
       margin-bottom: 0;
       margin-right: 1rem;
-  
+
       &::after {
         content: "/";
         margin-left: 1rem;
@@ -75,7 +75,7 @@ $post-template__header__thumbnail-size: 100px;
   }
 }
 
-.post-template__meta__date, 
+.post-template__meta__date,
 .post-template__meta__ttr,
 .post-template__meta__share {
   & > svg {
@@ -84,7 +84,7 @@ $post-template__header__thumbnail-size: 100px;
 }
 
 .post-template__meta__link {
-  color: $light-font-color;
+  color: var(--light-text-color);
 
   &:hover {
     color: $primary-color;

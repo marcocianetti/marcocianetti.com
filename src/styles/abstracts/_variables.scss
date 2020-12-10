@@ -179,3 +179,19 @@ $error: #f2777a;
 /* Transition */
 
 $transition-duration: 300ms;
+
+/* CSS Variables */
+
+:root {
+  --background-color: #{$background-color};
+  --light-background-color: #{$light-grey};
+  --primary-color: #{$primary-color};
+  --light-primary-color: #{lighten($primary-color, 25%)};
+  --text-color: #{$font-color};
+  --light-text-color: #{$light-font-color};
+  --heading-text-color: #{$heading-font-color};
+  --navbar-background-color: #{$background-color};
+  --navbar-text-color: #{$font-color};
+  --footer-background-color: #{$light-grey};
+  --footer-text-color: #{$font-color};
+}

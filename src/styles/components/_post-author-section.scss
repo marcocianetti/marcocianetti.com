@@ -2,7 +2,7 @@
   margin-top: 30px;
   margin-bottom: -64px;
   padding: 4rem 0;
-  background-color: $light-grey;
+  background-color: var(--footer-background-color);
 }
 
 @include min('small') {
@@ -22,7 +22,8 @@
 }
 
 .post-author-section__card {
-  background: white;
+  background: var(--background-color);
+  color: var(--text-color);
   box-shadow: $box-shadow;
   padding: 1.5rem;
   display: flex;

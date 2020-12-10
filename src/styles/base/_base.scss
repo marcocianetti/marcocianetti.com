@@ -5,13 +5,13 @@ html {
   -moz-osx-font-smoothing: grayscale;
   font: $font-style $font-variant $font-weight #{$font-size}/#{$line-height} $font-family;
   font-size: 84% !important;
-  background-color: $background-color;
+  background-color: var(--background-color);
 }
 
 // Body base
 
 body {
-  color: $font-color;
+  color: var(--text-color);
   font-size: 1rem;
 }
 
@@ -116,7 +116,7 @@ blockquote {
   border-left: 0.25em solid $primary-color;
   background-color: transparentize($primary-color, 0.9);
   font-style: italic;
-  color: $font-color;
+  color: var(--text-color);
 
   & > p:last-child {
     margin: 0;

@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
+import { ThemeProvider } from '../../context/ThemeContext';
+import ThemeToggle from '../../components/ThemeToggle';
 import Config from '../../config/Config';
 import logo from '../../images/logo-256.png';
 
@@ -10,7 +12,7 @@ type NavBarLink = {
 
 type Props = {
   links: NavBarLink[];
-  
+
   className?: string;
 };
 
@@ -55,26 +57,30 @@ export default class NavBar extends React.Component<Props, State> {
     }
 
     return (
-      <nav className={cN}>
-        <div className="nav-bar__container">
+      <ThemeProvider>
+        <nav className={cN}>
+          <div className="nav-bar__container">
 
-          <div className="nav-bar__brand">
-            <Link title="Home page" to="/" className="nav-bar__brand__link">
-              <img src={logo} alt="Logo di Marco Cianetti" className="nav-bar__brand__logo" />
-              <span className="nav-bar__brand__text">{Config.SiteTitle}</span>
-            </Link>
-          </div>
-
-          <div className="nav-bar__links-container">
-            {links.map(l => (
-              <Link key={l.name} title={`Pagina ${l.name}`} to={l.url} activeClassName="active" className="nav-bar__links-container__link">
-                {l.name}
+            <div className="nav-bar__brand">
+              <Link title="Home page" to="/" className="nav-bar__brand__link">
+                <img src={logo} alt="Logo di Marco Cianetti" className="nav-bar__brand__logo" />
+                <span className="nav-bar__brand__text">{Config.SiteTitle}</span>
               </Link>
-            ))}
-          </div>
+            </div>
 
-        </div>
-      </nav>
+            <div className="nav-bar__links-container">
+              {links.map(l => (
+                <Link key={l.name} title={`Pagina ${l.name}`} to={l.url} activeClassName="active" className="nav-bar__links-container__link">
+                  {l.name}
+                </Link>
+              ))}
+
+              <ThemeToggle className="nav-bar__links-container__link" />
+            </div>
+
+          </div>
+        </nav>
+      </ThemeProvider>
     );
   }
 
