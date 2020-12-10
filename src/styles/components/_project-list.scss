@@ -7,23 +7,15 @@
   padding: .5rem 1rem;
   border: 2px dashed transparent;
   border-radius: $border-radius;
+  transition: border 50ms ease-in-out;
 
   &:hover {
-    background-color: $light-grey;
-
-    .project-list__item__name {
-      color: #111;
-    }
-
-    .project-list__item__description {
-      color: $light-font-color;
-    }
+    border-color: var(--primary-color);
   }
 
   &:active,
   &:focus {
-    border-color: $primary-color;
-    background: $button-background-hover;
+    border-style: solid;
   }
 }
 
@@ -44,6 +36,7 @@
 }
 
 .project-list__item__name {
+  color: var(--text-color);
   font-size: 1.1rem;
   font-weight: 500;
   line-height: 1.3;
@@ -63,7 +56,7 @@
   display: none;
   margin: 0 0 0 calc(30px + 1rem);
   font-size: .9rem;
-  color: rgba(0, 0, 0, 0.4);
+  color: var(--light-text-color);
 }
 
 @include min('x-small') {
@@ -78,9 +71,9 @@
   align-items: center;
   padding: 2px 4px;
   margin-left: auto;
-  border: 1px solid rgba(27,31,35,.2);
+  border: 1px solid rgba(27, 31, 35, 0.2);
   border-radius: $border-radius;
-  font-size: .9rem;
+  font-size: 0.9rem;
   background-color: $white;
   color: #24292e;
 

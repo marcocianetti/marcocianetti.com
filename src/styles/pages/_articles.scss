@@ -46,11 +46,16 @@
 }
 
 .blog-page__search__input {
+  background-color: var(--background-color);
   margin: 0 1rem 0 0;
   line-height: unset;
 
   &:focus {
     color: $primary-color;
+  }
+
+  &:hover {
+    background-color: var(--background-color);
   }
 }
 

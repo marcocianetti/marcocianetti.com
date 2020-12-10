@@ -18,13 +18,12 @@ $post-list__item__badge-size: 100px;
   border-radius: $border-radius;
 
   &:hover {
-    background-color: $light-grey;
+    border-color: var(--primary-color);
   }
 
   &:active,
   &:focus {
-    border-color: $primary-color;
-    background: $button-background-hover;
+    border-style: solid;
   }
 }
 
@@ -54,7 +53,7 @@ $post-list__item__badge-size: 100px;
 .post-list__item__date {
   margin: 0;
   font-size: 0.9rem;
-  color: rgba(0, 0, 0, 0.4);
+  color: var(--text-color);
   font-weight: 400;
 }
 
@@ -125,7 +124,7 @@ $post-list__item__badge-size: 100px;
 
   &:hover {
     .post-list__item__name {
-      color: #111;
+      color: var(--text-color);
     }
   }
 }
