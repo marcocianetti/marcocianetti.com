@@ -5,12 +5,13 @@ html {
   -moz-osx-font-smoothing: grayscale;
   font: $font-style $font-variant $font-weight #{$font-size}/#{$line-height} $font-family;
   font-size: 84% !important;
-  background-color: var(--background-color);
+  background-color: var(--footer-background-color);
 }
 
 // Body base
 
 body {
+  background-color: var(--background-color);
   color: var(--text-color);
   font-size: 1rem;
 }
