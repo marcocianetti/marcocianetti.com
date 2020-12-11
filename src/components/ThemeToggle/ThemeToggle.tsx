@@ -10,8 +10,6 @@ const ThemeToggle = ({ className }: Props) => {
 
   const { theme, setTheme } = React.useContext(ThemeContext);
 
-  console.log(theme);
-
   let cN = 'theme-toggle';
   if (!theme) {
     cN += ' theme-toggle--empty';

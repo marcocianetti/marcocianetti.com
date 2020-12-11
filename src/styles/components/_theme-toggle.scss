@@ -4,5 +4,11 @@
 }
 
 .theme-toggle--empty {
-  width: 29.56px;
+  width: 33.61px;
+}
+
+@include min('small') {
+  .theme-toggle--empty {
+    width: 29.56px;
+  }
 }

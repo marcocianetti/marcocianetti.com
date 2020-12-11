@@ -10,7 +10,7 @@ const Colors = {
     lightTextColor: 'rgba(0, 0, 0, 0.6)',
     headingTextColor: '#111',
     primaryColor: '#1b62ff',
-    navbarBackgroundColor: '#fff',
+    navbarBackgroundColor: '#fafbfc',
     footerBackgroundColor: '#fafbfc',
   },
   dark: {
