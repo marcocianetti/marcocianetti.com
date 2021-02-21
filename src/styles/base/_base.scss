@@ -5,13 +5,14 @@ html {
   -moz-osx-font-smoothing: grayscale;
   font: $font-style $font-variant $font-weight #{$font-size}/#{$line-height} $font-family;
   font-size: 84% !important;
-  background-color: $background-color;
+  background-color: var(--footer-background-color);
 }
 
 // Body base
 
 body {
-  color: $font-color;
+  background-color: var(--background-color);
+  color: var(--text-color);
   font-size: 1rem;
 }
 
@@ -116,7 +117,7 @@ blockquote {
   border-left: 0.25em solid $primary-color;
   background-color: transparentize($primary-color, 0.9);
   font-style: italic;
-  color: $font-color;
+  color: var(--text-color);
 
   & > p:last-child {
     margin: 0;
@@ -231,6 +232,36 @@ figcaption {
   &:active,
   &:focus {
     color: $white;
+  }
+}
+
+.text-input {
+  background-color: var(--background-color);
+  margin: 0 1rem 0 0;
+  line-height: unset;
+
+  &:focus {
+    color: $primary-color;
+  }
+
+  &:hover {
+    background-color: var(--light-background-color);
+  }
+}
+
+.label {
+  display: block;
+  width: fit-content;
+  font-size: 1rem;
+  font-weight: bold;
+  color: $primary-color;
+  margin-bottom: 1rem;
+
+  &:after {
+    display: block;
+    content: '';
+    width: 8px;
+    border-bottom: 2px solid $primary-color;
   }
 }
 

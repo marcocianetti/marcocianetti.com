@@ -1,0 +1,14 @@
+.theme-toggle {
+  margin: auto 0;
+  cursor: pointer;
+}
+
+.theme-toggle--empty {
+  width: 33.61px;
+}
+
+@include min('small') {
+  .theme-toggle--empty {
+    width: 29.56px;
+  }
+}

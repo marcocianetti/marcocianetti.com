@@ -3,6 +3,7 @@ import { graphql } from 'gatsby';
 import Master from '../layouts/Master';
 import PostList from '../components/PostList';
 import ProjectList from '../components/ProjectList';
+import PageList from '../components/PageList';
 import Page from '../models/Page';
 import Config from '../config/Config';
 import projects from '../data/projects';
@@ -78,6 +79,11 @@ export default class IndexPage extends React.Component<Props> {
             <li>I miei progetti Open Source.</li>
           </ul>
         </div>
+
+        <section className='index-page__section container'>
+          <h2 className="index-page__section-title">Pagine utili</h2>
+          <PageList />
+        </section>
 
         <section className='index-page__section container'>
           <h2 className="index-page__section-title">Ultimi articoli</h2>

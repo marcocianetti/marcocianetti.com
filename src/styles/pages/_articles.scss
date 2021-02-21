@@ -45,15 +45,6 @@
   margin-bottom: 2rem;
 }
 
-.blog-page__search__input {
-  margin: 0 1rem 0 0;
-  line-height: unset;
-
-  &:focus {
-    color: $primary-color;
-  }
-}
-
 .blog-page__search__count {
   display: inline-flex;
   align-items: center;

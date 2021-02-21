@@ -27,9 +27,12 @@
   'components/post-author-section',
   'components/post-list',
   'components/project-list',
+  'components/page-list',
   'components/tag-list',
   'components/author-card',
   'components/nintendo-gamepad',
+  'components/theme-toggle',
+  'components/loading-view',
   'components/reading-bar';
 
 // Pages
@@ -37,7 +40,8 @@
   'pages/index',
   'pages/404',
   'pages/tag',
-  'pages/categorie',
+  'pages/categories',
+  'pages/tools-list',
   'pages/articles';
 
 // Themes

@@ -16,7 +16,7 @@ h5 {
   font-weight: $heading-font-weight;
   font-family: $heading-font-family;
   line-height: $heading-line-height;
-  color: $heading-font-color;
+  color: var(--heading-text-color);
 
   &:not(:first-child) {
     margin: 0 0 1rem 0;
