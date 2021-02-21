@@ -119,7 +119,7 @@ export default class ArticlesPage extends React.Component<Props, State> {
               value={this.state.search}
               placeholder="Cerca un articolo..."
               onChange={this.handleOnSearchChange}
-              className="blog-page__search__input"
+              className="text-input"
             />
             <span className="blog-page__search__count">{posts.length}</span>
           </div>

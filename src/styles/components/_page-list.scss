@@ -1,0 +1,38 @@
+.page-list {
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
+}
+
+@include min('small') {
+  .page-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.page-list__item {
+  padding: 1.5rem;
+  background: var(--light-background-color);
+  border: 2px dashed transparent;
+  border-radius: $border-radius;
+  color: var(--text-color);
+
+  &:hover {
+    border-color: var(--primary-color);
+    color: var(--text-color);
+  }
+}
+
+.page-list__item__name {
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.page-list__item__description {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 400;
+}

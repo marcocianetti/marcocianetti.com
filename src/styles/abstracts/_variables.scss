@@ -186,7 +186,7 @@ $transition-duration: 300ms;
   --background-color: #{$background-color};
   --light-background-color: #{$light-grey};
   --primary-color: #{$primary-color};
-  --light-primary-color: #{lighten($primary-color, 25%)};
+  --light-primary-color: #{lighten($primary-color, 40%)};
   --text-color: #{$font-color};
   --light-text-color: #{$light-font-color};
   --heading-text-color: #{$heading-font-color};
