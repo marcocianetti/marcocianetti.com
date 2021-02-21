@@ -1,0 +1,112 @@
+.tools-list-page__search-input {
+  margin-bottom: 2rem;
+}
+
+.tools-list-page__tools-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.tools-list-page__tools-list__item {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  border: 2px transparent dashed;
+  border-radius: $border-radius;
+  background-color: var(--light-background-color);
+  font-weight: normal;
+
+  &:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+}
+
+@include min('small') {
+  .tools-list-page__tools-list__item {
+    padding: 2rem;
+  }
+}
+
+.tools-list-page__tools-list__item:hover,
+.tools-list-page__tools-list__item:active,
+.tools-list-page__tools-list__item:focus {
+  border-color: $primary-color;
+}
+
+.tools-list-page__tools-list__item__title {
+  margin: 0 0 0.5rem 0;
+}
+
+.tools-list-page__tools-list__item__categories-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.tools-list-page__tools-list__item__category {
+  padding: 0.2rem 0.5rem;
+  background-color: var(--light-primary-color);
+  margin: 0 0.5rem 0.5rem 0;
+  border-radius: $border-radius;
+  font-size: 0.8rem;
+  color: $primary-color;
+}
+
+.tools-list-page__tools-list__item__description {
+  margin-bottom: 2rem;
+  font-size: 1rem;
+}
+
+.tools-list-page__tools-list__item__button {
+  width: fit-content;
+  margin-left: auto;
+  font-size: 0.9rem;
+}
+
+.tools-list-page__loading-view {
+}
+
+.tools-list-page__categories-list {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.tools-list-page__categories-list__item {
+  display: flex;
+  align-items: center;
+  font-size: 0.85rem;
+  padding: 0.5rem 0.75rem;
+  background: lighten($primary-color, 40%);
+  border-radius: $border-radius;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  color: $primary-color;
+  cursor: pointer;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+
+  &:hover {
+    background: lighten($primary-color, 37%);
+    color: darken($primary-color, 5%);
+  }
+}
+
+.tools-list-page__categories-list__item--active {
+  background: $primary-color;
+  color: white;
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: white;
+    background: darken($primary-color, 10%);
+  }
+}
