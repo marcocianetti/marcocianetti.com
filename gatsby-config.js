@@ -1,10 +1,18 @@
 module.exports = {
+  pathPrefix: '/',
+
   siteMetadata: {
-    siteUrl: `https://marcocianetti.com`,
+    siteUrl: 'https://marcocianetti.com/',
+    rssMetadata: {
+      site_url: 'https://marcocianetti.com/',
+      title: 'Marco Cianetti',
+      description: 'Marco Cianetti è un web developer di Roma, specializzato in JavaScript e appassionato di Intelligenza Artificiale. Ricopre la posizione di Full-Stack Developer @247X - Il tuo Team di Crescita Dedicato.',
+      image_url: 'https://marcocianetti.com/logos/logo-48.png',
+    }
   },
 
   flags: {
-    DEV_SSR: true
+    // DEV_SSR: true
   },
   
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
