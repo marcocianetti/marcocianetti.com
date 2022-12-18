@@ -54,7 +54,7 @@ export default class CategoriesPage extends React.Component<Props> {
 export const pageQuery = graphql`
   query CategoriesQuery {
     categories: allMarkdownRemark(limit: 2000) {
-      group(field: frontmatter___categories) {
+      group(field: {frontmatter: {categories: SELECT}}) {
         fieldValue
         totalCount
       }

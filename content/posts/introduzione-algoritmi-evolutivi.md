@@ -72,6 +72,9 @@ La funzione di fitness è la funzione che indica la bontà di una soluzione e qu
 
 Solitamente corrisponde alla funzione che l’algoritmo sta cercando di ottimizzare.
 
+> Se vuoi approfondire l'argomento sulle funzioni di fitness
+> ti consiglio di leggere l'articolo ["Le funzioni di fitness negli algoritmi evolutivi"](/articoli/funzioni-di-fitness-algoritmi-evolutivi)
+
 ### Selezione
 
 È il processo che si occupa di decidere quali individui possono passare alla generazione successiva e quali no.

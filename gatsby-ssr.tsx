@@ -1,4 +1,5 @@
-import * as React from 'react';
+import React from 'react';
+import App from './src/components/App';
 
 const ThemeScriptTag = () => {
   let codeToRunOnClient = `
@@ -63,9 +64,13 @@ const ThemeScriptTag = () => {
     })()
   `;
 
-  return <script dangerouslySetInnerHTML={{ __html: codeToRunOnClient }} />;
+  return <script key="theme-script" dangerouslySetInnerHTML={{ __html: codeToRunOnClient }} />;
 };
 
 export const onRenderBody = ({ setPreBodyComponents }) => {
-  setPreBodyComponents(<ThemeScriptTag />);
+  setPreBodyComponents(<ThemeScriptTag key="theme-script" />);
+};
+
+export const wrapPageElement = ({ element }) => {
+  return <App>{element}</App>;
 };

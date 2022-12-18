@@ -66,6 +66,9 @@ La funzione di fitness determina l’abilità di un individuo di competere con g
 
 Essa assegna un punteggio ad ogni individuo e la probabilità che un individuo venga selezionato per la riproduzione è basata su questo punteggio.
 
+> Se vuoi approfondire l'argomento sulle funzioni di fitness
+> ti consiglio di leggere l'articolo ["Le funzioni di fitness negli algoritmi evolutivi"](/articoli/funzioni-di-fitness-algoritmi-evolutivi)
+
 ### Selezione
 
 L’idea della fase di selezione è quella di selezionare gli individui con il punteggio di fitness maggiore e permettergli di tramandare i propri geni alla generazione successiva.

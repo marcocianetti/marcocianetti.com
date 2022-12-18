@@ -103,34 +103,27 @@ export const pageQuery = graphql`
   query IndexQuery {
     latestPosts: allMarkdownRemark(
       limit: 5
-      sort: { fields: [fields___date], order: DESC }
-      filter: { frontmatter: { template: { eq: "post" } } }
+      sort: {frontmatter: {date: DESC}}
+      filter: {frontmatter: {template: {eq: "post"}}}
     ) {
       edges {
         node {
+          excerpt
+          timeToRead
           fields {
             slug
             date
           }
-          excerpt
-          timeToRead
           frontmatter {
             title
             tags
             categories
+            template
             thumbnail {
               childImageSharp {
-                fixed(width: 150, height: 150) {
-                  base64
-                  width
-                  height
-                  src
-                  srcSet
-                }
+                gatsbyImageData
               }
             }
-            date
-            template
           }
         }
       }

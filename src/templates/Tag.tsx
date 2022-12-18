@@ -43,35 +43,28 @@ export default class Tag extends React.Component<Props> {
 export const TagQuery = graphql`
   query PostsByTag($tag: String) {
     posts: allMarkdownRemark(
-      sort: { fields: [fields___date], order: DESC }
+      sort: {frontmatter: {date: DESC}}
       filter: { frontmatter: { tags: { in: [$tag] } } }
     ) {
       totalCount
       edges {
         node {
+          excerpt
+          timeToRead
           fields {
             slug
             date
           }
-          excerpt
-          timeToRead
           frontmatter {
             title
             tags
             categories
+            template
             thumbnail {
               childImageSharp {
-                fixed(width: 150, height: 150) {
-                    base64
-                    width
-                    height
-                    src
-                    srcSet
-                  }
+                gatsbyImageData
               }
             }
-            date
-            template
           }
         }
       }

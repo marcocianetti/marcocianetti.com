@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import moment from 'moment';
+
 import Page from 'models/Page';
-import DateUtils from '../../utils/DateUtils';
+import DateUtils from 'utils/DateUtils';
 
 type Props = {
   posts: Page[];
@@ -18,13 +19,13 @@ export default class PostList extends Component<Props> {
       <div className="post-list">
         {this.props.posts.map(post => {
           const thumbnail = post.node.frontmatter.thumbnail
-            ? post.node.frontmatter.thumbnail.childImageSharp.fixed
+            ? getImage(post.node.frontmatter.thumbnail)
             : undefined;
 
           const isPopular = (post.node.frontmatter.categories || []).includes('Popular');
 
           // TODO: Check date field
-          const isNewest = moment(post.node.frontmatter.date) > moment().subtract(1, 'months');
+          const isNewest = moment(post.node.fields.date) > moment().subtract(1, 'months');
 
           return (
             <Link
@@ -33,14 +34,14 @@ export default class PostList extends Component<Props> {
               className={this.props.dense ? 'post-list__item post-list__item--dense' : 'post-list__item'}
             >
               <div className="post-list__item__container">
-                {thumbnail ? <Img fixed={thumbnail} alt={post.node.frontmatter.title} title={post.node.frontmatter.title} className="post-list__item__thumbnail" /> : null}
+                {thumbnail ? <GatsbyImage image={thumbnail} alt={post.node.frontmatter.title} title={post.node.frontmatter.title} className="post-list__item__thumbnail" /> : null}
 
                 <div>
                   <h2 className="post-list__item__name">{post.node.frontmatter.title}</h2>
                   {
                     !this.props.dense
                       ? <div className="post-list__item__date">
-                          {DateUtils.format(post.node.frontmatter.date)}
+                          {DateUtils.format(post.node.fields.date)}
                         </div>
                       : null
                   }

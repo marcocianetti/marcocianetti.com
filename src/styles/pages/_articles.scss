@@ -43,6 +43,10 @@
 .blog-page__search__container {
   display: flex;
   margin-bottom: 2rem;
+
+  & > input {
+    margin-bottom: 0;
+  }
 }
 
 .blog-page__search__count {

@@ -1,4 +1,4 @@
-import { GatsbyImageProps } from 'gatsby-image';
+import { ImageDataLike } from 'gatsby-plugin-image'
 
 type Page = {
   node: PageNode;
@@ -10,22 +10,20 @@ export type PageNode = {
   timeToRead?: number;
   excerpt?: string;
 
+  fields: {
+    date: string;
+    slug: string;
+  };
+
   frontmatter: {
     title: string;
     tags: string[];
     categories: string[];
-    date: string;
     template: string;
 
     description?: string;
     updated?: string;
-    thumbnail?: {
-      childImageSharp: GatsbyImageProps;
-    };
-  };
-
-  fields: {
-    slug: string;
+    thumbnail?: ImageDataLike;
   };
 };
 

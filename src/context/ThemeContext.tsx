@@ -1,6 +1,7 @@
 import * as React from 'react';
-import Theme from '../models/Theme';
-import ThemeUtils from '../utils/ThemeUtils';
+
+import Theme from 'models/Theme';
+import ThemeUtils from 'utils/ThemeUtils';
 
 type Props = {
   children: React.ReactNode;
@@ -18,7 +19,7 @@ export const ThemeContext = React.createContext<ThemeContextProps>({
 
 export const ThemeProvider = ({ children }: Props) => {
 
-  const [theme, setLocalTheme] = React.useState<Theme | undefined>(ThemeUtils.getTheme);
+  const [theme, setLocalTheme] = React.useState<Theme | undefined>(ThemeUtils.getTheme());
 
   React.useEffect(() => {
     const root = window.document.documentElement;

@@ -43,13 +43,13 @@ export const PageQuery = graphql`
       html
       timeToRead
       excerpt
-      frontmatter {
-        title
-        template
-      }
       fields {
         slug
         date
+      }
+      frontmatter {
+        title
+        template
       }
     }
   }
