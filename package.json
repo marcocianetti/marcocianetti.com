@@ -1,9 +1,11 @@
 {
   "name": "marcocianetti.com",
-  "version": "1.0.0",
+  "version": "2.0.1",
   "private": true,
-  "description": "marcocianetti.com",
-  "author": "Marco Cianetti",
+  "description": "Sito personale di Marco Cianetti.",
+  "author": "Marco Cianetti <cianetti.m@gmail.com>",
+  "repository": "git@github.com:marcocianetti/marcocianetti.com",
+  "license": "MIT",
   "scripts": {
     "develop": "gatsby develop --verbose",
     "start": "gatsby develop",
