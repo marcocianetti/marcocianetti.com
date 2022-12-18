@@ -1,6 +1,8 @@
-import * as React from 'react';
+import React from 'react';
 import Helmet from 'react-helmet';
 import urljoin from 'url-join';
+import { getSrc } from 'gatsby-plugin-image';
+
 import { PageNode } from '../../models/Page';
 import PageUtils from '../../utils/PageUtils';
 import Config from '../../config/Config';
@@ -93,8 +95,11 @@ export default class SeoHelmet extends React.Component<Props> {
       }
 
       // Image
-      if (pageMeta.thumbnail && pageMeta.thumbnail.childImageSharp && pageMeta.thumbnail.childImageSharp.fixed && !(pageMeta.thumbnail.childImageSharp.fixed instanceof Array) && pageMeta.thumbnail.childImageSharp.fixed.src) {
-        image = pageMeta.thumbnail.childImageSharp.fixed.src;
+      if (pageMeta.thumbnail && pageMeta.thumbnail) {
+        const imageSrc = getSrc(pageMeta.thumbnail);
+        if (imageSrc) {
+          image = imageSrc;
+        }
       }
 
       // Path

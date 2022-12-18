@@ -7,21 +7,16 @@ type Props = {
 };
 
 const ThemeToggle = ({ className }: Props) => {
-
+  
+  const [isClient, setIsClient] = React.useState(false);
   const { theme, setTheme } = React.useContext(ThemeContext);
 
   let cN = 'theme-toggle';
-  if (!theme) {
-    cN += ' theme-toggle--empty';
+  if (!isClient) {
+    cN += ' theme-toggle--loading';
   }
   if (className) {
     cN += ` ${className}`;
-  }
-
-  if (!theme) {
-    return (
-      <label className={cN} />
-    );
   }
 
   const handleOnClick = () => {
@@ -31,6 +26,17 @@ const ThemeToggle = ({ className }: Props) => {
       setTheme(Theme.Dark);
     }
   };
+
+  // Fix the SSR error
+  React.useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) {
+    return (
+      <label className={cN} />
+    );
+  }
 
   return (
     <label onClick={handleOnClick} className={cN}>

@@ -1,4 +1,5 @@
 import urljoin from 'url-join';
+
 import { PageNode } from '../models/Page';
 import Config from '../config/Config';
 

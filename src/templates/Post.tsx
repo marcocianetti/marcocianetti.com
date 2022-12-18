@@ -1,7 +1,8 @@
-import * as React from 'react';
+import React from 'react';
 import { graphql } from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import Master from '../layouts/Master';
 import PostAuthorSection from '../components/PostAuthorSection';
 import TagList from '../components/TagList';
@@ -25,15 +26,16 @@ type Props = {
 export default class Post extends React.Component<Props> {
   render() {
     const node = this.props.data.post;
-    const hasThumbnail = node.frontmatter.thumbnail !== undefined;
     const iconStyle = {
       height: '1em',
       width: '0.875em',
       verticalAlign: '-0.125em',
     };
 
+    const image = node.frontmatter.thumbnail ? getImage(node.frontmatter.thumbnail) : undefined;
+
     return (
-      <Master 
+      <Master
         metaTags={{
           page: node,
           pageType: 'post'
@@ -44,15 +46,15 @@ export default class Post extends React.Component<Props> {
 
         <div className="container">
           <article>
-            <header className={hasThumbnail ? 'post-template__header' : 'post-template__header post-template__header--no-thumbnail'}>
-              {hasThumbnail && <Img fixed={node.frontmatter.thumbnail!.childImageSharp!.fixed!} alt={node.frontmatter.title} title={node.frontmatter.title} className="post-template__header__thumbnail" />}
+            <header className={image ? 'post-template__header' : 'post-template__header post-template__header--no-thumbnail'}>
+              {image && <GatsbyImage image={image} alt={node.frontmatter.title} title={node.frontmatter.title} className="post-template__header__thumbnail" />}
 
               <div className="flex flex--column">
                 <h1>{node.frontmatter.title}</h1>
 
                 <div className="post-template__meta">
                   <time className="post-template__meta__date">
-                    <FontAwesomeIcon icon={['fas', 'calendar-alt']} style={iconStyle} /> {DateUtils.format(node.frontmatter.date)}
+                    <FontAwesomeIcon icon={['fas', 'calendar-alt']} style={iconStyle} /> {DateUtils.format(node.fields.date)}
                   </time>
                   <span className="post-template__meta__ttr">
                     <FontAwesomeIcon icon={['fas', 'book-reader']} style={iconStyle} /> {node.timeToRead} min
@@ -76,7 +78,7 @@ export default class Post extends React.Component<Props> {
             </header>
 
             <div dangerouslySetInnerHTML={{ __html: node.html || '' }} className="page"/>
-            
+
             <PostGitHubSection post={node} />
           </article>
         </div>
@@ -93,27 +95,21 @@ export const PostQuery = graphql`
       html
       timeToRead
       excerpt
+      fields {
+        date
+        slug
+      }
       frontmatter {
         title
         description
         template
         categories
         tags
-        date
         thumbnail {
-              childImageSharp {
-                  fixed(width: 800) {
-                    base64
-                    width
-                    height
-                    src
-                    srcSet
-                  }
-                }
+          childImageSharp {
+              gatsbyImageData
             }
-      }
-      fields {
-        slug
+        }
       }
     }
   }

@@ -1,51 +1,45 @@
 // Abstracts
-@import
-  'abstracts/variables',
-  'abstracts/functions',
-  'abstracts/mixins',
-  'abstracts/placeholders';
+@import 'abstracts/variables';
+@import 'abstracts/functions';
+@import 'abstracts/mixins';
+@import 'abstracts/placeholders';
 
 // Vendors
 
 // Base
-@import
-  'base/reset',
-  'base/typography',
-  'base/base';
+@import 'base/reset';
+@import 'base/typography';
+@import 'base/base';
 
 // Layout
-@import
-  'layout/master',
-  'layout/header',
-  'layout/footer',
-  'layout/nav-bar',
-  'layout/forms',
-  'layout/post';
+@import 'layout/master';
+@import 'layout/header';
+@import 'layout/footer';
+@import 'layout/nav-bar';
+@import 'layout/forms';
+@import 'layout/post';
 
 // Components
-@import
-  'components/post-author-section',
-  'components/post-list',
-  'components/project-list',
-  'components/page-list',
-  'components/tag-list',
-  'components/author-card',
-  'components/nintendo-gamepad',
-  'components/theme-toggle',
-  'components/loading-view',
-  'components/reading-bar';
+@import 'components/post-author-section';
+@import 'components/post-list';
+@import 'components/project-list';
+@import 'components/page-list';
+@import 'components/tag-list';
+@import 'components/author-card';
+@import 'components/nintendo-gamepad';
+@import 'components/theme-toggle';
+@import 'components/loading-view';
+@import 'components/reading-bar';
 
 // Pages
-@import
-  'pages/index',
-  'pages/404',
-  'pages/tag',
-  'pages/categories',
-  'pages/tools-list',
-  'pages/articles';
+@import 'pages/index';
+@import 'pages/404';
+@import 'pages/tag';
+@import 'pages/categories';
+@import 'pages/tools-list';
+@import 'pages/articles';
 
 // Themes
-@import
-  'themes/theme',
-  'themes/light',
-  'themes/dark';
+@import 'themes/theme';
+@import 'themes/light';
+@import 'themes/dark';

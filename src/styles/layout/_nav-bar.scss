@@ -1,11 +1,19 @@
 .nav-bar {
+  width: 100%;
+  height: $nav-bar-height--mobile;
+
+  @include min('small') {
+    height: $nav-bar-height;
+  }
+}
+
+.nav-bar__floating {
   position: fixed;
   width: 100%;
   top: 0;
   left: 0;
   z-index: 3;
   background: var(--navbar-background-color);
-  transition: all 0.3s ease;
 
   .brand,
   .links {

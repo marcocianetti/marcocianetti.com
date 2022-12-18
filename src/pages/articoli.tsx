@@ -136,38 +136,31 @@ export default class ArticlesPage extends React.Component<Props, State> {
 
 export const pageQuery = graphql`
   query ArticlesQuery {
-    posts: allMarkdownRemark(filter: { frontmatter: {  template: { eq: "post" } } }, limit: 2000, sort: { fields: [fields___date], order: DESC }) {
+    posts: allMarkdownRemark(filter: { frontmatter: {  template: { eq: "post" } } }, limit: 2000, sort: { fields: {date: DESC} }) {
       edges {
         node {
-          fields {
-            slug
-            date
-          }
           excerpt(pruneLength: 180)
           timeToRead
+          fields {
+            date
+            slug
+          }
           frontmatter {
             title
             tags
             categories
+            template
             thumbnail {
               childImageSharp {
-                fixed(width: 150, height: 150) {
-                  base64
-                  width
-                  height
-                  src
-                  srcSet
-                }
+                gatsbyImageData
               }
             }
-            date
-            template
           }
         }
       }
     }
     categories: allMarkdownRemark(limit: 2000) {
-      group(field: frontmatter___categories) {
+      group(field: {frontmatter: {categories: SELECT}}) {
         fieldValue
         totalCount
       }

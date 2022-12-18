@@ -239,6 +239,7 @@ figcaption {
   background-color: var(--background-color);
   margin: 0 1rem 0 0;
   line-height: unset;
+  color: var(--text-color);
 
   &:focus {
     color: $primary-color;
@@ -246,6 +247,10 @@ figcaption {
 
   &:hover {
     background-color: var(--light-background-color);
+  }
+
+  &::placeholder {
+    color: var(--light-text-color);
   }
 }
 

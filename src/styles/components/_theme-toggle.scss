@@ -1,14 +1,24 @@
 .theme-toggle {
   margin: auto 0;
   cursor: pointer;
+  text-align: center;
 }
 
-.theme-toggle--empty {
-  width: 33.61px;
+.theme-toggle--loading {
+  width: 37.16px;
 }
 
 @include min('small') {
-  .theme-toggle--empty {
-    width: 29.56px;
+  .theme-toggle--loading {
+    width: 33.61px;
+  }
+}
+
+@keyframes theme-toggle-loading-animation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
   }
 }
