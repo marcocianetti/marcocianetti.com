@@ -1,6 +1,6 @@
 import React from 'react'
-import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
+
 import Master from '../layouts/Master';
 import PostList from '../components/PostList';
 import Page  from '../models/Page';
@@ -26,10 +26,12 @@ export default class Category extends React.Component<Props> {
     const posts = this.props.data.posts.edges;
 
     return (
-      <Master>
-        <Helmet title={PageUtils.generateTitle(`Articoli nella categoria "${category}"`)}>
-          <meta name="description" content={`Articoli nella categoria "${category}"`}/>
-        </Helmet>
+      <Master
+        metaTags={{
+          title: PageUtils.generateTitle(`Articoli nella categoria "${category}"`),
+          description: `Articoli nella categoria "${category}"`,
+        }}
+      >
         <div className="container">
           <h1>
             Categoria <u>{category}</u>
