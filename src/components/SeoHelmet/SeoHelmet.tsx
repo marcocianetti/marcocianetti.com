@@ -3,20 +3,12 @@ import Helmet from 'react-helmet';
 import urljoin from 'url-join';
 import { getSrc } from 'gatsby-plugin-image';
 
-import { PageNode } from '../../models/Page';
-import PageUtils from '../../utils/PageUtils';
-import Config from '../../config/Config';
-import logo from '../../images/logo-256.png';
+import MetaTags from 'models/MetaTags';
+import PageUtils from 'utils/PageUtils';
+import Config from 'config/Config';
+import logo from 'images/logo-256.png';
 
-type Props = {
-  title?: string;
-  description?: string;
-  path?: string;
-  page?: PageNode;
-  pageType?: 'page' | 'post';
-};
-
-export type MetaTags = Props;
+type Props = MetaTags;
 
 type Schema = {
   '@context'?: string;
@@ -69,7 +61,7 @@ type Schema = {
   }[];
 };
 
-export default class SeoHelmet extends React.Component<Props> {
+class SeoHelmet extends React.Component<Props> {
 
   render() {
     const { page, pageType } = this.props;
@@ -222,3 +214,5 @@ export default class SeoHelmet extends React.Component<Props> {
   }
 
 }
+
+export default SeoHelmet;
