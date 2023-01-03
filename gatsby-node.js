@@ -136,7 +136,7 @@ function onCreatePage({ page, actions }) {
   const oldPage = Object.assign({}, page);
 
   // Remove trailing slash unless page is /
-  page.path = removeTrailingSlashes(page.path);
+  // page.path = removeTrailingSlashes(page.path);
 
   if (page.path !== oldPage.path) {
     // Replace new page with old page
