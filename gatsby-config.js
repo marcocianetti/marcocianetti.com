@@ -1,5 +1,5 @@
 module.exports = {
-  pathPrefix: '/',
+  trailingSlash: 'never',
 
   siteMetadata: {
     siteUrl: 'https://marcocianetti.com/',
