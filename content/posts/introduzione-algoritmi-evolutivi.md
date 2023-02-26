@@ -96,6 +96,9 @@ Il processo è molto semplice:
 - Il primo dei due nuovi individui avrà come geni quelli del primo genitore, fino al punto di crossover, e poi quelli del secondo genitore come restanti;
 - Il secondo nuovo individuo sarà composto dai geni del secondo genitore, fino al punto di crossover, e poi da quelli del primo genitore.
 
+> Se vuoi saperne di più sul crossover puoi dare un'occhiata
+> all'articolo ["Il crossover negli algoritmi evolutivi"](/articoli/crossover-algoritmi-evolutivi)
+
 Vediamo un **esempio** per chiarire il concetto.
 
 #### Esempio di crossover
@@ -126,6 +129,9 @@ Il suo funzionamento è molto semplice: dato un genoma viene scelto a caso un su
 Solitamente viene applicata subito dopo che l'individuo è stato generato, ma non tutti gli individui la subiscono.
 Infatti in un EA viene impostata una **probabilità di mutazione** (generalmente molto bassa, negli ordini del centesimo di percentuale): se il nuovo individuo viene "sorteggiato" allora
 viene mutato, altrimenti no.
+
+> Se vuoi approfondire l'argomento delle mutazioni negli algoritmi evolutivi
+> ti consiglio di leggere l'articolo ["La mutazione negli algoritmi evolutivi"](/articoli/mutazione-algoritmi-evolutivi)
 
 Vediamo un **esempio**.
 

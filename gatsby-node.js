@@ -131,20 +131,6 @@ function removeTrailingSlashes(path) {
   return (path === `/` ? path : path.replace(/\/$/, ``));
 }
 
-function onCreatePage({ page, actions }) {
-  const { createPage, deletePage } = actions;
-  const oldPage = Object.assign({}, page);
-
-  // Remove trailing slash unless page is /
-  // page.path = removeTrailingSlashes(page.path);
-
-  if (page.path !== oldPage.path) {
-    // Replace new page with old page
-    deletePage(oldPage);
-    createPage(page);
-  }
-}
-
 async function createPages({ graphql, actions }) {
   const { createPage } = actions;
   const pageTemplate = path.resolve('src/templates/Page.tsx');
@@ -249,5 +235,3 @@ async function createPages({ graphql, actions }) {
 }
 
 exports.createPages = createPages;
-
-exports.onCreatePage = onCreatePage;
