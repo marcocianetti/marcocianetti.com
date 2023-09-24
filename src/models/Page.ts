@@ -1,4 +1,4 @@
-import { ImageDataLike } from 'gatsby-plugin-image'
+import { ImageDataLike } from 'gatsby-plugin-image';
 
 type Page = {
   node: PageNode;
@@ -18,7 +18,6 @@ export type PageNode = {
   frontmatter: {
     title: string;
     tags: string[];
-    categories: string[];
     template: string;
 
     description?: string;

@@ -1,12 +1,10 @@
 ---
-date: 2023-01-03
-title: "La mutazione negli algoritmi evolutivi: come ottenere il giusto equilibrio tra diversificazione e ottimizzazione"
-description: "La mutazione è uno dei pilastri degli algoritmi evolutivi. Scopri come funziona e come scegliere la probabilità di mutazione e le tecniche di mutazione più adatte ai problemi che vuoi risolvere."
 template: post
-thumbnail: '../images/mutazione-algoritmi-evolutivi/thumbnail.jpg'
+date: 2023-01-03
+title: 'La mutazione negli algoritmi evolutivi: come ottenere il giusto equilibrio tra diversificazione e ottimizzazione'
+description: 'La mutazione è uno dei pilastri degli algoritmi evolutivi. Scopri come funziona e come scegliere la probabilità di mutazione e le tecniche di mutazione più adatte ai problemi che vuoi risolvere.'
+thumbnail: ./thumbnail.jpg
 slug: mutazione-algoritmi-evolutivi
-categories:
-  - Intelligenza Artificiale
 tags:
   - intelligenza-artificiale
   - algoritmi-evolutivi
@@ -69,16 +67,15 @@ Ed ecco un esempio di funzione JavaScript per eseguirla:
 ```javascript
 // solution è un array di booleani
 function mutation(solution, probability) {
-
   // Controlla se la mutazione deve essere eseguita
   if (Math.random() > probability) {
     return solution;
   }
-  
+
   // Esegue il bit flip su un bit scelto in modo casuale
   var mutationIndex = Math.floor(Math.random() * solution.length);
   solution[mutationIndex] = !solution[mutationIndex];
-  
+
   return solution;
 }
 ```
@@ -97,16 +94,15 @@ Di seguito una semplice funzione in JavaScript per eseguire questo tipo di mutaz
 ```javascript
 // solution è un array di interi
 function mutation(solution, probability) {
-
   // Controlla se la mutazione deve essere eseguita
   if (Math.random() > probability) {
     return solution;
   }
-  
+
   // Sceglie in modo casuale un elemento della soluzione e lo sostituisce con un nuovo valore scelto in modo casuale
   var mutationIndex = Math.floor(Math.random() * solution.length);
   solution[mutationIndex] = Math.floor(Math.random() * 10) + 1;
-  
+
   return solution;
 }
 ```
@@ -120,7 +116,6 @@ Ad esempio, se la soluzione è rappresentata da una stringa di caratteri _"Hello
 ```javascript
 // solution è una stringa
 function mutation(solution, probability) {
-
   // Controlla se la mutazione deve essere eseguita
   if (Math.random() > probability) {
     return solution;
@@ -129,14 +124,14 @@ function mutation(solution, probability) {
   // Trasforma la soluzione in array perché le stringhe sono immutabili
   // e in questo modo facilitiamo lo swap
   var arrSolution = solution.split('');
-  
+
   // Sceglie in modo casuale due elementi della soluzione e li scambia tra loro
   var mutationIndex1 = Math.floor(Math.random() * arrSolution.length);
   var mutationIndex2 = Math.floor(Math.random() * arrSolution.length);
   var temp = arrSolution[mutationIndex1];
   arrSolution[mutationIndex1] = arrSolution[mutationIndex2];
   arrSolution[mutationIndex2] = temp;
-  
+
   return arrSolution.join('');
 }
 ```

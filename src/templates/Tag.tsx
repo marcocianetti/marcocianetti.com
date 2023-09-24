@@ -1,8 +1,8 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import Master from '../layouts/Master';
+import { graphql } from 'gatsby';
+import React from 'react';
 import PostList from '../components/PostList';
-import Page  from '../models/Page';
+import Master from '../layouts/Master';
+import Page from '../models/Page';
 import PageUtils from '../utils/PageUtils';
 
 type Data = {
@@ -10,7 +10,7 @@ type Data = {
     totalCount: number;
     edges: Page[];
   };
-}
+};
 
 type Props = {
   pageContext: {
@@ -32,18 +32,20 @@ export default class Tag extends React.Component<Props> {
         }}
       >
         <div className="container">
-          <h1>Articoli taggati <u>{tag}</u></h1>
+          <h1>
+            Articoli taggati <u>{tag}</u>
+          </h1>
           <PostList posts={posts} />
         </div>
       </Master>
-    )
+    );
   }
 }
 
 export const TagQuery = graphql`
   query PostsByTag($tag: String) {
     posts: allMarkdownRemark(
-      sort: {frontmatter: {date: DESC}}
+      sort: { frontmatter: { date: DESC } }
       filter: { frontmatter: { tags: { in: [$tag] } } }
     ) {
       totalCount
@@ -58,7 +60,6 @@ export const TagQuery = graphql`
           frontmatter {
             title
             tags
-            categories
             template
             thumbnail {
               childImageSharp {

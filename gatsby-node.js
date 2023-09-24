@@ -3,18 +3,13 @@ const moment = require('moment');
 const kebabCase = require('lodash.kebabcase');
 
 const RouteUtils = {
-  generatePathToCategory: function(category) {
-    const c = category.split(' ').length === 1 ? category.toLowerCase() : kebabCase(category);
-    return `/categorie/${c}`;
-  },
-
-  generatePathToTag: function(tag) {
+  generatePathToTag: function (tag) {
     return `/tag/${kebabCase(tag)}`;
   },
 };
 
 const DateUtils = {
-  parse: function(date) {
+  parse: function (date) {
     return moment(date, 'DD-MM-YYYY');
   },
 };
@@ -23,7 +18,6 @@ const postNodes = [];
 
 function addSiblingNodes(createNodeField) {
   postNodes.sort((nodeA, nodeB) => {
-
     if (!nodeA.frontmatter.date && !nodeB.frontmatter.date) {
       return 0;
     }
@@ -42,7 +36,7 @@ function addSiblingNodes(createNodeField) {
     if (dateA.isBefore(dateB)) return 1;
     if (dateB.isBefore(dateA)) return -1;
 
-    return 0
+    return 0;
   });
 
   for (let i = 0; i < postNodes.length; i += 1) {
@@ -74,7 +68,7 @@ function addSiblingNodes(createNodeField) {
       node: currNode,
       name: 'prevSlug',
       value: prevNode.fields.slug,
-    })
+    });
   }
 }
 
@@ -84,8 +78,11 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
   if (node.internal.type === 'MarkdownRemark') {
     const fileNode = getNode(node.parent);
-    
-    if (Object.prototype.hasOwnProperty.call(node, 'frontmatter') && Object.prototype.hasOwnProperty.call(node.frontmatter, 'slug')) {
+
+    if (
+      Object.prototype.hasOwnProperty.call(node, 'frontmatter') &&
+      Object.prototype.hasOwnProperty.call(node.frontmatter, 'slug')
+    ) {
       slug = `/${node.frontmatter.slug}`;
     } else {
       slug = `/${kebabCase(node.frontmatter.title)}`;
@@ -98,7 +95,10 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     }
 
     // Create date field
-    if (Object.prototype.hasOwnProperty.call(node, 'frontmatter') && Object.prototype.hasOwnProperty.call(node.frontmatter, 'date')) {
+    if (
+      Object.prototype.hasOwnProperty.call(node, 'frontmatter') &&
+      Object.prototype.hasOwnProperty.call(node.frontmatter, 'date')
+    ) {
       const date = new Date(node.frontmatter.date);
 
       createNodeField({
@@ -109,10 +109,10 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     }
 
     // Create slug field
-    createNodeField({ 
-      node, 
-      name: 'slug', 
-      value: slug 
+    createNodeField({
+      node,
+      name: 'slug',
+      value: slug,
     });
 
     postNodes.push(node);
@@ -128,15 +128,26 @@ exports.setFieldsOnGraphQLNodeType = ({ type, actions }) => {
 };
 
 function removeTrailingSlashes(path) {
-  return (path === `/` ? path : path.replace(/\/$/, ``));
+  return path === `/` ? path : path.replace(/\/$/, ``);
 }
 
 async function createPages({ graphql, actions }) {
-  const { createPage } = actions;
+  const { createPage, createRedirect } = actions;
+
+  // Redirects
+  createRedirect({
+    fromPath: `/categorie`,
+    toPath: `/tag`,
+  });
+
+  createRedirect({
+    fromPath: `/categorie/*`,
+    toPath: `/tag/*`,
+  });
+
   const pageTemplate = path.resolve('src/templates/Page.tsx');
   const postTemplate = path.resolve('src/templates/Post.tsx');
   const tagTemplate = path.resolve('src/templates/Tag.tsx');
-  const categoryTemplate = path.resolve('src/templates/Category.tsx');
 
   try {
     const res = await graphql(`
@@ -147,7 +158,6 @@ async function createPages({ graphql, actions }) {
               frontmatter {
                 template
                 tags
-                categories
               }
               fields {
                 slug
@@ -165,21 +175,12 @@ async function createPages({ graphql, actions }) {
     }
 
     const tags = new Set();
-    const categories = new Set();
 
     res.data.allMarkdownRemark.edges.forEach((edge) => {
-
       // Add tags
       if (edge.node.frontmatter.tags) {
-        edge.node.frontmatter.tags.forEach(tag => {
+        edge.node.frontmatter.tags.forEach((tag) => {
           tags.add(tag);
-        });
-      }
-
-      // Add categories
-      if (edge.node.frontmatter.categories) {
-        edge.node.frontmatter.categories.forEach(category => {
-          categories.add(category);
         });
       }
 
@@ -204,11 +205,10 @@ async function createPages({ graphql, actions }) {
           });
           break;
       }
-
     });
 
     // Create tag pages
-    Array.from(tags).forEach(tag => {
+    Array.from(tags).forEach((tag) => {
       createPage({
         path: RouteUtils.generatePathToTag(tag),
         component: tagTemplate,
@@ -217,18 +217,6 @@ async function createPages({ graphql, actions }) {
         },
       });
     });
-
-    // Create category pages
-    Array.from(categories).forEach(category => {
-      createPage({
-        path: RouteUtils.generatePathToCategory(category),
-        component: categoryTemplate,
-        context: {
-          category,
-        },
-      });
-    });
-
   } catch (e) {
     console.error(e);
   }

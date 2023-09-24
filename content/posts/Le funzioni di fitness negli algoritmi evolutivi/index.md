@@ -1,12 +1,10 @@
 ---
-date: 2022-12-16
-title: "Le funzioni di fitness negli algoritmi evolutivi"
-description: "La funzione di fitness è un elemento chiave negli algoritmi evolutivi. Scopri come viene utilizzata per valutare le soluzioni e perché è così importante nella selezione per la riproduzione."
 template: post
-thumbnail: '../images/funzioni-di-fitness-algoritmi-evolutivi/thumbnail.jpg'
+date: 2022-12-16
+title: 'Le funzioni di fitness negli algoritmi evolutivi'
+description: 'La funzione di fitness è un elemento chiave negli algoritmi evolutivi. Scopri come viene utilizzata per valutare le soluzioni e perché è così importante nella selezione per la riproduzione.'
+thumbnail: ./thumbnail.jpg
 slug: funzioni-di-fitness-algoritmi-evolutivi
-categories:
-  - Intelligenza Artificiale
 tags:
   - intelligenza-artificiale
   - algoritmi-evolutivi
@@ -58,35 +56,35 @@ In questo caso, **la funzione di fitness assegna un punteggio più alto alle sol
 
 Prima di scrivere la funzione di fitness per il problema facciamo delle considerazioni:
 
-* Abbiamo un insieme di città da visitare;
-* Abbiamo una "mappa" (che chiameremo "distanze") che indica quanto è distante la **città A** dalla **città B** (questo per ogni città);
-* I nostri individui saranno degli array dove ogni elemento contiene la prossima città da visitare (l'elemento 0 sarà il punto di partenza).
+- Abbiamo un insieme di città da visitare;
+- Abbiamo una "mappa" (che chiameremo "distanze") che indica quanto è distante la **città A** dalla **città B** (questo per ogni città);
+- I nostri individui saranno degli array dove ogni elemento contiene la prossima città da visitare (l'elemento 0 sarà il punto di partenza).
 
 Fatte queste considerazioni, ecco un esempio di funzione di fitness scritta per il problema del _Commesso Viaggiatore_:
 
 ```javascript
 function fitness(individuo) {
-
   // Calcola la distanza totale percorrendo tutte le città
   let distanzaTotale = 0;
-  for (let i = 0; i < individuo.length - 1; i++) { 
+  for (let i = 0; i < individuo.length - 1; i++) {
     distanzaTotale += distanze[individuo[i]][individuo[i + 1]];
   }
 
   // Aggiungi la distanza per tornare alla città di partenza
-  distanzaTotale += distanze[individuo[individuo.length - 1]][individuo[0]];
+  distanzaTotale +=
+    distanze[individuo[individuo.length - 1]][individuo[0]];
 
   // Inverti il risultato per ottenere un punteggio più alto
   // per soluzioni migliori (quelle che hanno una distanza minore)
   return 1 / distanzaTotale;
-};
+}
 ```
 
 La funzione è molto semplice:
 
-* Somma tutte le distanze proposte dalla soluzione scorrendo l'array;
-* Somma la distanza per tornare al punto di partenza;
-* Inverte il risultato.
+- Somma tutte le distanze proposte dalla soluzione scorrendo l'array;
+- Somma la distanza per tornare al punto di partenza;
+- Inverte il risultato.
 
 🚨 L'ultimo passaggio è fondamentale: **senza di esso premieremmo le soluzioni che hanno la distanza maggiore, non quella minore!**
 
@@ -97,17 +95,16 @@ Facciamo ora un altro esempio, stavolta sul problema dello _Zaino_, dove l'obiet
 
 Come prima, facciamo alcune considerazioni prima di scrivere la funzione:
 
-* Abbiamo uno zaino con capacità massima di peso **MAX_W**;
-* Abbiamo **N** oggetti, ognuno con peso e valore. I pesi e i valori sono contenuti in due array che chiameremo **values** e **weights**;
-* I nostri individui saranno degli array di valori **0 e 1** dove l'elemento _i_ vale 1 se intende inserire l'elemento _i_ nello zaino, 0 altrimenti;
-* Se una soluzione supera il peso massimo **MAX_W** allora applicheremo una penalità in base a quanto questo peso viene superato.
+- Abbiamo uno zaino con capacità massima di peso **MAX_W**;
+- Abbiamo **N** oggetti, ognuno con peso e valore. I pesi e i valori sono contenuti in due array che chiameremo **values** e **weights**;
+- I nostri individui saranno degli array di valori **0 e 1** dove l'elemento _i_ vale 1 se intende inserire l'elemento _i_ nello zaino, 0 altrimenti;
+- Se una soluzione supera il peso massimo **MAX_W** allora applicheremo una penalità in base a quanto questo peso viene superato.
 
 Detto questo, ecco una possibile funzione di fitness:
 
 ```javascript
 function fitness(individuo) {
-
-  // individuo è un array di 0 e 1 che indica se un 
+  // individuo è un array di 0 e 1 che indica se un
   // oggetto viene selezionato o meno
   let fitness = 0;
   let weight = 0;
@@ -125,7 +122,7 @@ function fitness(individuo) {
   }
 
   return fitness;
-};
+}
 ```
 
 ## Considerazioni finali

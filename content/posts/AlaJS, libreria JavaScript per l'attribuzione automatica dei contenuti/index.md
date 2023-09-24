@@ -1,13 +1,10 @@
 ---
+template: post
 date: 2020-08-17
 title: "AlaJS, libreria JavaScript per l'attribuzione automatica dei contenuti"
 description: "AlaJS è una libreria JavaScript che permette di aggiungere l'URL della pagina sorgente ad un testo copiato sulla pagina. Utile per la tua SEO e per essere giustamente accreditato per il tuo lavoro."
-template: post
-thumbnail: '../images/alajs-libreria-javascript-attribuzione-automatica-contenuti/thumbnail.jpg'
+thumbnail: ./thumbnail.jpg
 slug: alajs-libreria-javascript-attribuzione-automatica-contenuti
-categories:
-  - Javascript
-  - SEO
 tags:
   - javascript
   - seo
@@ -34,7 +31,7 @@ Pensi che sia finita qui?
 
 Beh 6 giorni fa (11 Agosto 2020), nella newsletter di <a href="https://www.producthunt.com/" rel="nofollow">Product Hunt</a> uno dei prodotti che aveva ricevuto più upvote nella settimana era proprio un tool che ti permette di fare la stessa identica cosa.
 
-C'era solo un dettaglio: *costava 49$/mese*.
+C'era solo un dettaglio: _costava 49$/mese_.
 
 Certamente ognuno decide il pricing che vuole per i propri prodotti, ma 49$ al mese per un prodotto così mi sembrano eccessivi (e molti utenti su Product Hunt lo hanno fatto notare al suo sviluppatore).
 
@@ -48,20 +45,26 @@ Sicuramente i termini di ricerca che ho utilizzato non erano il massimo dell'acc
 
 ## AlaJS - Automated Link Attribution
 
-AlaJS (da *Automated Link Attribution*) è il nome che ho deciso di dare allo snippet che permette di aggiungere il link alla pagina da cui è preso il testo copiato.
+AlaJS (da _Automated Link Attribution_) è il nome che ho deciso di dare allo snippet che permette di aggiungere il link alla pagina da cui è preso il testo copiato.
 
 L'implementazione, come detto, è molto semplice:
 
 ```javascript
-document.addEventListener('copy', function(event) {
+document.addEventListener('copy', function (event) {
   event.preventDefault();
 
-  var clipboardData = (event.clipboardData || window.clipboardData);
+  var clipboardData = event.clipboardData || window.clipboardData;
   if (!clipboardData) {
     return;
   }
 
-  clipboardData.setData('text/plain', window.getSelection().toString() + ' [Source: ' + window.location.href + ']');
+  clipboardData.setData(
+    'text/plain',
+    window.getSelection().toString() +
+      ' [Source: ' +
+      window.location.href +
+      ']'
+  );
 });
 ```
 
@@ -73,7 +76,13 @@ Quando l'utente esegue il comando di "copia" allora al testo selezionato
 viene aggiunta la stringa contenente l'URL della pagina corrente:
 
 ```javascript
-clipboardData.setData('text/plain', window.getSelection().toString() + ' [Source: ' + window.location.href + ']');
+clipboardData.setData(
+  'text/plain',
+  window.getSelection().toString() +
+    ' [Source: ' +
+    window.location.href +
+    ']'
+);
 ```
 
 ### Installazione
@@ -86,7 +95,7 @@ Per installarlo sul tuo sito ti basta utilizzare il CDN di <a href="https://www.
 https://cdn.jsdelivr.net/gh/marcocianetti/alajs@1.0.0/lib/index.min.js
 ```
 
-**Link per l'ultima versione** (*non dovresti usarlo per la production*)
+**Link per l'ultima versione** (_non dovresti usarlo per la production_)
 
 ```javascript
 https://cdn.jsdelivr.net/gh/marcocianetti/alajs/lib/index.min.js
@@ -102,7 +111,7 @@ Uno snippet di questo tipo ti da alcuni **vantaggi lato SEO** in quanto ti da la
 
 Senza dimenticare l'aspetto più importante: **il tuo lavoro viene giustamente accreditato**.
 
-*"Cosa succede se l'utente cancella l'URL dal testo una volta incollato?"*
+_"Cosa succede se l'utente cancella l'URL dal testo una volta incollato?"_
 
 Beh ovviamente nulla, e la citazione andrebbe persa.
 

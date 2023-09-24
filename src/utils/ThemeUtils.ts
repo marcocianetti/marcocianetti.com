@@ -26,14 +26,16 @@ const Colors = {
 };
 
 export default class ThemeUtils {
-
   static getTheme(): Theme | undefined {
     if (typeof window === 'undefined') {
       return undefined;
     }
 
-    const persistedColorPreference = window.localStorage.getItem(LOCAL_STORAGE_THEME_KEY);
-    const hasPersistedPreference = typeof persistedColorPreference === 'string';
+    const persistedColorPreference = window.localStorage.getItem(
+      LOCAL_STORAGE_THEME_KEY
+    );
+    const hasPersistedPreference =
+      typeof persistedColorPreference === 'string';
 
     // If the user has explicitly chosen light or dark,
     // let's use it. Otherwise, this value will be null.
@@ -60,13 +62,15 @@ export default class ThemeUtils {
 
     const root = window.document.documentElement;
 
-    Object.keys(theme).forEach((k, v) => {
-      const key = k.split(/(?=[A-Z])/).map(s => s.toLowerCase()).join('-');
+    let k: keyof typeof theme;
+    for (k in theme) {
+      const key = k
+        .split(/(?=[A-Z])/)
+        .map((s) => s.toLowerCase())
+        .join('-');
       root.style.setProperty(`--${key}`, theme[k]);
-    });
-
+    }
 
     root.style.setProperty('--initial-theme', t);
   }
-
 }

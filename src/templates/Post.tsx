@@ -1,20 +1,20 @@
-import React from 'react';
 import { graphql } from 'gatsby';
-import { GatsbyImage, getImage } from 'gatsby-plugin-image'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-import Master from '../layouts/Master';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import React from 'react';
 import PostAuthorSection from '../components/PostAuthorSection';
-import TagList from '../components/TagList';
-import ReadingBar from '../components/ReadingBar';
 import PostGitHubSection from '../components/PostGitHubSection';
+import ReadingBar from '../components/ReadingBar';
+import TagList from '../components/TagList';
+import Master from '../layouts/Master';
 import { PageNode } from '../models/Page';
 import DateUtils from '../utils/DateUtils';
 import SocialUtils from '../utils/SocialUtils';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 type Data = {
   post: PageNode;
-}
+};
 
 type Props = {
   pageContext: {
@@ -32,13 +32,15 @@ export default class Post extends React.Component<Props> {
       verticalAlign: '-0.125em',
     };
 
-    const image = node.frontmatter.thumbnail ? getImage(node.frontmatter.thumbnail) : undefined;
+    const image = node.frontmatter.thumbnail
+      ? getImage(node.frontmatter.thumbnail)
+      : undefined;
 
     return (
       <Master
         metaTags={{
           page: node,
-          pageType: 'post'
+          pageType: 'post',
         }}
         footerClassName="post-template__footer"
       >
@@ -46,29 +48,75 @@ export default class Post extends React.Component<Props> {
 
         <div className="container">
           <article>
-            <header className={image ? 'post-template__header' : 'post-template__header post-template__header--no-thumbnail'}>
-              {image && <GatsbyImage image={image} alt={node.frontmatter.title} title={node.frontmatter.title} className="post-template__header__thumbnail" />}
+            <header
+              className={
+                image
+                  ? 'post-template__header'
+                  : 'post-template__header post-template__header--no-thumbnail'
+              }
+            >
+              {image && (
+                <GatsbyImage
+                  image={image}
+                  alt={node.frontmatter.title}
+                  title={node.frontmatter.title}
+                  className="post-template__header__thumbnail"
+                />
+              )}
 
               <div className="flex flex--column">
                 <h1>{node.frontmatter.title}</h1>
 
                 <div className="post-template__meta">
                   <time className="post-template__meta__date">
-                    <FontAwesomeIcon icon={['fas', 'calendar-alt']} style={iconStyle} /> {DateUtils.format(node.fields.date)}
+                    <FontAwesomeIcon
+                      icon={['fas', 'calendar-alt']}
+                      style={iconStyle}
+                    />{' '}
+                    {DateUtils.format(node.fields.date)}
                   </time>
                   <span className="post-template__meta__ttr">
-                    <FontAwesomeIcon icon={['fas', 'book-reader']} style={iconStyle} /> {node.timeToRead} min
+                    <FontAwesomeIcon
+                      icon={['fas', 'book-reader']}
+                      style={iconStyle}
+                    />{' '}
+                    {node.timeToRead} min
                   </span>
                   <span className="post-template__meta__share">
-                    <FontAwesomeIcon icon={['fas', 'share-alt']} style={iconStyle} /> Condividi su
-                    <a title="Condividi su LinkedIn" href={SocialUtils.getLinkedInShareLink(node)} className="post-template__meta__link">
-                      <FontAwesomeIcon icon={['fab', 'linkedin']} style={iconStyle} />
+                    <FontAwesomeIcon
+                      icon={['fas', 'share-alt']}
+                      style={iconStyle}
+                    />{' '}
+                    Condividi su
+                    <a
+                      title="Condividi su LinkedIn"
+                      href={SocialUtils.getLinkedInShareLink(node)}
+                      className="post-template__meta__link"
+                    >
+                      <FontAwesomeIcon
+                        icon={['fab', 'linkedin']}
+                        style={iconStyle}
+                      />
                     </a>
-                    <a title="Condividi su Twitter" href={SocialUtils.getTwitterShareLink(node)} className="post-template__meta__link">
-                      <FontAwesomeIcon icon={['fab', 'twitter-square']} style={iconStyle} />
+                    <a
+                      title="Condividi su X"
+                      href={SocialUtils.getTwitterShareLink(node)}
+                      className="post-template__meta__link"
+                    >
+                      <FontAwesomeIcon
+                        icon={['fab', 'square-x-twitter']}
+                        style={iconStyle}
+                      />
                     </a>
-                    <a title="Condividi su Facebook" href={SocialUtils.getFacebookShareLink(node)} className="post-template__meta__link">
-                      <FontAwesomeIcon icon={['fab', 'facebook-square']} style={iconStyle} />
+                    <a
+                      title="Condividi su Facebook"
+                      href={SocialUtils.getFacebookShareLink(node)}
+                      className="post-template__meta__link"
+                    >
+                      <FontAwesomeIcon
+                        icon={['fab', 'facebook-square']}
+                        style={iconStyle}
+                      />
                     </a>
                   </span>
                 </div>
@@ -77,7 +125,10 @@ export default class Post extends React.Component<Props> {
               </div>
             </header>
 
-            <div dangerouslySetInnerHTML={{ __html: node.html || '' }} className="page"/>
+            <div
+              dangerouslySetInnerHTML={{ __html: node.html || '' }}
+              className="page"
+            />
 
             <PostGitHubSection post={node} />
           </article>
@@ -85,7 +136,7 @@ export default class Post extends React.Component<Props> {
 
         <PostAuthorSection />
       </Master>
-    )
+    );
   }
 }
 
@@ -103,12 +154,11 @@ export const PostQuery = graphql`
         title
         description
         template
-        categories
         tags
         thumbnail {
           childImageSharp {
-              gatsbyImageData
-            }
+            gatsbyImageData
+          }
         }
       }
     }

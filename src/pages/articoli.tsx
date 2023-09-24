@@ -1,20 +1,21 @@
-import * as React from 'react';
 import { graphql } from 'gatsby';
-import Master from '../layouts/Master';
+import * as React from 'react';
 import PostList from '../components/PostList';
+import Master from '../layouts/Master';
 import Page from '../models/Page';
 import PageUtils from '../utils/PageUtils';
 
-type CategoryGroup = {
+type TagGroup = {
   fieldValue: string;
+  totalCount: number;
 };
 
 type Data = {
   posts: {
     edges: Page[];
   };
-  categories: {
-    group: CategoryGroup[];
+  tags: {
+    group: TagGroup[];
   };
 };
 
@@ -25,69 +26,84 @@ type Props = {
 
 type State = {
   search: string;
-  selectedCategories: string[];
+  selectedTags: string[];
   posts: Page[];
 };
 
-export default class ArticlesPage extends React.Component<Props, State> {
-
+export default class ArticlesPage extends React.Component<
+  Props,
+  State
+> {
   constructor(props: Props) {
     super(props);
 
     this.state = {
       search: '',
-      selectedCategories: [],
+      selectedTags: [],
       posts: props.data.posts.edges,
     };
   }
 
   private filterPosts = () => {
-    const { search, selectedCategories } = this.state;
+    const { search, selectedTags } = this.state;
     const { data } = this.props;
 
-    let posts = data.posts.edges.filter(p =>
-      p.node.frontmatter.title.toLowerCase().includes(search.toLowerCase())
+    let posts = data.posts.edges.filter((p) =>
+      p.node.frontmatter.title
+        .toLowerCase()
+        .includes(search.toLowerCase())
     );
 
-    if (selectedCategories.length > 0) {
+    if (selectedTags.length > 0) {
       posts = posts.filter(
-        post =>
-          post.node.frontmatter.categories &&
-          selectedCategories.every(c => post.node.frontmatter.categories.includes(c))
+        (post) =>
+          post.node.frontmatter.tags &&
+          selectedTags.every((c) =>
+            post.node.frontmatter.tags.includes(c)
+          )
       );
     }
 
     this.setState({ posts });
   };
 
-  private handleOnSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({
-      search: event.target.value,
-    }, this.filterPosts);
+  private handleOnSearchChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    this.setState(
+      {
+        search: event.target.value,
+      },
+      this.filterPosts
+    );
   };
 
-  private handleCategoryClick = (category: CategoryGroup) => () => {
-    let selectedCategories = [...this.state.selectedCategories];
-    if (selectedCategories.includes(category.fieldValue)) {
-      selectedCategories = selectedCategories.filter(c => c !== category.fieldValue);
+  private handleTagClick = (tag: TagGroup) => () => {
+    let selectedTags = [...this.state.selectedTags];
+    if (selectedTags.includes(tag.fieldValue)) {
+      selectedTags = selectedTags.filter((c) => c !== tag.fieldValue);
     } else {
-      selectedCategories.push(category.fieldValue);
+      selectedTags.push(tag.fieldValue);
     }
 
-    this.setState({
-      selectedCategories,
-    }, this.filterPosts);
+    this.setState(
+      {
+        selectedTags,
+      },
+      this.filterPosts
+    );
   };
 
   render() {
     const posts = this.state.posts;
-    const categories = this.props.data.categories.group;
+    const tags = this.props.data.tags.group;
 
     return (
       <Master
         metaTags={{
           title: PageUtils.generateTitle('Articoli'),
-          description: 'Tra i miei articoli puoi trovare guide sullo sviluppo web, guide sull\'intelligenza artificiale e i miei progetti Open Source',
+          description:
+            "Tra i miei articoli puoi trovare guide sullo sviluppo web, guide sull'intelligenza artificiale e i miei progetti Open Source",
           path: this.props.path,
         }}
       >
@@ -96,18 +112,24 @@ export default class ArticlesPage extends React.Component<Props, State> {
             <h1>Articoli</h1>
 
             <div className="blog-page__categories-list">
-              {categories.map(c => {
-                const isActive = this.state.selectedCategories.includes(c.fieldValue);
+              {tags.map((c) => {
+                const isActive = this.state.selectedTags.includes(
+                  c.fieldValue
+                );
 
                 return (
                   <span
                     key={c.fieldValue}
-                    onClick={this.handleCategoryClick(c)}
-                    className={isActive ? `blog-page__categories-list__item blog-page__categories-list__item--active` : 'blog-page__categories-list__item'}
+                    onClick={this.handleTagClick(c)}
+                    className={
+                      isActive
+                        ? `blog-page__categories-list__item blog-page__categories-list__item--active`
+                        : 'blog-page__categories-list__item'
+                    }
                   >
-                    {c.fieldValue}
+                    {c.fieldValue} ({c.totalCount})
                   </span>
-                )
+                );
               })}
             </div>
           </div>
@@ -121,7 +143,9 @@ export default class ArticlesPage extends React.Component<Props, State> {
               onChange={this.handleOnSearchChange}
               className="text-input"
             />
-            <span className="blog-page__search__count">{posts.length}</span>
+            <span className="blog-page__search__count">
+              {posts.length}
+            </span>
           </div>
 
           <section>
@@ -131,12 +155,15 @@ export default class ArticlesPage extends React.Component<Props, State> {
       </Master>
     );
   }
-
 }
 
 export const pageQuery = graphql`
   query ArticlesQuery {
-    posts: allMarkdownRemark(filter: { frontmatter: {  template: { eq: "post" } } }, limit: 2000, sort: { fields: {date: DESC} }) {
+    posts: allMarkdownRemark(
+      filter: { frontmatter: { template: { eq: "post" } } }
+      limit: 2000
+      sort: { fields: { date: DESC } }
+    ) {
       edges {
         node {
           excerpt(pruneLength: 180)
@@ -148,7 +175,6 @@ export const pageQuery = graphql`
           frontmatter {
             title
             tags
-            categories
             template
             thumbnail {
               childImageSharp {
@@ -159,8 +185,8 @@ export const pageQuery = graphql`
         }
       }
     }
-    categories: allMarkdownRemark(limit: 2000) {
-      group(field: {frontmatter: {categories: SELECT}}) {
+    tags: allMarkdownRemark(limit: 2000) {
+      group(field: { frontmatter: { tags: SELECT } }) {
         fieldValue
         totalCount
       }

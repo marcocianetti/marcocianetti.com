@@ -1,12 +1,10 @@
 ---
-date: 2019-12-01
-title: "Introduzione agli Algoritmi Evolutivi"
-description: "Gli Algoritmi Evolutivi sono tecniche di Intelligenza Artificiale che sfruttano le nozioni della teoria dell'evoluzione per risolvere problemi di ottimizzazione"
 template: post
-thumbnail: '../images/introduzione-algoritmi-evolutivi/thumbnail.jpg'
+date: 2019-12-01
+title: 'Introduzione agli Algoritmi Evolutivi'
+description: "Gli Algoritmi Evolutivi sono tecniche di Intelligenza Artificiale che sfruttano le nozioni della teoria dell'evoluzione per risolvere problemi di ottimizzazione"
+thumbnail: ./thumbnail.jpg
 slug: introduzione-algoritmi-evolutivi
-categories:
-  - Intelligenza Artificiale
 tags:
   - intelligenza-artificiale
   - algoritmi-evolutivi
@@ -34,7 +32,7 @@ Nello sviluppo di un EA generalmente non viene effettuata nessuna assunzione sul
 
 Tuttavia, l'esplorazione di uno spazio di soluzioni molto ampio non è certamente priva di
 difficoltà. Infatti, uno dei principali fattori proibitivi degli EA è la complessità computazionale,
-dovuta maggiormente al calcolo della **funzione di fitness**. 
+dovuta maggiormente al calcolo della **funzione di fitness**.
 
 Per ovviare a questo problema si può fare affidamento su una tecnica di approssimazione della funzione di fitness.
 
@@ -109,7 +107,7 @@ dei quali può assumere un valore binario.
 Il primo dei due genitori è costituito da soli 1 e il secondo da soli 0.
 Il **punto di crossover** selezionato (indicato con una linea arancione) corrisponde alla metà del genoma.
 
-![Esempio di Crossover - Genitori](../images/introduzione-algoritmi-evolutivi/crossover-1.png "Crossover - Genitori e punto di crossover")
+![Esempio di Crossover - Genitori](./crossover-1.png 'Crossover - Genitori e punto di crossover')
 
 I nuovi individui saranno quindi composti come segue:
 
@@ -118,7 +116,7 @@ I nuovi individui saranno quindi composti come segue:
 
 Ecco il risultato:
 
-![Esempio di Crossover - Figli](../images/introduzione-algoritmi-evolutivi/crossover-2.png "Crossover - Nuovi individui")
+![Esempio di Crossover - Figli](./crossover-2.png 'Crossover - Nuovi individui')
 
 ### Mutazione
 
@@ -146,14 +144,14 @@ se applicare o meno una mutazione: se il numero risulta minore della probabilit�
 
 Iniziamo con il primo individuo:
 
-![Esempio di Mutazione](../images/introduzione-algoritmi-evolutivi/mutation-1.png "Mutazione - Primo individuo")
+![Esempio di Mutazione](./mutation-1.png 'Mutazione - Primo individuo')
 
 L'EA genera il numero casuale e il risultato è **0.74**, chiaramente maggiore di 0.03 (il nostro fattore di mutazione),
 quindi il primo individuo **non subirà alcuna mutazione**.
 
 Passiamo al secondo:
 
-![Esempio di Mutazione](../images/introduzione-algoritmi-evolutivi/mutation-2.png "Mutazione - Secondo individuo")
+![Esempio di Mutazione](./mutation-2.png 'Mutazione - Secondo individuo')
 
 L'EA genera il numero casuale e il risultato è **0.02** che, essendo minore del fattore di mutazione,
 fa sì che il secondo individuo **subisca una mutazione**.
@@ -161,12 +159,12 @@ fa sì che il secondo individuo **subisca una mutazione**.
 A questo punto viene scelto casualmente uno dei suoi geni per essere mutato.
 In questo caso è stato sorteggiato l'ultimo (indicato in arancione).
 
-![Esempio di Mutazione](../images/introduzione-algoritmi-evolutivi/mutation-3.png "Mutazione - Gene selezionato da mutare")
+![Esempio di Mutazione](./mutation-3.png 'Mutazione - Gene selezionato da mutare')
 
 Non resta che assegnare al gene selezionato per la mutazione un valore casuale tra quelli possibili,
 ed ecco il risultato della mutazione:
 
-![Esempio di Mutazione](../images/introduzione-algoritmi-evolutivi/mutation-4.png "Mutazione - Individuo mutato")
+![Esempio di Mutazione](./mutation-4.png 'Mutazione - Individuo mutato')
 
 ## Processo
 
@@ -230,7 +228,7 @@ Inoltre tieni in considerazione anche i seguenti punti:
   2. L’implementazione degli operatori genetici;
   3. Le probabilità di crossover e mutazione.
 
-Immagino che tu ora stia pensando: *Ma allora quando posso utilizzarli?*
+Immagino che tu ora stia pensando: _Ma allora quando posso utilizzarli?_
 
 Hai ragione, ma sto per darti una dritta:
 

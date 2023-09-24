@@ -1,12 +1,11 @@
+import Config from 'config/Config';
+import { getSrc } from 'gatsby-plugin-image';
+import logo from 'images/logo-256.png';
+import MetaTags from 'models/MetaTags';
 import React from 'react';
 import Helmet from 'react-helmet';
 import urljoin from 'url-join';
-import { getSrc } from 'gatsby-plugin-image';
-
-import MetaTags from 'models/MetaTags';
 import PageUtils from 'utils/PageUtils';
-import Config from 'config/Config';
-import logo from 'images/logo-256.png';
 
 type Props = MetaTags;
 
@@ -62,11 +61,11 @@ type Schema = {
 };
 
 class SeoHelmet extends React.Component<Props> {
-
   render() {
     const { page, pageType } = this.props;
     let title = this.props.title || Config.SiteTitle;
-    let description = this.props.description || Config.SiteDescription;
+    let description =
+      this.props.description || Config.SiteDescription;
     let image = Config.SiteLogo;
     let url = urljoin(Config.SiteUrl, Config.PathPrefix);
     let path = this.props.path;
@@ -176,8 +175,8 @@ class SeoHelmet extends React.Component<Props> {
         description,
       };
 
-      if (pageMeta.date) {
-        postSchema.datePublished = pageMeta.date;
+      if (page.fields.date) {
+        postSchema.datePublished = page.fields.date;
       }
 
       if (pageMeta.updated) {
@@ -188,19 +187,26 @@ class SeoHelmet extends React.Component<Props> {
     }
 
     return (
-      <Helmet title={title} htmlAttributes={{ lang: Config.SiteLanguage }}>
-        <link rel="shortcut icon" type="image/png" href={logo}/>
+      <Helmet
+        title={title}
+        htmlAttributes={{ lang: Config.SiteLanguage }}
+      >
+        <link rel="shortcut icon" type="image/png" href={logo} />
 
         <meta name="description" content={description} />
         <meta name="image" content={image} />
 
-        <script type="application/ld+json">{JSON.stringify(schemas)}</script>
+        <script type="application/ld+json">
+          {JSON.stringify(schemas)}
+        </script>
 
         <meta property="og:url" content={url} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={image} />
-        {pageType === 'post' && <meta property="og:type" content="article" />}
+        {pageType === 'post' && (
+          <meta property="og:type" content="article" />
+        )}
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:creator" content={Config.TwitterUser} />
@@ -212,7 +218,6 @@ class SeoHelmet extends React.Component<Props> {
       </Helmet>
     );
   }
-
 }
 
 export default SeoHelmet;
