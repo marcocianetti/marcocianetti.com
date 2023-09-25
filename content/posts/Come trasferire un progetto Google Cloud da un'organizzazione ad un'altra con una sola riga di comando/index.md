@@ -6,6 +6,7 @@ description: "In questo articolo vedremo trasferire un progetto Google Cloud da 
 thumbnail: ./thumbnail.jpg
 slug: come-trasferire-progetto-google-cloud
 tags:
+  - cloud-ops
   - google-cloud
   - google-tag-manager
   - tracciamento-dati
