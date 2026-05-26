@@ -1,3 +1,5 @@
+@use '../abstracts' as *;
+
 // Display for all input fields (except buttons and checkbox)
 %forms {
   display: block;

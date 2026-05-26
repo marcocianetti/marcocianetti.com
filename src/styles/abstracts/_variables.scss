@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 /* Breakpoints */
 
 $xx-small: 320px;
@@ -46,7 +48,7 @@ $grey: #ccc;
 $background-color: $white;
 $background: #f0f0f0;
 $primary-color: #1b62ff;
-$primary-hover: lighten($primary-color, 40%);
+$primary-hover: color.adjust($primary-color, $lightness: 40%);
 $secondary-color: #ff411b;
 $light-grey: #fafbfc;
 $aqua: #1bffb7;
@@ -55,7 +57,7 @@ $light: #f2f2f2;
 $alternate-background: #f0f0f0;
 $alternate-color: #404040;
 $link-color: $primary-color;
-$link-hover-color: darken($link-color, 22%);
+$link-hover-color: color.adjust($link-color, $lightness: -22%);
 $highlight: #ffeea8;
 $error: #d33c40;
 $bq-border: 16px solid #f0f0f0;
@@ -116,7 +118,7 @@ $box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.16);
 
 $button-background: white;
 $button-background-hover: $primary-hover;
-$button-color: darken($primary-color, 10%);
+$button-color: color.adjust($primary-color, $lightness: -10%);
 $button-font-weight: 600;
 $button-font-family: -apple-system, BlinkMacSystemFont, 'Roboto',
   Helvetica Neue, Helvetica, Arial, sans-serif;
@@ -139,9 +141,9 @@ $forms: (
 );
 $buttons: ('.button, a.button, button, [type=submit], [type=button]');
 $input-background: #fff;
-$placeholder: darken($accent-color, 20%);
+$placeholder: color.adjust($accent-color, $lightness: -20%);
 $form-border: 1px solid $border-color;
-$form-border-hover: 1px solid darken($border-color, 10%);
+$form-border-hover: 1px solid color.adjust($border-color, $lightness: -10%);
 $form-border-focus: 1px solid $link-color;
 
 /* Tables */
@@ -199,7 +201,7 @@ $transition-duration: 300ms;
   --background-color: #{$background-color};
   --light-background-color: #{$light-grey};
   --primary-color: #{$primary-color};
-  --light-primary-color: #{lighten($primary-color, 40%)};
+  --light-primary-color: #{color.adjust($primary-color, $lightness: 40%)};
   --text-color: #{$font-color};
   --light-text-color: #{$light-font-color};
   --heading-text-color: #{$heading-font-color};

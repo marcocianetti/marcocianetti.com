@@ -1,3 +1,6 @@
+@use 'sass:color';
+@use '../abstracts' as *;
+
 // HTML base
 
 html {
@@ -115,7 +118,7 @@ blockquote {
   padding: 1rem;
   margin: 0;
   border-left: 0.25em solid $primary-color;
-  background-color: transparentize($primary-color, 0.9);
+  background-color: rgba($primary-color, 0.1);
   font-style: italic;
   color: var(--text-color);
 

@@ -29,7 +29,14 @@ module.exports = {
     'gatsby-plugin-typescript',
 
     // Sass
-    'gatsby-plugin-sass',
+    {
+      resolve: 'gatsby-plugin-sass',
+      options: {
+        sassOptions: {
+          silenceDeprecations: ['legacy-js-api'],
+        },
+      },
+    },
 
     // Head meta data
     'gatsby-plugin-react-helmet',

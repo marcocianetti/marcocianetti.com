@@ -1,3 +1,5 @@
+@use '../abstracts' as *;
+
 .not-found-page {
   position: relative;
   height: 100vh;
@@ -89,4 +91,3 @@
   width: calc(100% + 7px);
   transform: translateX(-7px);
 }
-
