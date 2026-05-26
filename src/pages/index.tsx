@@ -3,6 +3,7 @@ import * as React from 'react';
 import PageList from '../components/PageList';
 import PostList from '../components/PostList';
 import ProjectList from '../components/ProjectList';
+import SeoHead from '../components/SeoHelmet';
 import Config from '../config/Config';
 import projects from '../data/projects';
 import marco from '../images/marco-cianetti-512px.jpg';
@@ -20,6 +21,12 @@ type Props = {
   data: Data;
 };
 
+export function Head() {
+  return (
+    <SeoHead title={`${Config.SiteTitle} | Web Developer specializzato in Javascript`} />
+  );
+}
+
 export default class IndexPage extends React.Component<Props> {
   constructor(props: Props) {
     super(props);
@@ -27,11 +34,7 @@ export default class IndexPage extends React.Component<Props> {
 
   render() {
     return (
-      <Master
-        metaTags={{
-          title: `${Config.SiteTitle} | Web Developer specializzato in Javascript`,
-        }}
-      >
+      <Master>
         <div className="index-page__container container">
           <div className="index-page__heading">
             <div className="index-page__text-container">

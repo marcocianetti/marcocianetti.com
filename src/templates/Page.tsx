@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
+import SeoHead from '../components/SeoHelmet';
 import Master from '../layouts/Master';
 import { PageNode } from '../models/Page';
 
@@ -12,17 +13,16 @@ type Props = {
   }
 };
 
+export function Head({ data }: { data: { markdownRemark: PageNode } }) {
+  return <SeoHead page={data.markdownRemark} pageType="page" />;
+}
+
 export default class Page extends React.Component<Props> {
   render() {
     const node = this.props.data.markdownRemark;
 
     return (
-      <Master
-        metaTags={{
-          page: node,
-          pageType: 'page',
-        }}
-      >
+      <Master>
 
         <div className="container">
           <article>

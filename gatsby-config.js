@@ -38,9 +38,6 @@ module.exports = {
       },
     },
 
-    // Head meta data
-    'gatsby-plugin-react-helmet',
-
     // Markdown transformer
     {
       resolve: 'gatsby-transformer-remark',

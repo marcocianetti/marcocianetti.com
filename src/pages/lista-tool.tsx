@@ -1,6 +1,7 @@
 import React from 'react';
 import Master from '../layouts/Master';
 import LoadingView from '../components/LoadingView';
+import SeoHead from '../components/SeoHelmet';
 import Config from '../config/Config';
 import StyleUtils from '../utils/StyleUtils';
 
@@ -31,6 +32,17 @@ function ToolItem(tool: Tool) {
         Vai al sito
       </a>
     </div>
+  );
+}
+
+export function Head() {
+  const today = new Date();
+  const title = `Lista tool [Ultimo aggiornamento: ${today.getMonth() + 1}/${today.getFullYear()}]`;
+  return (
+    <SeoHead
+      title={`${Config.SiteTitle} | ${title}`}
+      description="La mia lista di tool che spaziano dal tech al marketing, costruita e sempre in aggiornamento grazie all'aiuto dei miei colleghi di 247X"
+    />
   );
 }
 
@@ -120,12 +132,7 @@ export default function ToolsListPage(props: Props) {
   const allCategories = getCategories();
 
   return (
-    <Master
-      metaTags={{
-        title: `${Config.SiteTitle} | ${title}`,
-        description: 'La mia lista di tool che spaziano dal tech al marketing, costruita e sempre in aggiornamento grazie all\'aiuto dei miei colleghi di 247X',
-      }}
-    >
+    <Master>
       <div className="container">
         <h1>{title}</h1>
         <p>Ecco la mia lista di tool che spaziano dal tech al marketing, costruita e sempre in aggiornamento grazie all'aiuto

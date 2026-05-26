@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { graphql, Link } from 'gatsby';
+import SeoHead from '../components/SeoHelmet';
 import Master from '../layouts/Master';
 import PageUtils from '../utils/PageUtils';
 import RouteUtils from '../utils/RouteUtils';
@@ -20,18 +21,22 @@ type Props = {
   data: Data;
 };
 
+export function Head({ location }: { location: { pathname: string } }) {
+  return (
+    <SeoHead
+      title={PageUtils.generateTitle('Tag')}
+      description="Lista dei tag dei miei articoli. Seleziona il tag che più ti interessa e leggi gli articoli ad esso correlati."
+      path={location.pathname}
+    />
+  );
+}
+
 export default class TagsPage extends React.Component<Props> {
   render() {
     const { data } = this.props;
 
     return (
-      <Master
-        metaTags={{
-          title: PageUtils.generateTitle('Tag'),
-          description: 'Lista dei tag dei miei articoli. Seleziona il tag che più ti interessa e leggi gli articoli ad esso correlati.',
-          path: this.props.path,
-        }}
-      >
+      <Master>
         <div className="container">
           <h1>Tag</h1>
 
