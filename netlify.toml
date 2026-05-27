@@ -4,3 +4,6 @@
 [build.environment]
   NODE_VERSION = "24"
   YARN_VERSION = "1.22.19"
+
+[[plugins]]
+  package = "@netlify/plugin-lighthouse@6"
