@@ -4,6 +4,7 @@ import React from 'react';
 import PostAuthorSection from '../components/PostAuthorSection';
 import PostGitHubSection from '../components/PostGitHubSection';
 import ReadingBar from '../components/ReadingBar';
+import SeoHead from '../components/SeoHelmet';
 import TagList from '../components/TagList';
 import Master from '../layouts/Master';
 import { PageNode } from '../models/Page';
@@ -23,6 +24,10 @@ type Props = {
   data: Data;
 };
 
+export function Head({ data }: { data: Data }) {
+  return <SeoHead page={data.post} pageType="post" />;
+}
+
 export default class Post extends React.Component<Props> {
   render() {
     const node = this.props.data.post;
@@ -38,10 +43,6 @@ export default class Post extends React.Component<Props> {
 
     return (
       <Master
-        metaTags={{
-          page: node,
-          pageType: 'post',
-        }}
         footerClassName="post-template__footer"
       >
         <ReadingBar />

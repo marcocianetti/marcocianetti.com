@@ -1,4 +1,7 @@
+const netlifyAdapter = require('gatsby-adapter-netlify').default;
+
 module.exports = {
+  adapter: netlifyAdapter(),
   trailingSlash: 'never',
 
   siteMetadata: {
@@ -29,10 +32,14 @@ module.exports = {
     'gatsby-plugin-typescript',
 
     // Sass
-    'gatsby-plugin-sass',
-
-    // Head meta data
-    'gatsby-plugin-react-helmet',
+    {
+      resolve: 'gatsby-plugin-sass',
+      options: {
+        sassOptions: {
+          silenceDeprecations: ['legacy-js-api'],
+        },
+      },
+    },
 
     // Markdown transformer
     {
@@ -84,24 +91,6 @@ module.exports = {
         // or append it to the <body> (making it non-blocking).
         // Defaults to false meaning GTM will be added in the <head> (again, as suggested by Google).
         // addTagInBody: false
-      },
-    },
-
-    // Netlify
-    {
-      resolve: `gatsby-plugin-netlify`,
-      options: {
-        headers: {
-          '/*.js': [
-            'cache-control: public, max-age=31536000, immutable',
-          ],
-          '/*.css': [
-            'cache-control: public, max-age=31536000, immutable',
-          ],
-          '/sw.js': [
-            'cache-control: public, max-age=0, must-revalidate',
-          ],
-        },
       },
     },
 

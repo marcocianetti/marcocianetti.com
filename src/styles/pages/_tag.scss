@@ -1,3 +1,6 @@
+@use 'sass:color';
+@use '../abstracts' as *;
+
 .tags-page__tags-list {
   span {
     display: inline-block;
@@ -5,7 +8,7 @@
     background: $light;
     border: 2px dashed transparent;
     border-radius: $border-radius;
-    color: lighten($font-color, 10%);
+    color: color.adjust($font-color, $lightness: 10%);
     font-size: 0.8rem;
     font-weight: 400;
     margin: 0 0.5rem 0.5rem 0;
@@ -18,7 +21,7 @@
 
     &:hover,
     &:focus {
-      background: darken($light, 5%);
+      background: color.adjust($light, $lightness: -5%);
       color: $font-color;
     }
 

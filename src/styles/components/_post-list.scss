@@ -1,3 +1,6 @@
+@use 'sass:color';
+@use '../abstracts' as *;
+
 $post-list__item__thumbnail-size-mobile: 40px;
 $post-list__item__thumbnail-size: 50px;
 $post-list__item__thumbnail-size-dense: 30px;
@@ -89,8 +92,8 @@ $post-list__item__badge-size: 100px;
 
 .post-list__item__badge--new {
   font-size: 0.9rem;
-  background: lighten($yellow, 20%);
-  color: darken($yellow, 33%);
+  background: color.adjust($yellow, $lightness: 20%);
+  color: color.adjust($yellow, $lightness: -33%);
   border-radius: $border-radius;
   padding: 0.5rem 1rem;
   text-align: center;
@@ -98,7 +101,7 @@ $post-list__item__badge-size: 100px;
 
 .post-list__item__badge--popular {
   font-size: 0.9rem;
-  background: lighten($purple, 40%);
+  background: color.adjust($purple, $lightness: 40%);
   color: $purple;
   border-radius: $border-radius;
   padding: 0.5rem 1rem;

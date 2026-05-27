@@ -1,14 +1,20 @@
 import * as React from 'react';
-import SeoHelmet from '../components/SeoHelmet';
+import SeoHead from '../components/SeoHelmet';
 import PageUtils from '../utils/PageUtils';
 import mushroom from '../images/super-mario/mushroom.jpg';
 import '../styles/main.scss';
 
-type Props = {
-  path: string;
-};
+export function Head({ location }: { location: { pathname: string } }) {
+  return (
+    <SeoHead
+      title={PageUtils.generateTitle('Pagina non trovata')}
+      description="La pagina che cerchi non è a questo URL"
+      path={location.pathname}
+    />
+  );
+}
 
-export default class NotFoundPage extends React.Component<Props> {
+export default class NotFoundPage extends React.Component {
 
   componentDidMount() {
     window.addEventListener('keyup', this.handleOnKeyUp);
@@ -27,12 +33,6 @@ export default class NotFoundPage extends React.Component<Props> {
   render() {
     return (
       <>
-        <SeoHelmet
-          title={PageUtils.generateTitle('Pagina non trovata')}
-          description="La pagina che cerchi non è a questo URL"
-          path={this.props.path}
-        />
-
         <div className="not-found-page">
           <header>
             <div className="not-found-page__header__container container">

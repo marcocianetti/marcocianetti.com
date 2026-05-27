@@ -1,6 +1,7 @@
 import { graphql } from 'gatsby';
 import * as React from 'react';
 import PostList from '../components/PostList';
+import SeoHead from '../components/SeoHelmet';
 import Master from '../layouts/Master';
 import Page from '../models/Page';
 import PageUtils from '../utils/PageUtils';
@@ -29,6 +30,16 @@ type State = {
   selectedTags: string[];
   posts: Page[];
 };
+
+export function Head({ location }: { location: { pathname: string } }) {
+  return (
+    <SeoHead
+      title={PageUtils.generateTitle('Articoli')}
+      description="Tra i miei articoli puoi trovare guide sullo sviluppo web, guide sull'intelligenza artificiale e i miei progetti Open Source"
+      path={location.pathname}
+    />
+  );
+}
 
 export default class ArticlesPage extends React.Component<
   Props,
@@ -99,14 +110,7 @@ export default class ArticlesPage extends React.Component<
     const tags = this.props.data.tags.group;
 
     return (
-      <Master
-        metaTags={{
-          title: PageUtils.generateTitle('Articoli'),
-          description:
-            "Tra i miei articoli puoi trovare guide sullo sviluppo web, guide sull'intelligenza artificiale e i miei progetti Open Source",
-          path: this.props.path,
-        }}
-      >
+      <Master>
         <div className="container">
           <div>
             <h1>Articoli</h1>
