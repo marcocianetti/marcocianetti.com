@@ -29,10 +29,14 @@ module.exports = {
     'gatsby-plugin-typescript',
 
     // Sass
-    'gatsby-plugin-sass',
-
-    // Head meta data
-    'gatsby-plugin-react-helmet',
+    {
+      resolve: 'gatsby-plugin-sass',
+      options: {
+        sassOptions: {
+          silenceDeprecations: ['legacy-js-api'],
+        },
+      },
+    },
 
     // Markdown transformer
     {

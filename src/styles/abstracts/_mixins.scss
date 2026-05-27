@@ -1,16 +1,21 @@
+@use 'sass:map';
+@use 'sass:meta';
+@use 'variables' as *;
+
 /// Responsive breakpoint manager
 /// @access public
 /// @param {String} $breakpoint - Breakpoint
 /// @requires $min-breakpoints
 @mixin min($breakpoint) {
-  $raw-query: map-get($min-breakpoints, $breakpoint);
+  $raw-query: map.get($min-breakpoints, $breakpoint);
 
   @if $raw-query {
-    $query: if(
-      type-of($raw-query) == 'string',
-      unquote($raw-query),
-      inspect($raw-query)
-    );
+    $query: null;
+    @if meta.type-of($raw-query) == 'string' {
+      $query: unquote($raw-query);
+    } @else {
+      $query: meta.inspect($raw-query);
+    }
 
     @media #{$query} {
       @content;
@@ -22,8 +27,8 @@
 }
 
 @mixin between($b1, $b2) {
-  $rq1: map-get($breakpoints, $b1);
-  $rq2: map-get($breakpoints, $b2);
+  $rq1: map.get($breakpoints, $b1);
+  $rq2: map.get($breakpoints, $b2);
 
   @if $rq1 and $rq2 {
     @media (min-width: $rq1) and (max-width: ($rq2 - 1)) {

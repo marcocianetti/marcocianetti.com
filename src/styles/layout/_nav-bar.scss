@@ -1,3 +1,5 @@
+@use '../abstracts' as *;
+
 .nav-bar {
   width: 100%;
   height: $nav-bar-height--mobile;

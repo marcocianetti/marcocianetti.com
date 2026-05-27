@@ -1,3 +1,6 @@
+@use 'sass:color';
+@use '../abstracts' as *;
+
 .index-page__container {
   display: flex;
   flex-direction: column;
@@ -16,7 +19,7 @@
     align-items: flex-start;
     margin-bottom: 2rem;
     padding-bottom: 1rem;
-    border-bottom: 2px solid lighten($border-color, 12%);
+    border-bottom: 2px solid color.adjust($border-color, $lightness: 12%);
   }
 }
 

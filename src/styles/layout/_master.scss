@@ -1,3 +1,5 @@
+@use '../abstracts' as *;
+
 .master-layout__main {
   min-height: calc(100vh - #{$nav-bar-height--mobile + $footer-height--mobile});
   padding: 48px 0;

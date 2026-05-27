@@ -1,3 +1,5 @@
+@use '../abstracts' as *;
+
 .author-card__avatar-container {
   width: 200px;
   border-radius: $border-radius;
