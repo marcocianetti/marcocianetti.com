@@ -46,6 +46,7 @@
     "url-join": "^5.0.0"
   },
   "devDependencies": {
+    "@netlify/plugin-lighthouse": "^6",
     "@types/lodash.kebabcase": "^4.1.7",
     "@types/node": "^20.6.3",
     "@types/react": "^18.2.22",

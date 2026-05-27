@@ -6,4 +6,4 @@
   YARN_VERSION = "1.22.19"
 
 [[plugins]]
-  package = "@netlify/plugin-lighthouse@6"
+  package = "@netlify/plugin-lighthouse"
