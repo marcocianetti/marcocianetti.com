@@ -10,7 +10,7 @@ const RouteUtils = {
 
 const DateUtils = {
   parse: function (date) {
-    return moment(date, 'DD-MM-YYYY');
+    return moment(date, 'YYYY-MM-DD');
   },
 };
 
@@ -105,6 +105,20 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         node,
         name: 'date',
         value: date.toISOString(),
+      });
+    }
+
+    // Create updated field
+    if (
+      Object.prototype.hasOwnProperty.call(node, 'frontmatter') &&
+      Object.prototype.hasOwnProperty.call(node.frontmatter, 'updated')
+    ) {
+      const updated = new Date(node.frontmatter.updated);
+
+      createNodeField({
+        node,
+        name: 'updated',
+        value: updated.toISOString(),
       });
     }
 

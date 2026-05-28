@@ -176,12 +176,20 @@ const SeoHead = (props: Props) => {
       postSchema.datePublished = page.fields.date;
     }
 
-    if (pageMeta.updated) {
-      postSchema.dateModified = pageMeta.updated;
+    if (page.fields.updated) {
+      postSchema.dateModified = page.fields.updated;
     }
 
     schemas.push(postSchema);
   }
+
+  const articleMetaTags = pageType === 'post' ? (
+    <>
+      <meta property="og:type" content="article" />
+      <meta property="article:published_time" content={page?.fields.date} />
+      (page?.fields.updated && <meta property="article:modified_time" content={page?.fields.updated} />)
+    </>
+  ) : null;
 
   return (
     <>
@@ -200,9 +208,8 @@ const SeoHead = (props: Props) => {
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
-      {pageType === 'post' && (
-        <meta property="og:type" content="article" />
-      )}
+
+      {articleMetaTags}
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:creator" content={Config.TwitterUser} />

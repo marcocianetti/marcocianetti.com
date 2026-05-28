@@ -25,6 +25,7 @@ type Props = {
 };
 
 export function Head({ data }: { data: Data }) {
+  console.log(data.post);
   return <SeoHead page={data.post} pageType="post" />;
 }
 
@@ -43,6 +44,7 @@ export default class Post extends React.Component<Props> {
 
     return (
       <Master
+        mainClassName='post-template'
         footerClassName="post-template__footer"
       >
         <ReadingBar />
@@ -69,13 +71,30 @@ export default class Post extends React.Component<Props> {
                 <h1>{node.frontmatter.title}</h1>
 
                 <div className="post-template__meta">
-                  <time className="post-template__meta__date">
+                  <time 
+                    aria-label='Data di pubblicazione'
+                    dateTime={node.fields.date}
+                    className="post-template__meta__date"
+                  >
                     <FontAwesomeIcon
                       icon={['fas', 'calendar-alt']}
                       style={iconStyle}
                     />{' '}
                     {DateUtils.format(node.fields.date)}
                   </time>
+                  {node.fields.updated && (
+                    <time 
+                      aria-label='Data ultimo aggiornamento'
+                      dateTime={node.fields.updated}
+                      className="post-template__meta__date"
+                    >
+                    <FontAwesomeIcon
+                      icon={['fas', 'arrows-rotate']}
+                      style={iconStyle}
+                    />{' '}
+                    {DateUtils.format(node.fields.updated)}
+                  </time>
+                  )}
                   <span className="post-template__meta__ttr">
                     <FontAwesomeIcon
                       icon={['fas', 'book-reader']}
@@ -126,6 +145,16 @@ export default class Post extends React.Component<Props> {
               </div>
             </header>
 
+            {node.tableOfContents && (
+              <div className="post-template__toc">
+                <h2>Indice</h2>
+                <nav
+                  aria-label="Indice dell'articolo"
+                  dangerouslySetInnerHTML={{ __html: node.tableOfContents }}
+                />
+              </div>
+            )}
+
             <div
               dangerouslySetInnerHTML={{ __html: node.html || '' }}
               className="page"
@@ -145,10 +174,12 @@ export const PostQuery = graphql`
   query PostBySlug($slug: String!) {
     post: markdownRemark(fields: { slug: { eq: $slug } }) {
       html
+      tableOfContents(maxDepth: 2)
       timeToRead
       excerpt
       fields {
         date
+        updated
         slug
       }
       frontmatter {

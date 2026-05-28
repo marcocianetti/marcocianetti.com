@@ -1,8 +1,9 @@
 ---
 template: post
 date: 2020-08-02
-title: 'Algoritmi Genetici (con esempio)'
-description: 'In questo articolo vedremo cosa sono gli algoritmi genetici, la tipologia più famosa di algoritmi evolutivi, e una loro semplice applicazione.'
+updated: 2026-05-28
+title: 'Algoritmi Genetici: cosa sono e come funzionano'
+description: 'Cosa sono gli algoritmi genetici, come funzionano e come applicarli: guida completa con esempio interattivo da provare subito.'
 thumbnail: ./thumbnail.jpg
 slug: algoritmi-genetici-con-esempio
 tags:
@@ -240,3 +241,61 @@ Ti basta andare su [questa pagina](https://marcocianetti.github.io/tutorial/scri
 Qui puoi vedere i risultati di una mia esecuzione, dove con 253 generazioni l'algoritmo ha trovato la soluzione:
 
 !["Hello World" scritto con un algoritmo genetico](./hello-world-con-algoritmo-genetico.jpg)
+
+## Casi d'uso degli algoritmi genetici
+
+Come hai potuto capire, gli algoritmi genetici si applicano a problemi di ottimizzazione
+computazionalmente difficili. Se vuoi approfondire quando ha senso usare un algoritmo
+evolutivo (e quando no), ti rimando alla sezione dedicata nell'articolo
+[Introduzione agli Algoritmi Evolutivi](/articoli/introduzione-algoritmi-evolutivi#quando-utilizzarli).
+
+Qui invece vediamo qualche caso d'uso concreto specifico dei GA.
+
+**Logistica** — Il problema del commesso viaggiatore (trovare il percorso più breve
+tra N città) è uno dei più classici: lo spazio delle soluzioni cresce esponenzialmente
+con il numero di città, ma un algoritmo genetico trova ottime approssimazioni in tempi ragionevoli.
+
+**Aerospace** — La NASA ha usato un algoritmo genetico per progettare l'antenna
+della missione Space Technology 5. La forma risultante era così insolita che nessun
+ingegnere l'avrebbe disegnata a mano — eppure funzionava meglio di qualsiasi
+design convenzionale ([Evolved antenna](https://en.wikipedia.org/wiki/Evolved_antenna)).
+
+**Videogiochi** — Un nerd come me doveva per forza citare questo campo.
+
+- **MarI/O** — SethBling ha applicato il NEAT per far imparare
+  a un agente a giocare a Super Mario World da zero, senza alcuna regola scritta a mano.
+  Vi lascio il [video su YouTube](https://www.youtube.com/watch?v=qv6UVOQ0F44), enjoy.
+- **AI degli NPC** — Invece di scrivere comportamenti a mano "hard-coded", alcuni studi usano
+  algoritmi evolutivi per far "evolvere" l'intelligenza dei nemici e degli NPC durante lo sviluppo, o durante il gameplay stesso,
+  dando al giocatore un'esperienza diversa in base alla sua sessione di gioco.
+  In questo [articolo di HP](https://www.hp.com/us-en/shop/tech-takes/adaptive-ai-in-games-explained) trovi degli esempi molto interessanti, come quello di *Alien: Isolation (del 2014)* dove l'alieno impara i pattern del giocatore (dove si nasconde più spesso, che strumenti utilizza, ...) e adatta la sua strategia di conseguenza.
+
+> Io stesso ho applicato qualcosa di simile al famoso Flappy Bird con l'algoritmo NEAT in JavaScript.
+> Puoi trovare il progetto su [GitHub](https://github.com/marcocianetti/neat-flappy-bird)
+> — e presto arriverà anche un articolo dedicato.
+
+## Domande frequenti
+
+### • Gli algoritmi genetici fanno parte del Machine Learning?
+
+Dal mio punto di vista **direi di no**, ma dipende a cosa si riferisce con "Machine Learning". In senso stretto, il ML si riferisce a sistemi che **imparano da dati etichettati** (supervised learning) o da ricompense (reinforcement learning). Gli algoritmi genetici invece ottimizzano soluzioni attraverso la selezione naturale, scontrandosi con altri individui — non "imparano" nel senso tradizionale.
+
+Detto questo, entrambi appartengono alla famiglia più grande dell'Intelligenza Artificiale, ed è anche possibile applicarli insieme: è possibile ad esempio usare un GA per ottimizzare i pesi di una rete neurale, o per selezionare le feature migliori da dare in pasto a un modello ML.
+
+### • Qual è la differenza tra algoritmo genetico e algoritmo evolutivo?
+
+Gli **algoritmi evolutivi** sono la categoria generale: includono strategie evolutive, programmazione evolutiva, programmazione genetica e gli algoritmi genetici stessi.
+
+Gli **algoritmi genetici** sono un sottoinsieme specifico degli algoritmi evolutivi.
+
+> Ho approfondito questa distinzione nell'articolo [Introduzione agli Algoritmi Evolutivi](/articoli/introduzione-algoritmi-evolutivi).
+
+### • Gli algoritmi genetici sono deterministici?
+
+No — sono algoritmi **stocastici**. La selezione, il [crossover](/articoli/crossover-algoritmi-evolutivi) e soprattutto la [mutazione](/articoli/mutazione-algoritmi-evolutivi) introducono **casualità**. Questo significa che eseguendo lo stesso algoritmo due volte sullo stesso problema otterrai risultati diversi (e nel nostro esempio *"Hello World!"* il numero di generazioni cambia ad ogni run).
+
+Questa casualità non è un difetto: è ciò che permette all'algoritmo di *esplorare lo spazio delle soluzioni* senza rimanere intrappolato in un ottimo locale.
+
+### • Quando NON usare un algoritmo genetico?
+
+Quando il problema ha una soluzione analitica esatta, quando lo spazio delle soluzioni è piccolo, o quando hai bisogno di risultati deterministici e riproducibili. In quei casi algoritmi come il *gradient descent* o la *programmazione dinamica* sono scelte più appropriate.
