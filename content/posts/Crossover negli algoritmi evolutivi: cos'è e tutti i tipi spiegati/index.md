@@ -1,8 +1,9 @@
 ---
 template: post
 date: 2023-02-26
-title: "Il crossover negli algoritmi evolutivi: cos'è e quali tipologie esistono"
-description: "Il crossover è un'altra delle fasi fondamentali degli algoritmi evolutivi. Scopri come funziona, quali tipologie esistono e quale può fare al caso tuo."
+updated: 2026-05-28
+title: "Crossover negli Algoritmi Evolutivi: cos'è e tutti i tipi spiegati"
+description: "Cos'è il crossover negli algoritmi evolutivi, come funziona e quali tipologie esistono: one-point, k-points e uniforme, con esempi di codice in JavaScript."
 thumbnail: ./thumbnail.jpg
 slug: crossover-algoritmi-evolutivi
 tags:
@@ -94,6 +95,41 @@ Il one-point crossover è un metodo semplice (anche da implementare) e utile per
 
 ![Esempio di K-points crossover](./crossover-k-punti.png 'K-points crossover')
 
+#### Esempio di implementazione in JavaScript
+
+```javascript
+function kPointsCrossover(parent1, parent2, k) {
+  const length = parent1.length;
+
+  // Genera k punti di crossover casuali e ordinali
+  const points = Array.from({ length: k }, () =>
+    Math.floor(Math.random() * (length - 1)) + 1
+  ).sort((a, b) => a - b);
+
+  let child1 = '';
+  let child2 = '';
+  let useFirst = true;
+  let prev = 0;
+
+  for (const point of points) {
+    child1 += useFirst
+      ? parent1.substring(prev, point)
+      : parent2.substring(prev, point);
+    child2 += useFirst
+      ? parent2.substring(prev, point)
+      : parent1.substring(prev, point);
+    useFirst = !useFirst;
+    prev = point;
+  }
+
+  // Aggiunge i geni rimanenti dopo l'ultimo punto
+  child1 += useFirst ? parent1.substring(prev) : parent2.substring(prev);
+  child2 += useFirst ? parent2.substring(prev) : parent1.substring(prev);
+
+  return [child1, child2];
+}
+```
+
 #### Pro e Contro del k-points crossover
 
 Il k-points crossover è un metodo di crossover più avanzato rispetto al one-point crossover, in grado di generare una maggiore diversità tra i genitori e di controllare il grado di conservazione delle informazioni (se i punti di crossover vengono selezionati manualmente). Tuttavia, richiede una maggiore complessità di implementazione.
@@ -131,6 +167,29 @@ function uniformCrossover(parent1, parent2) {
 #### Pro e Contro del crossover uniforme
 
 Il crossover uniforme è un metodo di crossover abbastanza semplice, con un'implementazione che non richiede grossi sforzi e che _garantisce un'elevata diversità delle soluzioni_, cosa che lo rende _adatto per problemi molto complessi_ e che richiedono di spaziare in un'ampia gamma di soluzioni.
+
+## Quale tipologia scegliere?
+
+Non esiste una risposta universale, ma alcune linee guida possono aiutarti a scegliere.
+
+Usa il **one-point crossover** quando il problema è semplice e la posizione
+dei geni nel cromosoma ha importanza (ovvero i geni vicini sono correlati tra loro).
+
+Usa il **k-points crossover** quando vuoi più controllo sulla diversità delle
+soluzioni. Con k=2 (two-point crossover) si riduce il problema del one-point
+di perdere troppe informazioni su cromosomi lunghi, mantenendo comunque
+la correlazione tra geni adiacenti.
+
+Usa il **crossover uniforme** quando la posizione dei geni nel cromosoma
+non ha rilevanza (quindi i geni non sono correlati) e vuoi massimizzare la diversità della popolazione.
+È la scelta più comune per problemi complessi dove lo spazio delle soluzioni
+è **molto ampio**.
+
+> **TL;DR**
+>
+> Se stai iniziando, parti dal **one-point** e passa al
+> **uniforme** se l'algoritmo converge troppo velocemente su soluzioni
+> sub-ottimali (segno che la diversità è insufficiente).
 
 ## Considerazioni finali
 

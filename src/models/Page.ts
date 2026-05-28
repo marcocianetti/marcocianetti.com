@@ -6,6 +6,7 @@ type Page = {
 
 export type PageNode = {
   html: string;
+  tableOfContents?: string;
 
   timeToRead?: number;
   excerpt?: string;
@@ -13,6 +14,8 @@ export type PageNode = {
   fields: {
     date: string;
     slug: string;
+    
+    updated?: string;
   };
 
   frontmatter: {
@@ -21,7 +24,6 @@ export type PageNode = {
     template: string;
 
     description?: string;
-    updated?: string;
     thumbnail?: ImageDataLike;
   };
 };
