@@ -10,7 +10,7 @@ export default function PostGitHubSection(props: Props) {
     return (
         <div className="page">
             <h2>Contribuisci</h2>
-            <p>Hai trovato degli errori nell'articolo? Vuoi aggiungere qualche altra nozione o dettaglio?</p>
+            <p><b>Attenzione</b>: questo articolo è stato <u>scritto da un umano</u> e può contenere degli errori. Ne hai trovato uno o vuoi aggiungere qualche altra nozione o dettaglio?</p>
             <p>Sentiti libero di <a href={SocialUtils.getGithubEditLink(props.post)}>modificarlo su GitHub</a> ✏️</p>
         </div>
     );
