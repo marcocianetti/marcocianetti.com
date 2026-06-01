@@ -94,6 +94,26 @@ module.exports = {
       },
     },
 
+    // PostHog
+    {
+      resolve: `gatsby-plugin-posthog`,
+      options: {
+        apiKey: "phc_vGnMbQEtYLL3TKpSQK7ZPuuZMoS7Lj5oG8LqSs2d9N7o",
+        // apiHost: "https://eu.i.posthog.com",
+        apiHost: "https://t.marcocianetti.com",
+        head: true,
+        // Enable posthog analytics tracking during development (optional, default: false)
+        isEnabledDevMode: false,
+        initOptions: {
+          cookieless_mode: 'always',
+          persistence: 'memory',
+          capture_pageview: false,
+          person_profiles: 'identified_only',
+          ui_host: 'https://eu.posthog.com',
+        }
+      },
+    },
+
     {
       resolve: 'gatsby-plugin-nprogress',
       options: {

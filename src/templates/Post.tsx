@@ -25,7 +25,6 @@ type Props = {
 };
 
 export function Head({ data }: { data: Data }) {
-  console.log(data.post);
   return <SeoHead page={data.post} pageType="post" />;
 }
 
