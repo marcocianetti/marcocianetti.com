@@ -183,11 +183,42 @@ const SeoHead = (props: Props) => {
     schemas.push(postSchema);
   }
 
+  // Add generic page schema (dates only, no author/publisher like a blog post)
+  if (page && pageType === 'page') {
+    const pageMeta = page.frontmatter!;
+
+    const webPageSchema: Schema = {
+      '@context': 'http://schema.org',
+      '@type': 'WebPage',
+
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': url,
+      },
+
+      url: siteUrl,
+      name: title,
+      alternateName: Config.SiteAltTitle ? Config.SiteAltTitle : '',
+      headline: title,
+      description,
+    };
+
+    if (page.fields.date) {
+      webPageSchema.datePublished = page.fields.date;
+    }
+
+    if (page.fields.updated) {
+      webPageSchema.dateModified = page.fields.updated;
+    }
+
+    schemas.push(webPageSchema);
+  }
+
   const articleMetaTags = pageType === 'post' ? (
     <>
       <meta property="og:type" content="article" />
       <meta property="article:published_time" content={page?.fields.date} />
-      (page?.fields.updated && <meta property="article:modified_time" content={page?.fields.updated} />)
+      {page?.fields.updated && <meta property="article:modified_time" content={page?.fields.updated} />}
     </>
   ) : null;
 

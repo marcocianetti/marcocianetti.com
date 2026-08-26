@@ -1,6 +1,5 @@
 import { graphql } from 'gatsby';
 import * as React from 'react';
-import PageList from '../components/PageList';
 import PostList from '../components/PostList';
 import ProjectList from '../components/ProjectList';
 import SeoHead from '../components/SeoHelmet';
@@ -64,32 +63,13 @@ export default class IndexPage extends React.Component<Props> {
             e sono appassionato di{' '}
             <strong>Intelligenza Artificiale</strong>.
           </p>
-          <p>
-            Con{' '}
-            <a
-              title="Sito web di 247X - Il tuo Team di Crescita Dedicato"
-              href="https://247x.io"
-              target="_blank"
-            >
-              247X - Il tuo Team di Crescita Dedicato
-            </a>{' '}
-            ho fatto della <strong>Metodologia Lean</strong> e dell'
-            <strong>Analisi dei Dati</strong> il mio mantra.
-          </p>
           <p>Tra i miei articoli troverai:</p>
           <ul>
-            <li>Guide sullo Sviluppo Web;</li>
-            <li>Guide sull'Intelligenza Artificiale;</li>
-            <li>I miei progetti Open Source.</li>
+            <li>Guide sullo <strong>Sviluppo Web</strong>;</li>
+            <li>Guide sull'<strong>Intelligenza Artificiale</strong>;</li>
+            <li>I miei progetti <strong>Open Source</strong>.</li>
           </ul>
         </div>
-
-        <section className="index-page__section container">
-          <h2 className="index-page__section-title">
-            Potrebbe interessarti
-          </h2>
-          <PageList />
-        </section>
 
         <section className="index-page__section container">
           <h2 className="index-page__section-title">

@@ -1,11 +1,38 @@
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
-import { faBookReader, faCalendarAlt, faShareAlt, faArrowsRotate } from '@fortawesome/free-solid-svg-icons'
+import {
+  faBookReader,
+  faCalendarAlt,
+  faShareAlt,
+  faArrowsRotate,
+  faBriefcase,
+  faGraduationCap,
+  faCode,
+  faLanguage,
+  faDownload,
+  faEnvelope,
+  faPhone,
+  faLocationDot,
+} from '@fortawesome/free-solid-svg-icons'
 
 export default class IconUtils {
 
   static initLibrary() {
-    library.add(fab, faBookReader, faCalendarAlt, faShareAlt, faArrowsRotate);
+    library.add(
+      fab,
+      faBookReader,
+      faCalendarAlt,
+      faShareAlt,
+      faArrowsRotate,
+      faBriefcase,
+      faGraduationCap,
+      faCode,
+      faLanguage,
+      faDownload,
+      faEnvelope,
+      faPhone,
+      faLocationDot,
+    );
   }
 
 }

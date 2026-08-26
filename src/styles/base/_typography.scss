@@ -8,6 +8,11 @@
   src: url('../fonts/PressStart.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'GoogleSansCode';
+  src: url('../fonts/GoogleSansCode.ttf') format('truetype');
+}
+
 // Headings
 
 h1,
@@ -100,4 +105,11 @@ h5 {
   h5 {
     font-size: $h5;
   }
+}
+
+.code {
+  font-family: 'GoogleSansCode', monospace;
+  font-weight: 500;
+  letter-spacing: .03rem;
+  text-transform: uppercase;
 }
