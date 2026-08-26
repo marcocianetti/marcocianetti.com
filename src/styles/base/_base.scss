@@ -58,6 +58,16 @@ ol li ol {
   margin-bottom: 0;
 }
 
+ul {
+  padding-inline-start: 20px;
+}
+
+@include min('small') {
+  ul {
+    padding-inline-start: 40px;
+  }
+}
+
 // Link styling
 a {
   color: $link-color;
@@ -69,6 +79,10 @@ a {
   &:focus {
     color: $link-hover-color;
   }
+}
+
+.theme--dark a:not(.button) {
+  color: $light-primary-text-color;
 }
 
 // Highlight

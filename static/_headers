@@ -1,0 +1,8 @@
+# Netlify custom headers
+# https://docs.netlify.com/routing/headers/
+
+# Tieni il CV fuori dall'indice di Google senza bloccarne il crawling
+# (bloccarlo via robots.txt impedirebbe a Google di leggere questo
+# header e potrebbe comunque mostrare l'URL "nudo" tra i risultati)
+/media/cv-marco-cianetti.pdf
+  X-Robots-Tag: noindex, nofollow

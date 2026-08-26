@@ -10,7 +10,7 @@ module.exports = {
       site_url: 'https://marcocianetti.com/',
       title: 'Marco Cianetti',
       description:
-        'Marco Cianetti è un web developer di Roma, specializzato in JavaScript e appassionato di Intelligenza Artificiale. Ricopre la posizione di Full-Stack Developer @247X - Il tuo Team di Crescita Dedicato.',
+        'Marco Cianetti è un web developer di Roma, specializzato in JavaScript e appassionato di Intelligenza Artificiale.',
       image_url: 'https://marcocianetti.com/logos/logo-48.png',
     },
   },
@@ -139,7 +139,7 @@ module.exports = {
         name: 'Marco Cianetti',
         short_name: 'Marco Cianetti',
         description:
-          'Marco Cianetti è un web developer di Roma, specializzato in JavaScript e appassionato di Intelligenza Artificiale. Ricopre la posizione di Full-Stack Developer @247X - Il tuo Team di Crescita Dedicato.',
+          'Marco Cianetti è un web developer di Roma, specializzato in JavaScript e appassionato di Intelligenza Artificiale.',
         start_url: '/',
         background_color: '#fff',
         theme_color: '#1b62ff',

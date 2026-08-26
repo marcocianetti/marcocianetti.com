@@ -61,6 +61,9 @@ const ThemeScriptTag = () => {
       });
     
       root.style.setProperty('--initial-theme', t);
+
+      root.classList.remove('theme--light', 'theme--dark');
+      root.classList.add('theme--' + t);
     })()
   `;
 
